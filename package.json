@@ -1,0 +1,28 @@
+{
+  "name": "grades",
+  "version": "0.0.0",
+  "description": "An app which allows you to track your grades over the year.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wgpsutherland/grades.git"
+  },
+  "keywords": [
+    "grades"
+  ],
+  "author": "Will Sutherland",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/wgpsutherland/grades/issues"
+  },
+  "homepage": "https://github.com/wgpsutherland/grades",
+  "dependencies": {
+    "express": "^4.7.2",
+    "logfmt": "^1.1.2",
+    "underscore": "1.6.*",
+    "body-parser": "1.5.2"
+  }
+}
