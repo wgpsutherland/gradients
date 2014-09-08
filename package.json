@@ -20,9 +20,11 @@
   },
   "homepage": "https://github.com/wgpsutherland/grades",
   "dependencies": {
+    "body-parser": "1.5.2",
     "express": "^4.7.2",
     "logfmt": "^1.1.2",
-    "underscore": "1.6.*",
-    "body-parser": "1.5.2"
+    "nconf": "^0.6.9",
+    "pg": "2.x",
+    "underscore": "1.6.*"
   }
 }
