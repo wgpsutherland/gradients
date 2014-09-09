@@ -1,17 +1,17 @@
-// Filename: app.js
+// app.js
 define([
-	'underscore',
-	'jquery',
-	'backbone',
-	'router'
+    'underscore',
+    'jquery',
+    'backbone',
+    'router'
 ], function(_, $, Backbone, Router) {
 
-	var initialise = function() {
+    var initialize = function() {
 
-		Router.initialise();
-	};
+        Router.initialize();
+    };
 
-	return {
-		initialise: initialise	
-	};
+    return {
+        initialize: initialize
+    };
 });

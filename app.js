@@ -3,7 +3,7 @@ var path = require('path');
 var express = require('express');
 var logfmt = require("logfmt");
 var bodyParser = require('body-parser');
-var nconf = require nconf('./config');
+var nconf = require('./config');
 
 var app = express();
 app.use(logfmt.requestLogger());

@@ -1,38 +1,42 @@
-// Filename: router.js
+// router.js
 define([
 	'jquery',
 	'underscore',
-	'backbone',
-	'views/EditUserView',
-	'views/UserListView'
-], function($, _, Backbone, EditUserView, UserListView) {
+	'backbone'
+], function($, _, Backbone) {
 
 	var Router = Backbone.Router.extend({
 		routes: {
-			'': 'home',
-			'new': 'editUser',
-			'edit/:id': 'editUser'
+			'': 'home'
 		}
 	});
 
-	var initialise = function() {
+	var initialize = function() {
 
 		var router = new Router();
-		var userListView =  new UserListView();
-		var editUserView =  new EditUserView(router);
 
-		router.on('route:home', function() {
-			userListView.render();
+		var pages = {
+
+		};
+
+		router.on('route', function(pageName) {
+
+			if (!$('.page > [data-name="' + pageName + '"]').length) { // checks if the page has been rendered before
+			    pages[pageName].render();
+			    $('.page').append(pages[pageName].$el.attr('data-name', pageName));
+			}
+
+			_.each(pages, function(page, name) {
+			    page.$el.toggle(name===pageName);
+			});
 		});
 
-		router.on('route:editUser', function(id) {
-			editUserView.render({id: id});
+		Backbone.history.start({
+			pushState: false
 		});
-
-		Backbone.history.start();
-	};
+	}
 
 	return {
-		initialise: initialise
-	};
+		initialize: initialize
+	}
 });
