@@ -1,30 +1,30 @@
 {
-  "name": "grades",
-  "version": "0.0.0",
-  "description": "An app which allows you to track your grades over the year.",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/wgpsutherland/grades.git"
-  },
-  "keywords": [
-    "grades"
-  ],
-  "author": "Will Sutherland",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/wgpsutherland/grades/issues"
-  },
-  "homepage": "https://github.com/wgpsutherland/grades",
-  "dependencies": {
-    "body-parser": "1.5.2",
-    "express": "^4.7.2",
-    "logfmt": "^1.1.2",
-    "nconf": "^0.6.9",
-    "pg": "2.x",
-    "underscore": "1.6.*"
-  }
+    "name": "grades",
+    "version": "0.0.0",
+    "description": "An app which allows you to track your grades over the year.",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/wgpsutherland/grades.git"
+    },
+    "keywords": [
+        "grades"
+    ],
+    "author": "Will Sutherland",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/wgpsutherland/grades/issues"
+    },
+    "homepage": "https://github.com/wgpsutherland/grades",
+    "dependencies": {
+        "body-parser": "1.5.2",
+        "express": "^4.7.2",
+        "logfmt": "^1.1.2",
+        "nconf": "^0.6.9",
+        "pg": "2.x",
+        "underscore": "1.6.*"
+    }
 }

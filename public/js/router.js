@@ -2,8 +2,9 @@
 define([
 	'jquery',
 	'underscore',
-	'backbone'
-], function($, _, Backbone) {
+	'backbone',
+	'views/HomePage'
+], function($, _, Backbone, HomePage) {
 
 	var Router = Backbone.Router.extend({
 		routes: {
@@ -14,9 +15,10 @@ define([
 	var initialize = function() {
 
 		var router = new Router();
+		var homePage = new HomePage();
 
 		var pages = {
-
+			home: homePage
 		};
 
 		router.on('route', function(pageName) {

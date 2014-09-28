@@ -13,5 +13,5 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 var port = Number(process.env.PORT || nconf.get('server:port')); // allows for use on the local server and with heroku without changing configs
 app.listen(port, function() {
-	console.log("I'm alive on port " + port + "!");
+    console.log("I'm alive on port " + port + "!");
 });
