@@ -3,8 +3,9 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
-	'views/HomePage'
-], function($, _, Backbone, HomePage) {
+	'views/HomePage',
+    'collections/UserCollection'
+], function($, _, Backbone, HomePage, UserCollection) {
 
 	var Router = Backbone.Router.extend({
 		routes: {
@@ -15,7 +16,12 @@ define([
 	var initialize = function() {
 
 		var router = new Router();
-		var homePage = new HomePage();
+        var userCollection = new UserCollection();
+
+		var homePage = new HomePage({
+            router: router,
+            collection: userCollection
+        });
 
 		var pages = {
 			home: homePage

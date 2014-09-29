@@ -1,9 +1,60 @@
 /* ======================================== ICONS ======================================== */
 
 .btn-wide {
-	width: 100%;
+    width: 100%;
 }
 
 .fa-large {
-	font-size: 18em;
+    font-size: 18em;
+}
+
+/* ======================================== NAV BAR ======================================== */
+
+.navbar {
+    margin-bottom: 0px;
+}
+
+.nav-home {
+    background-color: #5995E8;
+    color: white;
+}
+
+.nav-home a {
+    color: white;
+}
+
+.nav-list>li>a:hover {
+    background-color: transparent;
+}
+
+.nav-home li:hover {
+
+}
+
+/* ======================================== HOME ======================================== */
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+}
+
+h1 {
+    font-weight: 300;
+}
+
+h2 {
+    font-weight: 300;
+}
+
+.blue {
+    background-color: #6FC2FF;
+    color: white;
+}
+
+.centre {
+    text-align: center;
+}
+
+.login-view {
+    padding-bottom: 20px;
 }
