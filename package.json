@@ -22,10 +22,11 @@
   "dependencies": {
     "body-parser": "1.5.2",
     "express": "^4.7.2",
+    "knex": "^0.7.2",
     "logfmt": "^1.1.2",
     "nconf": "^0.6.9",
     "password-hash": "^1.2.2",
-    "pg": "2.x",
+    "pg": "^2.11.1",
     "underscore": "1.6.*"
   }
 }

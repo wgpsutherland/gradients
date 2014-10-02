@@ -4,12 +4,14 @@ define([
 	'underscore',
 	'backbone',
 	'views/HomePage',
+	'views/ProfilePage',
     'collections/UserCollection'
-], function($, _, Backbone, HomePage, UserCollection) {
+], function($, _, Backbone, HomePage, ProfilePage, UserCollection) {
 
 	var Router = Backbone.Router.extend({
 		routes: {
-			'': 'home'
+			'': 'home',
+            'profile/:id': 'profile'
 		}
 	});
 
@@ -23,8 +25,13 @@ define([
             collection: userCollection
         });
 
+        var profilePage = new ProfilePage({
+
+        });
+
 		var pages = {
-			home: homePage
+			home: homePage,
+            profile: profilePage
 		};
 
 		router.on('route', function(pageName) {

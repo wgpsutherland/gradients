@@ -1,9 +1,17 @@
+//==================== Node Modules ====================//
+
 var _ = require('underscore');
 var path = require('path');
 var express = require('express');
 var logfmt = require("logfmt");
 var bodyParser = require('body-parser');
 var nconf = require('./config');
+
+//==================== Libs ====================//
+
+var login = require('./lib/login');
+
+//==================== Server Logic ====================//
 
 var app = express();
 app.use(logfmt.requestLogger());
@@ -15,3 +23,7 @@ var port = Number(process.env.PORT || nconf.get('server:port')); // allows for u
 app.listen(port, function() {
     console.log("I'm alive on port " + port + "!");
 });
+
+//==================== Server Listening ====================//
+
+app.post('/gradient/v1/users', login.loginUser);

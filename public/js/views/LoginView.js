@@ -24,8 +24,6 @@ define([
 
             var formContents = $(ev.currentTarget).formToObject();
 
-            console.log(formContents);
-
             var goodForm = _.every(formContents, function(field) { // checks that each field in the form has been filled
                 if(field.trim().length>0) {
                     return true;
@@ -38,9 +36,17 @@ define([
 
                 console.log("the form is amazing");
 
-                this.collection.create(formContents, {
-                    wait:true
-                });
+                var options = {
+                    success: _.bind(function(something) {
+                        this.router.navigate('/profile/'+something.attributes.id, {trigger: true});
+                    }, this),
+                    error: _.bind(function() {
+                        this.router.navigate('#', {trigger: true});
+                    }, this)
+                }
+
+                this.collection.create(formContents, options);
+
             } else {
                 // red warning thing
                 console.log("the form is not good");
