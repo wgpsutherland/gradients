@@ -3,10 +3,11 @@ define([
 	'jquery',
 	'underscore',
 	'backbone',
+    'bootstrap',
 	'views/HomePage',
 	'views/ProfilePage',
     'collections/UserCollection'
-], function($, _, Backbone, HomePage, ProfilePage, UserCollection) {
+], function($, _, Backbone, bootstrap, HomePage, ProfilePage, UserCollection) {
 
 	var Router = Backbone.Router.extend({
 		routes: {
