@@ -3,7 +3,7 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'views/NavView',
+    'views/NavView'
 ], function($, _, Backbone, NavView) {
 
     var HomePage = Backbone.View.extend({
