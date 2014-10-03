@@ -109,8 +109,9 @@ h2 {
 
 .centre {
     text-align: center;
+    margin: 0 auto;
 }
 
-.login-view {
+.form-view {
     padding-bottom: 20px;
 }

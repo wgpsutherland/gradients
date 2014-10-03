@@ -10,6 +10,7 @@ var nconf = require('./config');
 //==================== Libs ====================//
 
 var login = require('./lib/login');
+var signup = require('./lib/signup');
 
 //==================== Server Logic ====================//
 
@@ -26,4 +27,5 @@ app.listen(port, function() {
 
 //==================== Server Listening ====================//
 
-app.post('/gradient/v1/users', login.loginUser);
+app.post('/gradient/v1/login', login.loginUser);
+app.post('/gradient/v1/users', signup.createUser);

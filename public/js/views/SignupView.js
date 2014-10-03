@@ -1,24 +1,24 @@
-//Filename: LoginView.js
+//Filename: SignupView.js
 define([
     'jquery',
     'underscore',
     'backbone',
-    'text!templates/LoginTemplate.html',
+    'text!templates/SignupTemplate.html',
     'libs/formToObject'
-], function($, _, Backbone, LoginTemplate, formToObject) {
+], function($, _, Backbone, SignupTemplate, formToObject) {
 
     var LoginView = Backbone.View.extend({
         initialize: function(options) {
             this.router = options.router;
         },
         render: function() {
-            var template = _.template(LoginTemplate);
+            var template = _.template(SignupTemplate);
             this.$el.html(template);
         },
         events: {
-            'submit .login-form': 'login'
+            'submit .signup-form': 'signup'
         },
-        login: function(ev) {
+        signup: function(ev) {
 
             ev.preventDefault();
 
@@ -41,7 +41,7 @@ define([
                         this.router.navigate('#/profile/'+something.attributes.id, {trigger: true});
                     }, this),
                     error: _.bind(function() {
-                        this.router.navigate('#', {trigger: true});
+                        // tell them it's wrong
                     }, this)
                 }
 
