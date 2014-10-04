@@ -31,7 +31,8 @@ define([
         });
 
         var profilePage = new ProfilePage({
-
+            router: router,
+            collection: userCollection
         });
 
         var signupPage = new SignupPage({
