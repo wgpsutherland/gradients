@@ -115,3 +115,14 @@ h2 {
 .form-view {
     padding-bottom: 20px;
 }
+
+/* ======================================== PROFILE ======================================== */
+
+.letter-display {
+    border: 3px solid black;
+    border-radius: 3px;
+    text-align: center;
+}
+.letter-display h1 {
+    font-size: 10em;
+}

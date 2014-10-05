@@ -15,6 +15,7 @@ define([
             var that=this;
 
             var draw = function(user) {
+                console.log(user);
                 var template = _.template(UserInfoTemplate, {user: user});
                 this.$el.html(template);
             }
