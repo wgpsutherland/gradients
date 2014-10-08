@@ -1,0 +1,39 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="container-fluid centre form-view">
+                <br>
+                <br>
+                <h1>What module do you do?</h1>
+                <br>
+                <br>
+
+                <form role="form" class="add-user-module-form">
+                    <div class="form-group">
+                        <select class="form-control" id="add-user-module-form-moduleChoice" name="module_choice">
+                            <option value="" disabled selected>Choose a module</option>
+                            <% modules.each(function(module) { %>
+                            <option value=<%= module.get('id') %>><%= module.get('module_code') %></option>
+                            <% }); %>
+                        </select>
+                    </div>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" name="current"> Current?
+                        </label>
+                    </div>
+                    <input type="hidden" name="user_id" value=<%= user_id %>>
+                    <button type="submit" class="btn btn-warning">
+                        <span class="fa fa-list"></span> Add
+                    </button>
+                    <button type="button" class="btn btn-info cancel">
+                        <span class="fa fa-times"></span> Cancel
+                    </button>
+                </form>
+
+                <br>
+            </div>
+        </div>
+    </div>
+</div>

@@ -28,7 +28,9 @@ app.listen(port, function() {
 
 app.post('/gradient/v1/login', users.loginUser);
 app.post('/gradient/v1/users', users.createUser);
+app.post('/gradient/v1/module', users.addUserModule);
 app.get('/gradient/v1/users', users.getUsers);
 app.get('/gradient/v1/users/:id', users.getUser);
-app.get('/gradient/v1/modules/:id', users.getModules);
+app.get('/gradient/v1/modules/:id', users.getUserModules);
 app.get('/gradient/v1/grades/:id', users.getGradesForUserFromModule);
+app.get('/gradient/v1/modules', users.getModules)

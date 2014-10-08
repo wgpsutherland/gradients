@@ -6,11 +6,11 @@ define([
     'views/NavView',
     'views/UserInfoView',
     'models/UserModel',
-    'collections/ModuleCollection',
+    'collections/UserModulesCollection',
     'views/ModuleView',
     'collections/GradesCollection',
     'views/GradesView'
-], function($, _, Backbone, NavView, UserInfoView, UserModel, ModuleCollection, ModuleView, GradesCollection, GradesView) {
+], function($, _, Backbone, NavView, UserInfoView, UserModel, UserModulesCollection, ModuleView, GradesCollection, GradesView) {
 
     var ProfilePage = Backbone.View.extend({
 
@@ -23,15 +23,17 @@ define([
             this.router.on('route:profile', function(id) {
 
                 this.userModel = new UserModel({id: id});
-                this.moduleCollection = new ModuleCollection([],{id: id});
-                this.moduleCollection.fetch();
+                this.userModulesCollection = new UserModulesCollection([],{id: id});
+                this.userModulesCollection.fetch();
 
                 this.userInfoView = new UserInfoView({
                     userModel: this.userModel
                 });
 
                 this.moduleView = new ModuleView({
-                    collection: this.moduleCollection
+                    collection: this.userModulesCollection,
+                    router: this.router,
+                    userId: id
                 });
 
                 this.userInfoView.render();
@@ -41,12 +43,16 @@ define([
             }, this);
         },
         render: function() {
-
+            
             this.$el.empty();
             this.navView.render();
             this.$el.append(this.navView.$el);
             this.$el.append(this.userInfoView.$el);
-            this.$el.append(this.moduleView.$el);
+            this.userModulesCollection.fetch({
+                success: function() {
+                    this.$el.append(this.moduleView.$el);
+                }
+            });
         },
         events: {
             'click .show-grades': 'showGrades'
