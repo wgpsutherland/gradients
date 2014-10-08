@@ -43,14 +43,17 @@ define([
             }, this);
         },
         render: function() {
-            
+
             this.$el.empty();
             this.navView.render();
             this.$el.append(this.navView.$el);
             this.$el.append(this.userInfoView.$el);
+
+            var that = this;
+
             this.userModulesCollection.fetch({
                 success: function() {
-                    this.$el.append(this.moduleView.$el);
+                    that.$el.append(that.moduleView.$el);
                 }
             });
         },
