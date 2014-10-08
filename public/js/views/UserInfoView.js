@@ -10,7 +10,7 @@ define([
         initialize: function(options) {
             this.userModel = options.userModel;
         },
-        render: function(id) {
+        render: function() {
 
             var that=this;
 

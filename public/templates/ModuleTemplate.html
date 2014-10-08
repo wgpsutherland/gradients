@@ -1,5 +1,6 @@
 <br>
 <div class="container">
+    <h2>Modules:</h2>
     <div class="table-responsive">
         <table class="table">
             <thead>
@@ -8,6 +9,7 @@
                 <th>Name</th>
                 <th>Credits</th>
                 <th>Current</th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -17,6 +19,12 @@
                 <td><%= module.get('module_name') %></td>
                 <td><%= module.get('credits') %></td>
                 <td><%= module.get('current_module') %></td>
+                <td>
+                    <% var value = "" +  module.get('id') + "x" + module.get('user_id') %>
+                    <button type="button" class="btn btn-info show-grades" value=<%= value %> >
+                        <span class="fa fa-list"></span>
+                    </button>
+                </td>
             </tr>
             <% }); %>
             </tbody>

@@ -24,10 +24,8 @@ define([
 
                 this.userModel = new UserModel({id: id});
                 this.moduleCollection = new ModuleCollection([],{id: id});
-                this.moduleCollection.fetch();
 
-                this.gradesCollection = new GradesCollection([],{id: id});
-                this.gradesCollection.fetch();
+                this.moduleCollection.fetch();
 
                 this.userInfoView = new UserInfoView({
                     userModel: this.userModel
@@ -37,13 +35,9 @@ define([
                     collection: this.moduleCollection
                 });
 
-                this.gradesView = new GradesView({
-                    collection: this.gradesCollection
-                })
-
-                this.userInfoView.render(id);
+                this.userInfoView.render();
                 this.moduleView.render();
-                this.gradesView.render();
+
 
             }, this);
         },
@@ -55,6 +49,20 @@ define([
             this.$el.append(this.navView.$el);
             this.$el.append(this.userInfoView.$el);
             this.$el.append(this.moduleView.$el);
+        },
+        events: {
+            'click .show-grades': 'showGrades'
+        },
+        showGrades: function(ev) {
+
+            this.gradesCollection = new GradesCollection([],{
+                id: ev.currentTarget.attributes[2].value
+            });
+            this.gradesCollection.fetch();
+            this.gradesView = new GradesView({
+                collection: this.gradesCollection
+            });
+            this.gradesView.render();
             this.$el.append(this.gradesView.$el);
         }
     });
