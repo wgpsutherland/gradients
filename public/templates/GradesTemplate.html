@@ -1,1 +1,31 @@
-<p>this is the grades thing</p>
+<br>
+<div class="container">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Score</th>
+                <th>Max</th>
+                <th>Type</th>
+                <th>Weight</th>
+                <th>Semester</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% grades.each(function(grade) { %>
+            <tr>
+                <td><%= grade.get('module_code') %></td>
+                <td><%= grade.get('assignment_name') %></td>
+                <td><%= grade.get('score') %></td>
+                <td><%= grade.get('max_mark') %></td>
+                <td><%= grade.get('assignment_type') %></td>
+                <td><%= grade.get('weight') %></td>
+                <td><%= grade.get('semester') %></td>
+            </tr>
+            <% }); %>
+            </tbody>
+        </table>
+    </div>
+</div>
