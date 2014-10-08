@@ -24,7 +24,6 @@ define([
 
                 this.userModel = new UserModel({id: id});
                 this.moduleCollection = new ModuleCollection([],{id: id});
-
                 this.moduleCollection.fetch();
 
                 this.userInfoView = new UserInfoView({
@@ -44,7 +43,6 @@ define([
         render: function() {
 
             this.$el.empty();
-
             this.navView.render();
             this.$el.append(this.navView.$el);
             this.$el.append(this.userInfoView.$el);
@@ -55,9 +53,8 @@ define([
         },
         showGrades: function(ev) {
 
-            this.gradesCollection = new GradesCollection([],{
-                id: ev.currentTarget.attributes[2].value
-            });
+            this.render();
+            this.gradesCollection = new GradesCollection([],{id: ev.currentTarget.attributes[2].value});
             this.gradesCollection.fetch();
             this.gradesView = new GradesView({
                 collection: this.gradesCollection
