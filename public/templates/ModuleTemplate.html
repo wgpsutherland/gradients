@@ -1,0 +1,25 @@
+<br>
+<div class="container">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Code</th>
+                <th>Name</th>
+                <th>Credits</th>
+                <th>Current</th>
+            </tr>
+            </thead>
+            <tbody>
+            <% modules.each(function(module) { %>
+            <tr>
+                <td><%= module.get('module_code') %></td>
+                <td><%= module.get('module_name') %></td>
+                <td><%= module.get('credits') %></td>
+                <td><%= module.get('current_module') %></td>
+            </tr>
+            <% }); %>
+            </tbody>
+        </table>
+    </div>
+</div>

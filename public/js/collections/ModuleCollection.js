@@ -1,18 +1,18 @@
 define([
     'underscore',
     'backbone',
-    'models/GradeModel'
-], function(_, Backbone, GradeModel) {
+    'models/ModuleModel'
+], function(_, Backbone, ModuleModel) {
 
     return Backbone.Collection.extend({
         initialize: function(models, options) {
             console.log("options");
-            console.log(options);
-            this.id = options.id
+            console.log(options.id);
+            this.id = options.id;
         },
         url: function() {
-            return '/gradient/v1/grades/' + this.id;
+            return '/gradient/v1/modules/' + this.id;
         },
-        model: GradeModel
+        model: ModuleModel
     });
 });

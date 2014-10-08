@@ -4,39 +4,47 @@ define([
     'underscore',
     'backbone',
     'views/NavView',
-    'views/UserInfoView'
-], function($, _, Backbone, NavView, UserInfoView) {
+    'views/UserInfoView',
+    'models/UserModel',
+    'collections/ModuleCollection',
+    'views/ModuleView',
+    'collections/GradesCollection',
+    'views/GradesView'
+], function($, _, Backbone, NavView, UserInfoView, UserModel, ModuleCollection, ModuleView, GradesCollection, GradesView) {
 
     var ProfilePage = Backbone.View.extend({
 
         initialize: function(options) {
 
-            this.gradesCollection = options.gradesCollection;
-            this.userCollection = options.userCollection;
-
-            this.userCollection.fetch();
-
             this.navView = new NavView();
-
-            this.userInfoView = new UserInfoView({
-                collection: this.userCollection
-            });
 
             this.router = options.router;
 
             this.router.on('route:profile', function(id) {
 
-                var userModel = this.userCollection.get(id);
+                this.userModel = new UserModel({id: id});
+                this.moduleCollection = new ModuleCollection([],{id: id});
+                this.moduleCollection.fetch();
 
-                if(userModel) {
-                    this.userInfoView.render(id);
-                } else {
-                    this.listenToOnce(this.userCollection, 'sync', function() {
-                        if(this.userCollection.get(id)) {
-                            this.userInfoView.render(id);
-                        }
-                    });
-                }
+                this.gradesCollection = new GradesCollection([],{id: id});
+                this.gradesCollection.fetch();
+
+                this.userInfoView = new UserInfoView({
+                    userModel: this.userModel
+                });
+
+                this.moduleView = new ModuleView({
+                    collection: this.moduleCollection
+                });
+
+                this.gradesView = new GradesView({
+                    collection: this.gradesCollection
+                })
+
+                this.userInfoView.render(id);
+                this.moduleView.render();
+                this.gradesView.render();
+
             }, this);
         },
         render: function() {
@@ -45,8 +53,9 @@ define([
 
             this.navView.render();
             this.$el.append(this.navView.$el);
-
             this.$el.append(this.userInfoView.$el);
+            this.$el.append(this.moduleView.$el);
+            this.$el.append(this.gradesView.$el);
         }
     });
 

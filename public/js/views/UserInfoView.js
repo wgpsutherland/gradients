@@ -7,20 +7,19 @@ define([
 ], function($, _, Backbone, UserInfoTemplate) {
 
     var UserInfoView = Backbone.View.extend({
-        initialize: function() {
-
+        initialize: function(options) {
+            this.userModel = options.userModel;
         },
         render: function(id) {
 
             var that=this;
 
             var draw = function(user) {
-                console.log(user);
                 var template = _.template(UserInfoTemplate, {user: user});
                 this.$el.html(template);
             }
 
-            this.user = this.collection.get(id);
+            this.user = this.userModel;
 
             this.user.fetch({
                 success: function(user) {

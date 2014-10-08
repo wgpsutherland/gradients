@@ -9,8 +9,9 @@ define([
     'collections/UserCollection',
     'views/SignupPage',
     'collections/LoginCollection',
-    'collections/GradesCollection'
-], function($, _, Backbone, bootstrap, HomePage, ProfilePage, UserCollection, SignupPage, LoginCollection, GradesCollection) {
+    'collections/GradesCollection',
+    'models/UserModel'
+], function($, _, Backbone, bootstrap, HomePage, ProfilePage, UserCollection, SignupPage, LoginCollection, GradesCollection, UserModel) {
 
 	var Router = Backbone.Router.extend({
 		routes: {
@@ -25,7 +26,6 @@ define([
 		var router = new Router();
         var userCollection = new UserCollection();
         var loginCollection = new LoginCollection();
-        var gradesCollection = new GradesCollection();
 
 		var homePage = new HomePage({
             router: router,
@@ -33,9 +33,7 @@ define([
         });
 
         var profilePage = new ProfilePage({
-            router: router,
-            userCollection: userCollection,
-            gradesCollection: gradesCollection
+            router: router
         });
 
         var signupPage = new SignupPage({
