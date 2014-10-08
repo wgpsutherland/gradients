@@ -48,14 +48,7 @@ define([
             this.navView.render();
             this.$el.append(this.navView.$el);
             this.$el.append(this.userInfoView.$el);
-
-            var that = this;
-
-            this.userModulesCollection.fetch({
-                success: function() {
-                    that.$el.append(that.moduleView.$el);
-                }
-            });
+            this.$el.append(this.moduleView.$el);
         },
         events: {
             'click .show-grades': 'showGrades'
