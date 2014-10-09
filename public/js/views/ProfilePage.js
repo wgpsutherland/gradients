@@ -9,21 +9,27 @@ define([
     'collections/UserModulesCollection',
     'views/ModuleView',
     'collections/GradesCollection',
-    'views/GradesView'
-], function($, _, Backbone, NavView, UserInfoView, UserModel, UserModulesCollection, ModuleView, GradesCollection, GradesView) {
+    'views/GradesView',
+    'libs/getCookie'
+], function($, _, Backbone, NavView, UserInfoView, UserModel, UserModulesCollection,
+            ModuleView, GradesCollection, GradesView, getCookie) {
 
     var ProfilePage = Backbone.View.extend({
 
         initialize: function(options) {
 
-            this.navView = new NavView();
+            console.log("initialising the profile page");
 
             this.router = options.router;
 
             this.router.on('route:profile', function(id) {
 
+                console.log("routing the profile");
+
+                this.navView = new NavView();
+
                 this.userModel = new UserModel({id: id});
-                this.userModulesCollection = new UserModulesCollection([],{id: id});
+                this.userModulesCollection = options.userModulesCollection;
                 this.userModulesCollection.fetch();
 
                 this.userInfoView = new UserInfoView({
@@ -38,13 +44,12 @@ define([
 
                 this.userInfoView.render();
                 this.moduleView.render();
-
-
             }, this);
         },
         render: function() {
 
             this.$el.empty();
+            console.log("profile rendering");
             this.navView.render();
             this.$el.append(this.navView.$el);
             this.$el.append(this.userInfoView.$el);

@@ -21,7 +21,7 @@ define([
 
                 this.moduleCollection.fetch();
 
-                this.userModulesCollection = new UserModulesCollection([],{id:id});
+                this.userModulesCollection = options.userModulesCollection;
 
                 this.addUserModuleView = new AddUserModuleView({
                     user_id: id,

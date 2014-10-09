@@ -1,15 +1,16 @@
 define([
     'underscore',
     'backbone',
-    'models/ModuleModel'
+    'models/ModuleModel',
+    'libs/getCookie'
 ], function(_, Backbone, ModuleModel) {
 
     return Backbone.Collection.extend({
         initialize: function(models, options) {
-            this.id = options.id;
+
         },
         url: function() {
-            return '/gradient/v1/modules/' + this.id;
+            return '/gradient/v1/modules/' + $("user_id").getCookie();
         },
         model: ModuleModel
     });

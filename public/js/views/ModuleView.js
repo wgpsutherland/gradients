@@ -13,6 +13,7 @@ define([
             this.listenTo(this.collection, 'add remove change', this.render);
         },
         render: function() {
+            this.collection.fetch();
             var template = _.template(ModuleTemplate, {modules: this.collection});
             this.$el.html(template);
         },

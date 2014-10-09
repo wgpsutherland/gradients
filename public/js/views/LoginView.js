@@ -34,10 +34,11 @@ define([
 
             if(goodForm) { // if the form is syntactically valid
 
-                console.log("the form is amazing");
-
                 var options = {
                     success: _.bind(function(something) {
+                        var cookie = "user_id=" + something.attributes.id + ";";
+                        document.cookie = cookie;
+//                        console.log("document cookie " + document.cookie);
                         this.router.navigate('#/profile/'+something.attributes.id, {trigger: true});
                     }, this),
                     error: _.bind(function() {

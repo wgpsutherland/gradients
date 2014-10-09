@@ -24,16 +24,11 @@ define([
 
             this.$el.empty();
 
-            // nav bar with sign up, login etc
             this.navView.render();
-            this.$el.append(this.navView.$el);
-
-            // login view
             this.loginView.render();
-            this.$el.append(this.loginView.$el);
 
-            // sign up view
-            // explanation views
+            this.$el.append(this.navView.$el);
+            this.$el.append(this.loginView.$el);
         }
 	 });
 

@@ -8,6 +8,7 @@ define([
 
     var AddUserModuleView = Backbone.View.extend({
         initialize: function(options) {
+            console.log(document.cookie);
             this.user_id = options.user_id;
             this.moduleCollection = options.moduleCollection;
             this.userModulesCollection = options.userModulesCollection;
