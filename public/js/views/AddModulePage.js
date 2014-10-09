@@ -26,7 +26,8 @@ define([
                 this.addUserModuleView = new AddUserModuleView({
                     user_id: id,
                     moduleCollection: this.moduleCollection,
-                    userModulesCollection: this.userModulesCollection
+                    userModulesCollection: this.userModulesCollection,
+                    router: this.router
                 });
 
                 // maybe stick in a userModulesCollection fetch here
@@ -37,13 +38,11 @@ define([
 
             this.$el.empty();
 
-            // nav bar with sign up, login etc
             this.navView.render();
-            this.$el.append(this.navView.$el);
-
             this.addUserModuleView.render();
-            this.$el.append(this.addUserModuleView.$el);
 
+            this.$el.append(this.navView.$el);
+            this.$el.append(this.addUserModuleView.$el);
         }
     });
 

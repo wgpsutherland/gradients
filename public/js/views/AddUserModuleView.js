@@ -3,15 +3,18 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'text!templates/AddUserModuleTemplate.html'
-], function($, _, Backbone, AddUserModuleTemplate) {
+    'text!templates/AddUserModuleTemplate.html',
+    'libs/getCookie'
+], function($, _, Backbone, AddUserModuleTemplate, getCookie) {
 
     var AddUserModuleView = Backbone.View.extend({
         initialize: function(options) {
-            console.log(document.cookie);
+
             this.user_id = options.user_id;
+            this.router = options.router;
             this.moduleCollection = options.moduleCollection;
             this.userModulesCollection = options.userModulesCollection;
+
             this.listenTo(this.userModulesCollection, 'add remove change', this.render);
             this.listenTo(this.moduleCollection, 'add remove change', this.render);
         },
@@ -23,9 +26,11 @@ define([
             this.$el.html(template);
         },
         events: {
-            'submit .add-user-module-form': 'addUserModule'
+            'submit .add-user-module-form': 'addUserModule',
+            'click .cancel': 'cancel'
         },
         addUserModule: function(ev) {
+
             ev.preventDefault();
 
             var formContents = $(ev.currentTarget).formToObject();
@@ -57,6 +62,9 @@ define([
                 // red warning thing
                 console.log("no module has been chosen");
             }
+        },
+        cancel: function(ev) {
+            this.router.navigate('#/profile/'+$("user_id").getCookie(), {trigger: true});
         }
     });
 

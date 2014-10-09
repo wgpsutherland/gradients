@@ -18,17 +18,14 @@ define([
 
         initialize: function(options) {
 
-            console.log("initialising the profile page");
-
             this.router = options.router;
 
             this.router.on('route:profile', function(id) {
 
-                console.log("routing the profile");
-
                 this.navView = new NavView();
 
                 this.userModel = new UserModel({id: id});
+
                 this.userModulesCollection = options.userModulesCollection;
                 this.userModulesCollection.fetch();
 
@@ -49,8 +46,9 @@ define([
         render: function() {
 
             this.$el.empty();
-            console.log("profile rendering");
+
             this.navView.render();
+
             this.$el.append(this.navView.$el);
             this.$el.append(this.userInfoView.$el);
             this.$el.append(this.moduleView.$el);
@@ -61,12 +59,16 @@ define([
         showGrades: function(ev) {
 
             this.render();
+
             this.gradesCollection = new GradesCollection([],{id: ev.currentTarget.attributes[2].value});
             this.gradesCollection.fetch();
+
             this.gradesView = new GradesView({
                 collection: this.gradesCollection
             });
+
             this.gradesView.render();
+
             this.$el.append(this.gradesView.$el);
         }
     });
