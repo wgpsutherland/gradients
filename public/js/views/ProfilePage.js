@@ -22,9 +22,7 @@ define([
 
             this.router.on('route:profile', function(id) {
 
-                this.navView = new ProfileNavView({
-                    router: this.router
-                });
+                this.navView = new ProfileNavView();
 
                 this.userModel = new UserModel({id: id});
 
