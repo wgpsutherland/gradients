@@ -25,7 +25,6 @@ define([
                 this.navView = new NavView();
 
                 this.userModel = new UserModel({id: id});
-                this.userModel.fetch();
 
                 this.userModulesCollection = options.userModulesCollection;
                 this.userModulesCollection.fetch();
@@ -34,7 +33,7 @@ define([
                     userModel: this.userModel
                 });
 
-                this.listenTo(this.userModel, 'add remove change', this.render);
+                this.listenTo(this.userModel, 'change', this.render);
 
                 this.moduleView = new ModuleView({
                     collection: this.userModulesCollection,
@@ -51,7 +50,7 @@ define([
             this.$el.empty();
 
             this.navView.render();
-            this.userInfoView.render();
+
 
             this.$el.append(this.navView.$el);
             this.$el.append(this.userInfoView.$el);
