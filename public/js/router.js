@@ -14,10 +14,12 @@ define([
     'views/AddModulePage',
     'collections/ModuleCollection',
     'collections/UserModulesCollection',
-    'libs/getCookie'
+    'libs/getCookie',
+    'collections/InstitutionsCollection',
+    'collections/CourseCollection'
 ], function($, _, Backbone, bootstrap, HomePage, ProfilePage, UserCollection,
             SignupPage, LoginCollection, GradesCollection, UserModel,
-            AddModulePage, ModuleCollection, UserModulesCollection, getCookie) {
+            AddModulePage, ModuleCollection, UserModulesCollection, getCookie, InstitutionsCollection, CourseCollection) {
 
 	var Router = Backbone.Router.extend({
 		routes: {
@@ -35,6 +37,8 @@ define([
         var loginCollection = new LoginCollection();
         var moduleCollection = new ModuleCollection();
         var userModulesCollection = new UserModulesCollection();
+        var institutionsCollection = new InstitutionsCollection();
+        var courseCollection = new CourseCollection();
 
 		var homePage = new HomePage({
             router: router,
@@ -48,7 +52,9 @@ define([
 
         var signupPage = new SignupPage({
             router: router,
-            collection: userCollection
+            userCollection: userCollection,
+            institutionsCollection: institutionsCollection,
+            courseCollection: courseCollection
         });
 
         var addModulePage = new AddModulePage({

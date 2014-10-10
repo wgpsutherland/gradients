@@ -21,6 +21,35 @@
                             <label class="sr-only" for="exampleInputPassword2">Password</label>
                             <input type="password" class="form-control input-lg" id="exampleInputPassword2" placeholder="password" name="password">
                         </div>
+                        <div class="form-group form-group-lg">
+                            <select class="form-control" id="signup-form-unichoice" name="uni_choice">
+                                <option value="" disabled selected>Choose a uni</option>
+                                <% institutions.each(function(uni) { %>
+                                <option value=<%= uni.get('id') %>><%= uni.get('institution_name') %></option>
+                                <% }); %>
+                            </select>
+                        </div>
+                        <div class="form-group form-group-lg">
+                            <select class="form-control" id="signup-form-coursechoice" name="course_choice">
+                                <option value="" disabled selected>Choose a course</option>
+                                <% courses.each(function(course) { %>
+                                <option value=<%= course.get('id') %>><%= course.get('course_name') %></option>
+                                <% }); %>
+                            </select>
+                        </div>
+                        <div class="form-group form-group-lg">
+                            <select class="form-control" id="signup-form-yearchoice" name="year">
+                                <option value="" disabled selected>What year are you?</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                            </select>
+                        </div>
                         <button type="submit" class="btn btn-primary btn-lg btn-block login">Create</button>
                     </form>
                     <br>

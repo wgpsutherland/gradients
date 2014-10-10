@@ -11,13 +11,22 @@ define([
 
         initialize: function(options) {
 
+            this.userCollection = options.userCollection;
+            this.institutionsCollection = options.institutionsCollection;
+            this.courseCollection = options.courseCollection;
+
+            this.institutionsCollection.fetch();
+            this.courseCollection.fetch();
+
             this.router = options.router;
 
             this.navView = new NavView();
 
             this.signUpView = new SignupView({
                 router: this.router,
-                collection: this.collection
+                userCollection: this.userCollection,
+                institutionsCollection: this.institutionsCollection,
+                courseCollection: this.courseCollection
             });
         },
         render: function() {

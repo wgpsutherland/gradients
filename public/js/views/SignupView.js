@@ -10,9 +10,18 @@ define([
     var LoginView = Backbone.View.extend({
         initialize: function(options) {
             this.router = options.router;
+            this.userCollection = options.userCollection;
+            this.institutionsCollection = options.institutionsCollection;
+            this.courseCollection = options.courseCollection
+
+            this.listenTo(this.institutionsCollection, 'add remove change', this.render);
+            this.listenTo(this.courseCollection, 'add remove change', this.render);
         },
         render: function() {
-            var template = _.template(SignupTemplate);
+            var template = _.template(SignupTemplate, {
+                institutions: this.institutionsCollection,
+                courses: this.courseCollection
+            });
             this.$el.html(template);
         },
         events: {
@@ -38,14 +47,14 @@ define([
 
                 var options = {
                     success: _.bind(function(something) {
-                        this.router.navigate('#/profile/'+something.attributes.id, {trigger: true});
+                        this.router.navigate('#', {trigger: true});
                     }, this),
                     error: _.bind(function() {
                         // tell them it's wrong
                     }, this)
                 }
 
-                this.collection.create(formContents, options);
+                this.userCollection.create(formContents, options);
 
             } else {
                 // red warning thing
