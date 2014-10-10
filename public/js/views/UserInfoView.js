@@ -8,7 +8,10 @@ define([
 
     var UserInfoView = Backbone.View.extend({
         initialize: function(options) {
+
             this.userModel = options.userModel;
+
+            this.listenTo(this.userModel, 'add remove change', this.render);
         },
         render: function() {
 

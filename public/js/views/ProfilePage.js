@@ -25,6 +25,7 @@ define([
                 this.navView = new NavView();
 
                 this.userModel = new UserModel({id: id});
+                this.userModel.fetch();
 
                 this.userModulesCollection = options.userModulesCollection;
                 this.userModulesCollection.fetch();
