@@ -34,6 +34,8 @@ define([
                     userModel: this.userModel
                 });
 
+                this.listenTo(this.userModel, 'add remove change', this.userInfoView.render);
+
                 this.moduleView = new ModuleView({
                     collection: this.userModulesCollection,
                     router: this.router,

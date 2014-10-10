@@ -11,7 +11,7 @@ define([
 
             this.userModel = options.userModel;
 
-            this.listenTo(this.userModel, 'add remove change', this.render);
+
         },
         render: function() {
 
