@@ -14,7 +14,8 @@
                         <select class="form-control" id="add-user-module-form-moduleChoice" name="module_choice">
                             <option value="" disabled selected>Choose a module</option>
                             <% modules.each(function(module) { %>
-                            <option value=<%= module.get('id') %>><%= module.get('module_code') %></option>
+                            <% var display = "" + module.get('module_code') + " - " + module.get('module_name') %>
+                            <option value=<%= module.get('id') %>><%= display %></option>
                             <% }); %>
                         </select>
                     </div>
