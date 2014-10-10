@@ -34,7 +34,7 @@ define([
                     userModel: this.userModel
                 });
 
-                this.listenTo(this.userModel, 'add remove change', this.userInfoView.render);
+                this.listenTo(this.userModel, 'add remove change', this.render);
 
                 this.moduleView = new ModuleView({
                     collection: this.userModulesCollection,
@@ -51,6 +51,7 @@ define([
             this.$el.empty();
 
             this.navView.render();
+            this.userInfoView.render();
 
             this.$el.append(this.navView.$el);
             this.$el.append(this.userInfoView.$el);
