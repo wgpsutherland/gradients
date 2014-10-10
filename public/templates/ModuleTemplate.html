@@ -3,7 +3,10 @@
     <h2>
         Modules
         <button type="button" class="btn btn-default add-module">
-            <span class="fa fa-plus"></span>
+            <% var moduleLink = "#/profile/" + user_id + "/addModule" %>
+            <a href=<%= moduleLink %>>
+                <span class="fa fa-plus"></span>
+            </a>
         </button>
     </h2>
     <div class="table-responsive">

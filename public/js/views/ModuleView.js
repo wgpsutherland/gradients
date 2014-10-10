@@ -15,14 +15,11 @@ define([
             this.listenTo(this.collection, 'add remove change', this.render);
         },
         render: function() {
-            var template = _.template(ModuleTemplate, {modules: this.collection});
+            var template = _.template(ModuleTemplate, {
+                modules: this.collection,
+                user_id: this.userId
+            });
             this.$el.html(template);
-        },
-        events: {
-            'click .add-module': 'directToAddModule'
-        },
-        directToAddModule: function(ev) {
-            this.router.navigate('#/profile/'+this.userId+'/addModule',{trigger: true});
         }
     });
 
