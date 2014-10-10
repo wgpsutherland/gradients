@@ -3,16 +3,16 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'views/NavView',
+    'views/ProfileNavView',
     'views/AddUserModuleView',
     'collections/UserModulesCollection'
-], function($, _, Backbone, NavView, AddUserModuleView, UserModulesCollection) {
+], function($, _, Backbone, ProfileNavView, AddUserModuleView, UserModulesCollection) {
 
     var AddModulePage = Backbone.View.extend({
 
         initialize: function(options) {
 
-            this.navView = new NavView();
+            this.navView = new ProfileNavView();
             this.router = options.router;
 
             this.router.on('route:addModule', function(id) {
