@@ -3,7 +3,7 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'views/NavView',
+    'views/ProfileNavView',
     'views/UserInfoView',
     'models/UserModel',
     'collections/UserModulesCollection',
@@ -11,7 +11,7 @@ define([
     'collections/GradesCollection',
     'views/GradesView',
     'libs/getCookie'
-], function($, _, Backbone, NavView, UserInfoView, UserModel, UserModulesCollection,
+], function($, _, Backbone, ProfileNavView, UserInfoView, UserModel, UserModulesCollection,
             ModuleView, GradesCollection, GradesView, getCookie) {
 
     var ProfilePage = Backbone.View.extend({
@@ -22,7 +22,7 @@ define([
 
             this.router.on('route:profile', function(id) {
 
-                this.navView = new NavView();
+                this.navView = new ProfileNavView();
 
                 this.userModel = new UserModel({id: id});
 
