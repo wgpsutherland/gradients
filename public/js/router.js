@@ -76,6 +76,9 @@ define([
             if((pageName=="profile" || pageName=="addModule") && (stuff[0] != $("user_id").getCookie())) {
 
                 router.navigate('#', {trigger: true});
+            } else if ((pageName=="home" || pageName=="signup") && ($("user_id").getCookie() != "")){
+
+                router.navigate('#/profile/'+$("user_id").getCookie(), {trigger: true});
             } else {
 
                 if (!$('.page > [data-name="' + pageName + '"]').length) { // checks if the page has been rendered before
