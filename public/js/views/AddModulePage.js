@@ -12,8 +12,10 @@ define([
 
         initialize: function(options) {
 
-            this.navView = new ProfileNavView();
             this.router = options.router;
+            this.navView = new ProfileNavView({
+                router: this.router
+            });
 
             this.router.on('route:addModule', function(id) {
 
