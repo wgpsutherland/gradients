@@ -22,6 +22,8 @@ define([
 
             this.router.on('route:profile', function(id) {
 
+                this.gradesCollection = options.gradesCollection;
+
                 this.navView = new ProfileNavView();
 
                 this.userModel = new UserModel({id: id});
@@ -51,7 +53,6 @@ define([
 
             this.navView.render();
 
-
             this.$el.append(this.navView.$el);
             this.$el.append(this.userInfoView.$el);
             this.$el.append(this.moduleView.$el);
@@ -63,8 +64,9 @@ define([
 
             this.render();
 
-            this.gradesCollection = new GradesCollection([],{id: ev.currentTarget.attributes[2].value});
-            this.gradesCollection.fetch();
+            this.gradesCollection.fetch({
+                data: ev.currentTarget.attributes[2].value
+            });
 
             this.gradesView = new GradesView({
                 collection: this.gradesCollection

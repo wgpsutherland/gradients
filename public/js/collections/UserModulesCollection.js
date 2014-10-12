@@ -3,7 +3,7 @@ define([
     'backbone',
     'models/ModuleModel',
     'libs/getCookie'
-], function(_, Backbone, ModuleModel) {
+], function(_, Backbone, ModuleModel, getCookie) {
 
     return Backbone.Collection.extend({
         initialize: function(models, options) {

@@ -1,15 +1,15 @@
 define([
     'underscore',
     'backbone',
-    'models/GradeModel'
+    'models/GradeModel',
 ], function(_, Backbone, GradeModel) {
 
     return Backbone.Collection.extend({
         initialize: function(models, options) {
-            this.id = options.id
+
         },
         url: function() {
-            return '/gradient/v1/grades/' + this.id;
+            return '/gradient/v1/grades'
         },
         model: GradeModel
     });

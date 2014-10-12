@@ -32,7 +32,7 @@ app.post('/gradient/v1/module', users.addUserModule);
 app.get('/gradient/v1/users', users.getUsers);
 app.get('/gradient/v1/users/:id', users.getUser);
 app.get('/gradient/v1/modules/:id', users.getUserModules);
-app.get('/gradient/v1/grades/:id', users.getGradesForUserFromModule);
+app.get('/gradient/v1/grades/', users.getGradesForUserFromModule);
 app.get('/gradient/v1/modules', users.getModules);
 app.get('/gradient/v1/institutions', users.getInstitutions);
 app.get('/gradient/v1/courses', users.getCourses);
