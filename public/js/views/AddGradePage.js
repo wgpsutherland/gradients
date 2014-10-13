@@ -25,8 +25,10 @@ define([
                 this.navView = new ProfileNavView();
                 this.addGradeView = new AddGradeView({
                     assignmentsCollection: this.assignmentsCollection,
+                    gradesCollection: this.gradesCollection,
                     module_id: od,
-                    user_id: id
+                    user_id: id,
+                    router: this.router
                 });
             }, this);
         },
