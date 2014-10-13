@@ -16,17 +16,17 @@ define([
             this.router.on('route:addGrade', function(id, od) {
 
                 this.gradesCollection = options.gradesCollection;
+                this.assignmentsCollection = options.assignmentsCollection;
 
-                var data = ""+od+"x"+$("user_id").getCookie();
-
-                this.gradesCollection.fetch({
-                    data: data
+                this.assignmentsCollection.fetch({
+                    data: od
                 });
 
                 this.navView = new ProfileNavView();
                 this.addGradeView = new AddGradeView({
-                    gradesCollection: this.gradesCollection,
-                    module_id: od
+                    assignmentsCollection: this.assignmentsCollection,
+                    module_id: od,
+                    user_id: id
                 });
             }, this);
         },

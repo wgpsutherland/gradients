@@ -9,13 +9,15 @@ define([
 
     var AddGradeView = Backbone.View.extend({
         initialize: function(options) {
-            this.gradesCollection = options.gradesCollection;
+            this.assignmentsCollection = options.assignmentsCollection;
             this.module_id = options.module_id;
+            this.user_id = options.user_id;
         },
         render: function() {
             var template = _.template(AddGradeTemplate, {
-                grades: this.gradesCollection,
-                module_id: this.module_id
+                assignments: this.assignmentsCollection,
+                module_id: this.module_id,
+                user_id: this.user_id
             });
             this.$el.html(template);
         }

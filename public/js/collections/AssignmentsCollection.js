@@ -1,16 +1,16 @@
 define([
     'underscore',
     'backbone',
-    'models/GradeModel'
-], function(_, Backbone, GradeModel) {
+    'models/AssignmentModel'
+], function(_, Backbone, AssignmentModel) {
 
     return Backbone.Collection.extend({
         initialize: function(models, options) {
 
         },
         url: function() {
-            return '/gradient/v1/grades'
+            return '/gradient/v1/assignments'
         },
-        model: GradeModel
+        model: AssignmentModel
     });
 });

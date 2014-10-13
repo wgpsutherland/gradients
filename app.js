@@ -36,3 +36,4 @@ app.get('/gradient/v1/grades/', users.getGradesForUserFromModule);
 app.get('/gradient/v1/modules', users.getModules);
 app.get('/gradient/v1/institutions', users.getInstitutions);
 app.get('/gradient/v1/courses', users.getCourses);
+app.get('/gradient/v1/assignments', users.getAssignments);
