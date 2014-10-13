@@ -1,24 +1,17 @@
 <br>
 <div class="container">
     <div class="row">
-        <div class="col-md-3">
-            <h1>
+        <div class="col-md-9">
+            <h1 class="profile-title">
                 <%= user.get('username') %>
             </h1>
+            <h3>
+                <%= user.get('institution_name') %> - <%= user.get('course_name') %>
+            </h3>
         </div>
         <div class="col-md-3">
-            <h1>
-                <%= user.get('institution_name') %>
-            </h1>
-        </div>
-        <div class="col-md-3">
-            <h1>
-                <%= user.get('course_name') %>
-            </h1>
-        </div>
-        <div class="col-md-3">
-            <h1>
-                year <%= user.get('current_year') %>
+            <h1 class="profile-year">
+                <%= user.get('current_year') %>
             </h1>
         </div>
     </div>

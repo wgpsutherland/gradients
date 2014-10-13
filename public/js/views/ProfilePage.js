@@ -30,6 +30,7 @@ define([
 
                 this.userModulesCollection = options.userModulesCollection;
                 this.userModulesCollection.fetch();
+                this.userModel.fetch();
 
                 this.userInfoView = new UserInfoView({
                     userModel: this.userModel
