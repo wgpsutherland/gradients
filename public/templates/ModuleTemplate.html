@@ -18,6 +18,7 @@
                 <th>Credits</th>
                 <th>Current</th>
                 <th></th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -32,6 +33,11 @@
                     <button type="button" class="btn btn-info show-grades" value=<%= value %> >
                         <span class="fa fa-list"></span>
                     </button>
+                </td>
+                <td>
+                    <a href="#/profile/<%= module.get('user_id') %>/addGrade/<%= module.get('id') %>" class="btn btn-warning">
+                        <span class="fa fa-user"></span>
+                    </a>
                 </td>
             </tr>
             <% }); %>

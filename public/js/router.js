@@ -19,10 +19,11 @@ define([
     'collections/CourseCollection',
     'views/LoggedOutPage',
     'collections/GradesCollection',
+    'views/AddGradePage'
 ], function($, _, Backbone, bootstrap, HomePage, ProfilePage, UserCollection,
             SignupPage, LoginCollection, GradesCollection, UserModel,
             AddModulePage, ModuleCollection, UserModulesCollection, getCookie, InstitutionsCollection,
-            CourseCollection, LoggedOutPage, GradesCollection) {
+            CourseCollection, LoggedOutPage, GradesCollection, AddGradePage) {
 
 	var Router = Backbone.Router.extend({
 		routes: {
@@ -30,7 +31,8 @@ define([
             'profile/:id': 'profile',
             'signup': 'signup',
             'profile/:id/addModule': 'addModule',
-            'exit': 'exit'
+            'exit': 'exit',
+            'profile/:id/addGrade/:od': 'addGrade'
 		}
 	});
 
@@ -71,17 +73,23 @@ define([
 
         var loggedOutPage = new LoggedOutPage();
 
+        var addGradePage = new AddGradePage({
+            gradesCollection: gradesCollection,
+            router: router
+        });
+
 		var pages = {
 			home: homePage,
             profile: profilePage,
             signup: signupPage,
             addModule: addModulePage,
-            exit: loggedOutPage
+            exit: loggedOutPage,
+            addGrade: addGradePage
 		};
 
 		router.on('route', function(pageName, stuff) {
 
-            if((pageName!="exit") && (pageName=="profile" || pageName=="addModule") && (stuff[0] != $("user_id").getCookie())) { // if the page requires login and the cookie user id is not correct then redirect back to the homepage
+            if((pageName!="exit") && (pageName=="profile" || pageName=="addModule" || pageName=="addGrade") && (stuff[0] != $("user_id").getCookie())) { // if the page requires login and the cookie user id is not correct then redirect back to the homepage
 
                 router.navigate('#', {trigger: true});
             } else if ((pageName!="exit") && (pageName=="home" || pageName=="signup") && ($("user_id").getCookie() != "")){ // if the user if logged in redirect to the profile
