@@ -12,6 +12,7 @@ define([
             this.assignmentsCollection = options.assignmentsCollection;
             this.module_id = options.module_id;
             this.user_id = options.user_id;
+            this.listenTo(this.assignmentsCollection, 'add remove change', this.render);
         },
         render: function() {
             var template = _.template(AddGradeTemplate, {
