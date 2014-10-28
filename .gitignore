@@ -2,3 +2,5 @@
 .idea/workspace.xml
 
 config/development-config.json
+
+*.dump
