@@ -103,11 +103,7 @@ body {
     font-size: 130px;
 }
 
-h2 {
-    font-weight: 300;
-}
-
-h3 {
+h2, h3, h4 {
     font-weight: 300;
 }
 

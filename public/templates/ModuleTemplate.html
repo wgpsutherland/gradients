@@ -9,39 +9,38 @@
             </button>
         </a>
     </h2>
-    <div class="table-responsive">
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Code</th>
-                <th>Name</th>
-                <th>Credits</th>
-                <th>Current</th>
-                <th></th>
-                <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <% modules.each(function(module) { %>
-            <tr>
-                <td><%= module.get('module_code') %></td>
-                <td><%= module.get('module_name') %></td>
-                <td><%= module.get('credits') %></td>
-                <td><%= module.get('current_module') %></td>
-                <td>
-                    <% var value = "" +  module.get('id') + "x" + module.get('user_id') %>
-                    <button type="button" class="btn btn-info show-grades" value=<%= value %> >
-                        <span class="fa fa-list"></span>
-                    </button>
-                </td>
-                <td>
-                    <a href="#/profile/<%= module.get('user_id') %>/addGrade/<%= module.get('id') %>" class="btn btn-warning">
-                        <span class="fa fa-plus"></span>
-                    </a>
-                </td>
-            </tr>
-            <% }); %>
-            </tbody>
-        </table>
-    </div>
+
+    <% var count = 0 %>
+    <% modules.each(function(module) { %>
+
+        <% if(count%4==0) { %>
+            <div class="row">
+        <% } %>
+
+        <div class="col-sm-3">
+            <h3>
+                <%= module.get('module_name') %>
+            </h3>
+            <h4>
+                <%= module.get('module_code')%> (<%= module.get('credits')  %>)
+            </h4>
+            <div>
+                <% var value = "" +  module.get('id') + "x" + module.get('user_id') %>
+                <button type="button" class="btn btn-info show-grades" value=<%= value %> >
+                <span class="fa fa-list"></span>
+                </button>
+                <a href="#/profile/<%= module.get('user_id') %>/addGrade/<%= module.get('id') %>" class="btn btn-warning">
+                    <span class="fa fa-plus"></span>
+                </a>
+            </div>
+        </div>
+
+        <% if((count+1)%4==0) { %>
+            </div>
+        <% } %>
+
+    <% count += 1 %>
+    <% }); %>
+
 </div>
+<br>
