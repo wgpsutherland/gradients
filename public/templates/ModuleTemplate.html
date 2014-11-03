@@ -1,46 +1,53 @@
 <div class="container">
     <hr>
-    <h2>
-        Modules
-        <% var moduleLink = "#/profile/" + user_id + "/addModule" %>
-        <a href=<%= moduleLink %>>
-            <button type="button" class="btn btn-default add-module">
-                    <span class="fa fa-plus"></span>
-            </button>
-        </a>
-    </h2>
 
     <% var count = 0 %>
     <% modules.each(function(module) { %>
 
         <% if(count%4==0) { %>
-            <div class="row">
+            <div class="row module-row">
         <% } %>
 
-        <div class="col-sm-3">
-            <h3>
-                <%= module.get('module_name') %>
-            </h3>
-            <h4>
-                <%= module.get('module_code')%> (<%= module.get('credits')  %>)
-            </h4>
-            <div>
-                <% var value = "" +  module.get('id') + "x" + module.get('user_id') %>
-                <button type="button" class="btn btn-info show-grades" value=<%= value %> >
-                <span class="fa fa-list"></span>
-                </button>
-                <a href="#/profile/<%= module.get('user_id') %>/addGrade/<%= module.get('id') %>" class="btn btn-warning">
-                    <span class="fa fa-plus"></span>
-                </a>
+        <div class="col-sm-3 module-tile-wrapper">
+            <div class="module-tile">
+                <h3>
+                    <%= module.get('module_name') %>
+                </h3>
+                <h4>
+                    <%= module.get('module_code')%>
+                    <small>(<%= module.get('credits')  %>)</small>
+                </h4>
+                <div>
+                    <% var value = "" +  module.get('id') + "x" + module.get('user_id') %>
+                    <button type="button" class="btn btn-link show-grades" value=<%= value %> >
+                        <span class="fa fa-list"></span>
+                    </button>
+                    <a href="#/profile/<%= module.get('user_id') %>/addGrade/<%= module.get('id') %>" class="btn btn-link">
+                        <span class="fa fa-plus"></span>
+                    </a>
+                </div>
             </div>
         </div>
 
         <% if((count+1)%4==0) { %>
             </div>
+            <!--<br>-->
         <% } %>
 
     <% count += 1 %>
     <% }); %>
 
+    <div class="col-sm-3 module-tile-wrapper">
+        <div class="module-tile">
+            <h1 class="text-center">
+                <% var moduleLink = "#/profile/" + user_id + "/addModule" %>
+                <a href=<%= moduleLink %>>
+                <button type="button" class="btn btn-link add-module">
+                    <span class="fa fa-plus module-button"></span>
+                </button>
+                </a>
+            </h2>
+        </div>
+    </div>
 </div>
 <br>
