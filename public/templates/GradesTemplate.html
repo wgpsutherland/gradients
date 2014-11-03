@@ -1,12 +1,16 @@
 <br>
 <div class="container">
     <hr>
-    <h2>Grades:</h2>
+
+    <% var moduleCode;%>
+    <% grades.each(function(grade) { %>
+        <%  moduleCode = grade.get('module_code') %>
+    <% }); %>
+    <h2><%= moduleCode %></h2>
     <div class="table-responsive">
         <table class="table">
             <thead>
             <tr>
-                <th>Code</th>
                 <th>Name</th>
                 <th>Score</th>
                 <th>Max</th>
@@ -18,7 +22,6 @@
             <tbody>
             <% grades.each(function(grade) { %>
             <tr>
-                <td><%= grade.get('module_code') %></td>
                 <td><%= grade.get('assignment_name') %></td>
                 <td><%= grade.get('score') %></td>
                 <td><%= grade.get('max_mark') %></td>

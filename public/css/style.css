@@ -2,13 +2,37 @@
 
 /* darker */
 
-#628BFF
-#5995E8
-#6FC2FF
-#77CAE8
-#62EEFF
+/*#628BFF*/
+/*#5995E8*/
+/*#6FC2FF*/
+/*#77CAE8*/
+/*#62EEFF*/
 
-/*lighter*/
+/* lighter */
+
+/* ======================================== BODY ======================================== */
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+}
+
+.page {
+    overflow-x: hidden;
+}
+
+.profile-year {
+    font-size: 130px;
+}
+
+h2, h3, h4 {
+    font-weight: 300;
+}
+
+.blue {
+    background-color: #6FC2FF;
+    color: white;
+}
 
 /* ======================================== ICONS ======================================== */
 
@@ -88,28 +112,10 @@
     color: white;
 }
 
-/* ======================================== HOME ======================================== */
-
-body {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
-}
+/* ======================================== BODY ======================================== */
 
 .profile-title {
     font-size: 70px;
-}
-
-.profile-year {
-    font-size: 130px;
-}
-
-h2, h3, h4 {
-    font-weight: 300;
-}
-
-.blue {
-    background-color: #6FC2FF;
-    color: white;
 }
 
 .centre {
