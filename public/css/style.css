@@ -160,3 +160,18 @@ h2, h3, h4 {
     color: white;
     font-size: 6em;
 }
+
+.module-button:hover {
+    color: #428bca;
+}
+
+.add-grades, .show-grades {
+    position: absolute;
+    top: 100px;
+    color: white;
+    font-size: 2em;
+}
+
+.add-grades {
+    left: 60px;
+}

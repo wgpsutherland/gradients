@@ -8,7 +8,7 @@
             <div class="row module-row">
         <% } %>
 
-        <div class="col-sm-3 module-tile-wrapper">
+        <div class="col-md-3 module-tile-wrapper">
             <div class="module-tile">
                 <h3>
                     <%= module.get('module_name') %>
@@ -17,15 +17,14 @@
                     <%= module.get('module_code')%>
                     <small>(<%= module.get('credits')  %>)</small>
                 </h4>
-                <div>
-                    <% var value = "" +  module.get('id') + "x" + module.get('user_id') %>
-                    <button type="button" class="btn btn-link show-grades" value=<%= value %> >
-                        <span class="fa fa-list"></span>
-                    </button>
-                    <a href="#/profile/<%= module.get('user_id') %>/addGrade/<%= module.get('id') %>" class="btn btn-link">
-                        <span class="fa fa-plus"></span>
-                    </a>
-                </div>
+
+                <% var value = "" +  module.get('id') + "x" + module.get('user_id') %>
+                <button type="button" class="btn btn-link show-grades" value=<%= value %> >
+                    <span class="fa fa-list"></span>
+                </button>
+                <a href="#/profile/<%= module.get('user_id') %>/addGrade/<%= module.get('id') %>" class="btn btn-link add-grades">
+                    <span class="fa fa-plus"></span>
+                </a>
             </div>
         </div>
 
@@ -37,7 +36,7 @@
     <% count += 1 %>
     <% }); %>
 
-    <div class="col-sm-3 module-tile-wrapper">
+    <div class="col-md-3 module-tile-wrapper">
         <div class="module-tile">
             <h1 class="text-center">
                 <% var moduleLink = "#/profile/" + user_id + "/addModule" %>
