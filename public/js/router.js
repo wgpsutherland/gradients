@@ -19,11 +19,12 @@ define([
     'views/LoggedOutPage',
     'collections/GradesCollection',
     'views/AddGradePage',
-    'collections/AssignmentsCollection'
+    'collections/AssignmentsCollection',
+    'views/AdminPage'
 ], function($, _, Backbone, bootstrap, HomePage, ProfilePage, UserCollection,
             SignupPage, LoginCollection, UserModel,
             AddModulePage, ModuleCollection, UserModulesCollection, getCookie, InstitutionsCollection,
-            CourseCollection, LoggedOutPage, GradesCollection, AddGradePage, AssignmentsCollection) {
+            CourseCollection, LoggedOutPage, GradesCollection, AddGradePage, AssignmentsCollection, AdminPage) {
 
 	var Router = Backbone.Router.extend({
 		routes: {
@@ -32,7 +33,8 @@ define([
             'signup': 'signup',
             'profile/:id/addModule': 'addModule',
             'exit': 'exit',
-            'profile/:id/addGrade/:od': 'addGrade'
+            'profile/:id/addGrade/:od': 'addGrade',
+            'profile/:id/admin': 'admin'
 		}
 	});
 
@@ -80,23 +82,36 @@ define([
             assignmentsCollection: assignmentsCollection
         });
 
+        var adminPage = new AdminPage({
+            router: router,
+            moduleCollection: moduleCollection,
+            assignmentsCollection: assignmentsCollection,
+            courseCollection: courseCollection
+        });
+
 		var pages = {
 			home: homePage,
             profile: profilePage,
             signup: signupPage,
             addModule: addModulePage,
             exit: loggedOutPage,
-            addGrade: addGradePage
+            addGrade: addGradePage,
+            admin: adminPage
 		};
 
 		router.on('route', function(pageName, stuff) {
 
-            if((pageName!="exit") && (pageName=="profile" || pageName=="addModule" || pageName=="addGrade") && (stuff[0] != $("user_id").getCookie())) { // if the page requires login and the cookie user id is not correct then redirect back to the homepage
+            if((pageName!="exit") && (pageName=="profile" || pageName=="addModule" || pageName=="addGrade" || pageName=="admin") && (stuff[0] != $("user_id").getCookie())) { // if the page requires login and the cookie user id is not correct then redirect back to the homepage
 
                 router.navigate('#', {trigger: true});
+
             } else if ((pageName!="exit") && (pageName=="home" || pageName=="signup") && ($("user_id").getCookie() != "")){ // if the user if logged in redirect to the profile
 
                 router.navigate('#/profile/'+$("user_id").getCookie(), {trigger: true});
+
+            } else if(pageName=="admin" && $("user_id").getCookie()!=1) { // only certain ids can access the admin page
+
+                router.navigate('#', {trigger: true});
             } else {
 
                 if(pageName=="exit") {

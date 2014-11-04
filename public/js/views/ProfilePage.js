@@ -24,7 +24,9 @@ define([
 
                 this.gradesCollection = options.gradesCollection;
 
-                this.navView = new ProfileNavView();
+                this.navView = new ProfileNavView({
+                    user_id: id
+                });
 
                 this.userModel = new UserModel({id: id});
 

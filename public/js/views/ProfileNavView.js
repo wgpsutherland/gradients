@@ -7,8 +7,20 @@ define([
 ], function($, _, Backbone, ProfileNavTemplate) {
 
     var NavView = Backbone.View.extend({
+        initialize: function(options) {
+
+            if(options) {
+                this.user_id = options.user_id;
+            } else {
+                this.user_id = 0;
+            }
+        },
         render: function() {
-            var template = _.template(ProfileNavTemplate);
+            console.log("there we go");
+            console.log(this.user_id);
+            var template = _.template(ProfileNavTemplate, {
+                user_id: this.user_id
+            });
             this.$el.html(template);
         },
         events: {
