@@ -4,3 +4,5 @@
 config/development-config.json
 
 *.dump
+
+.idea/
