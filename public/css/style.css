@@ -162,6 +162,10 @@ h2, h3, h4 {
     padding: 5px 5px;
 }
 
+.module-tile:hover .delete-user-module {
+    color: #428bca;
+}
+
 .module-button {
     color: white;
     font-size: 6em;
@@ -171,7 +175,7 @@ h2, h3, h4 {
     color: #428bca;
 }
 
-.add-grades, .show-grades {
+.add-grades, .show-grades, .delete-user-module {
     position: absolute;
     top: 100px;
     color: white;
@@ -180,4 +184,10 @@ h2, h3, h4 {
 
 .add-grades {
     left: 60px;
+}
+
+.delete-user-module {
+    top: 0px;
+    right: 0px;
+    color: transparent;
 }

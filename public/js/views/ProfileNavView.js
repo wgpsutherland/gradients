@@ -16,8 +16,6 @@ define([
             }
         },
         render: function() {
-            console.log("there we go");
-            console.log(this.user_id);
             var template = _.template(ProfileNavTemplate, {
                 user_id: this.user_id
             });

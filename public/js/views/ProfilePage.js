@@ -22,6 +22,8 @@ define([
 
             this.router.on('route:profile', function(id) {
 
+                this.user = id;
+
                 this.gradesCollection = options.gradesCollection;
 
                 this.navView = new ProfileNavView({
@@ -61,7 +63,8 @@ define([
             this.$el.append(this.moduleView.$el);
         },
         events: {
-            'click .show-grades': 'showGrades'
+            'click .show-grades': 'showGrades',
+            'click .delete-user-module': 'deleteUserModule'
         },
         showGrades: function(ev) {
 
@@ -78,6 +81,23 @@ define([
             this.gradesView.render();
 
             this.$el.append(this.gradesView.$el);
+        },
+        deleteUserModule: function(ev) {
+
+            var id = ev.currentTarget.attributes[2].value; // extracts the model id from the delete button
+
+            this.model = this.userModulesCollection.get(id); // fetches the model from the collection
+
+            this.model.destroy({ // removes the model from the collection
+
+                data: { // sending along the id of the user
+                    user_id: this.user
+                },
+                processData: true,
+                success: _.bind(function() { // on removal success
+                    // do something to indicate that it worked
+                }, this)
+            });
         }
     });
 
