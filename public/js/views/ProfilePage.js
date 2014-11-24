@@ -10,9 +10,10 @@ define([
     'views/ModuleView',
     'collections/GradesCollection',
     'views/GradesView',
-    'libs/getCookie'
+    'libs/getCookie',
+    'models/GradeAverageModel'
 ], function($, _, Backbone, ProfileNavView, UserInfoView, UserModel, UserModulesCollection,
-            ModuleView, GradesCollection, GradesView, getCookie) {
+            ModuleView, GradesCollection, GradesView, getCookie, GradeAverageModel) {
 
     var ProfilePage = Backbone.View.extend({
 
@@ -70,12 +71,19 @@ define([
 
             this.render();
 
+            this.gradeAverageModel = new GradeAverageModel({
+                id: ev.currentTarget.attributes[2].value
+            });
+
+            this.gradeAverageModel.fetch();
+
             this.gradesCollection.fetch({
                 data: ev.currentTarget.attributes[2].value
             });
 
             this.gradesView = new GradesView({
-                collection: this.gradesCollection
+                gradesCollection: this.gradesCollection,
+                gradeAverageModel: this.gradeAverageModel
             });
 
             this.gradesView.render();
