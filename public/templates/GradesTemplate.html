@@ -4,28 +4,39 @@
 
     <% var moduleCode;%>
     <% grades.each(function(grade) { %>
-        <%  moduleCode = grade.get('module_code') %>
+    <%  moduleCode = grade.get('module_code') %>
     <% }); %>
     <h2><%= moduleCode %></h2>
     <h3><%= moduleAverage.get('average') %>%</h3>
-    <div class="table-responsive">
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>Score %</th>
-                <th>Weight</th>
-            </tr>
-            </thead>
-            <tbody>
-            <% grades.each(function(grade) { %>
-            <tr>
-                <td><%= grade.get('assignment_name') %></td>
-                <td><%= (grade.get('score')*100) / grade.get('max_mark')%></td>
-                <td><%= grade.get('weight') %></td>
-            </tr>
-            <% }); %>
-            </tbody>
-        </table>
+
+    <hr>
+
+    <% var count = 0 %>
+    <% grades.each(function(grade) { %>
+
+    <% if(count%4==0) { %>
+    <div class="row tile-row">
+        <% } %>
+
+        <div class="col-md-3 tile-wrapper">
+            <div class="grade-tile">
+                <h3>
+                    <%= grade.get('assignment_name') %>
+                </h3>
+                <h4>
+                    <%= (grade.get('score')*100) / grade.get('max_mark') %>%
+                    <small>(<%= grade.get('weight') %>)</small>
+                </h4>
+            </div>
+        </div>
+
+        <% if((count+1)%4==0) { %>
     </div>
+    <!--<br>-->
+    <% } %>
+
+    <% count += 1 %>
+    <% }); %>
 </div>
+<br>
+<br>

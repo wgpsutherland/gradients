@@ -145,20 +145,27 @@ h2, h3, h4 {
     height: 150px;
 }
 
-.module-tile h3 {
+.grade-tile {
+    color: white;
+    padding: 8px;
+    background-color: #428bca;
+    height: 100px;
+}
+
+.module-tile h3, .grade-tile h3 {
     margin: 0 0;
 }
 
-.module-tile small {
+.module-tile small, .grade-tile small {
     color: white;
     font-weight: 300;
 }
 
-.module-row {
+.tile-row {
     margin: 0 0;
 }
 
-.module-tile-wrapper {
+.tile-wrapper {
     padding: 5px 5px;
 }
 
