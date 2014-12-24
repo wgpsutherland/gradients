@@ -44,7 +44,8 @@ define([
                 this.listenTo(this.userModel, 'change', this.render);
 
                 this.moduleView = new ModuleView({
-                    collection: this.userModulesCollection,
+                    userModulesCollection: this.userModulesCollection,
+                    gradesCollection: this.gradesCollection,
                     router: this.router,
                     userId: id
                 });
@@ -55,57 +56,13 @@ define([
         },
         render: function() {
 
-            this.$el.empty();
+            this.$el.children().detach(); // removes the elements but not the event bindings
 
             this.navView.render();
 
             this.$el.append(this.navView.$el);
             this.$el.append(this.userInfoView.$el);
             this.$el.append(this.moduleView.$el);
-        },
-        events: {
-            'click .show-grades': 'showGrades',
-            'click .delete-user-module': 'deleteUserModule'
-        },
-        showGrades: function(ev) {
-
-            this.render();
-
-            this.gradeAverageModel = new GradeAverageModel({
-                id: ev.currentTarget.attributes[2].value
-            });
-
-            this.gradeAverageModel.fetch();
-
-            this.gradesCollection.fetch({
-                data: ev.currentTarget.attributes[2].value
-            });
-
-            this.gradesView = new GradesView({
-                gradesCollection: this.gradesCollection,
-                gradeAverageModel: this.gradeAverageModel
-            });
-
-            this.gradesView.render();
-
-            this.$el.append(this.gradesView.$el);
-        },
-        deleteUserModule: function(ev) {
-
-            var id = ev.currentTarget.attributes[2].value; // extracts the model id from the delete button
-
-            this.model = this.userModulesCollection.get(id); // fetches the model from the collection
-
-            this.model.destroy({ // removes the model from the collection
-
-                data: { // sending along the id of the user
-                    user_id: this.user
-                },
-                processData: true,
-                success: _.bind(function() { // on removal success
-                    // do something to indicate that it worked
-                }, this)
-            });
         }
     });
 
