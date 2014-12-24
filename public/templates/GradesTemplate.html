@@ -13,22 +13,16 @@
             <thead>
             <tr>
                 <th>Name</th>
-                <th>Score</th>
-                <th>Max</th>
-                <th>Type</th>
+                <th>Score %</th>
                 <th>Weight</th>
-                <th>Semester</th>
             </tr>
             </thead>
             <tbody>
             <% grades.each(function(grade) { %>
             <tr>
                 <td><%= grade.get('assignment_name') %></td>
-                <td><%= grade.get('score') %></td>
-                <td><%= grade.get('max_mark') %></td>
-                <td><%= grade.get('assignment_type') %></td>
+                <td><%= (grade.get('score')*100) / grade.get('max_mark')%></td>
                 <td><%= grade.get('weight') %></td>
-                <td><%= grade.get('semester') %></td>
             </tr>
             <% }); %>
             </tbody>
