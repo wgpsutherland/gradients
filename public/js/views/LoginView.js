@@ -36,9 +36,14 @@ define([
 
                 var options = {
                     success: _.bind(function(something) {
-                        var cookie = "user_id=" + something.attributes.id + ";";
-                        document.cookie = cookie;
+
+                        // empties the form so on logout the values aren't still there
+                        $(ev.currentTarget).trigger("reset");
+
+                        document.cookie = "user_id=" + something.attributes.id + ";";
+                        
                         this.router.navigate('#/profile/'+something.attributes.id, {trigger: true});
+
                     }, this),
                     error: _.bind(function() {
                         this.router.navigate('#', {trigger: true});
