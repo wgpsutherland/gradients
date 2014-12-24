@@ -3,8 +3,9 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'text!templates/GradesTemplate.html'
-], function($, _, Backbone, GradesTemplate) {
+    'text!templates/GradesTemplate.html',
+    'text!templates/NoGradesTemplate.html'
+], function($, _, Backbone, GradesTemplate, NoGradesTemplate) {
 
     var GradesView = Backbone.View.extend({
         initialize: function(options) {
@@ -15,10 +16,20 @@ define([
             this.listenTo(this.gradeAverageModel, 'add remove change', this.render);
         },
         render: function() {
-            var template = _.template(GradesTemplate, {
-                grades: this.gradesCollection,
-                moduleAverage: this.gradeAverageModel
-            });
+
+            var template;
+
+            if(this.gradesCollection.length > 0) {
+
+                template = _.template(GradesTemplate, {
+                    grades: this.gradesCollection,
+                    moduleAverage: this.gradeAverageModel
+                });
+
+            } else {
+                template = _.template(NoGradesTemplate);
+            }
+
             this.$el.html(template);
         }
     });

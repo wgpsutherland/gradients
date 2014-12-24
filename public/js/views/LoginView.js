@@ -41,7 +41,7 @@ define([
                         $(ev.currentTarget).trigger("reset");
 
                         document.cookie = "user_id=" + something.attributes.id + ";";
-                        
+
                         this.router.navigate('#/profile/'+something.attributes.id, {trigger: true});
 
                     }, this),
