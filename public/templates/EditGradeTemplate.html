@@ -1,4 +1,31 @@
-<p>Hello there.</p>
-<p>
-    <%= model.get('assignment_name') %>
-</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="container-fluid centre form-view">
+                <br>
+                <br>
+                <h1>Edit your grade?</h1>
+                <br>
+                <h2> <%= model.get('module_code') %> </h2>
+                <h2> <%= model.get('assignment_name') %> </h2>
+                <br>
+                <form role="form" class="edit-grade-form">
+                    <div class="form-group form-group-lg">
+                        <label class="sr-only" for="exampleInputScore2">Score</label>
+                        <input type="text" value="<%= model.get('score') %>" class="form-control input-lg" id="exampleInputScore2" placeholder="Enter score" name="score">
+                    </div>
+                    <input type="hidden" name="grade_id" value=<%= model.id %>>
+                    <button type="button" class="btn btn-danger cancel">
+                        <span class="fa fa-times"></span> Cancel
+                    </button>
+                    <button type="submit" class="btn btn-info">
+                        <span class="fa fa-check"></span> Change
+                    </button>
+                </form>
+
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
