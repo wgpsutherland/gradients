@@ -32,7 +32,7 @@ define([
 
             ev.preventDefault();
 
-            var that = this;
+            $(".warning-div").empty().append("&nbsp");
 
             var formContents = $(ev.currentTarget).formToObject();
 
@@ -47,14 +47,22 @@ define([
             if(goodForm) { // if the form is syntactically valid
 
                 this.gradeModel.save(formContents);
+                $(".warning-div").empty().append("&nbsp");
                 this.router.navigate('#/profile/'+$("user_id").getCookie(), {trigger: true});
 
             } else {
-                // red warning thing
+
+                var label = $("<label>")
+                    .text('All fields must be filled out.')
+                    .css("color", "#428bca")
+                    .addClass("invalid-input-label");
+
+                $(".warning-div").prepend(label);
             }
         },
         cancel: function(ev) {
 
+            $(".warning-div").empty().append("&nbsp");
             this.router.navigate('#/profile/'+$("user_id").getCookie(), {trigger: true});
         },
         delete: function(ev) {
@@ -69,6 +77,7 @@ define([
                 processData: true,
                 success: _.bind(function() { // on removal success
 
+                    $(".warning-div").empty().append("&nbsp");
                     this.router.navigate('#/profile/'+$("user_id").getCookie(), {trigger: true});
                 }, this)
             });

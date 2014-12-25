@@ -31,7 +31,7 @@ define([
 
             ev.preventDefault();
 
-            $(".warning-div").empty();
+            $(".warning-div").empty().append("&nbsp");
 
             var formContents = $(ev.currentTarget).formToObject();
 
@@ -45,23 +45,22 @@ define([
 
             if(goodForm) { // if the form is syntactically valid
 
-                var label = $("<label>")
-                    .text('Username already exists.')
-                    .css("color", "#428bca")
-                    .addClass("invalid-input-label");
-
                 var options = {
                     success: _.bind(function(something) {
 
-                        $(".signup-username-div").removeClass("has-error");
-                        $(".warning-div").empty();
+                        $(".warning-div").empty().append("&nbsp");
                         this.router.navigate('#', {trigger: true});
 
                     }, this),
                     error: _.bind(function() {
 
-                        $(".signup-username-div").addClass("has-error");
+                        var label = $("<label>")
+                            .text('Username already exists.')
+                            .css("color", "#428bca")
+                            .addClass("invalid-input-label");
+
                         $(".warning-div").append(label);
+
                     }, this)
                 }
 

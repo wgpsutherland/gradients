@@ -33,6 +33,8 @@ define([
 
             ev.preventDefault();
 
+            $(".warning-div").empty().append("&nbsp");
+
             var formContents = $(ev.currentTarget).formToObject();
 
             var goodForm = _.every(formContents, function(field) { // checks that each field in the form has been filled
@@ -45,25 +47,37 @@ define([
 
             if(goodForm) { // if the form is syntactically valid
 
-                console.log("the form is good");
-
                 var options = {
                     success: _.bind(function(something) {
 
+                        $(".warning-div").empty().append("&nbsp");
                     }, this),
                     error: _.bind(function() {
-                        // tell them it's wrong
+
+                        var label = $("<label>")
+                            .text('User already has this module.')
+                            .css("color", "#428bca")
+                            .addClass("invalid-input-label");
+
+                        $(".warning-div").prepend(label);
                     }, this)
                 }
 
                 this.userModulesCollection.create(formContents, options);
 
             } else {
-                // red warning thing
-                console.log("no module has been chosen");
+
+                var label = $("<label>")
+                    .text('All fields must be filled out.')
+                    .css("color", "#428bca")
+                    .addClass("invalid-input-label");
+
+                $(".warning-div").prepend(label);
             }
         },
         cancel: function(ev) {
+
+            $(".warning-div").empty().append("&nbsp");
             this.router.navigate('#/profile/'+$("user_id").getCookie(), {trigger: true});
         }
     });

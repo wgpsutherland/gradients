@@ -22,7 +22,7 @@ define([
 
             ev.preventDefault();
 
-            $(".warning-div").empty();
+            $(".warning-div").empty().append("&nbsp");
 
             var formContents = $(ev.currentTarget).formToObject();
 
@@ -44,9 +44,7 @@ define([
 
                         document.cookie = "user_id=" + something.attributes.id + ";";
 
-                        $(".login-username-div").removeClass("has-error");
-                        $(".login-password-div").removeClass("has-error");
-                        $(".warning-div").empty();
+                        $(".warning-div").empty().append("&nbsp");
 
                         this.router.navigate('#/profile/'+something.attributes.id, {trigger: true});
 
@@ -68,8 +66,12 @@ define([
 
             } else {
 
-                $(".login-username-div").addClass("has-error");
-                $(".login-password-div").addClass("has-error");
+                var label = $("<label>")
+                    .text('All fields must be filled out.')
+                    .css("color", "#428bca")
+                    .addClass("invalid-input-label");
+
+                $(".warning-div").append(label);
             }
         }
     });

@@ -11,10 +11,12 @@
                 <h2> <%= model.get('assignment_name') %> </h2>
                 <h2> max: <%= model.get('max_mark') %> </h2>
                 <br>
+                <div class="warning-div">&nbsp</div>
+                <br>
                 <form role="form" class="edit-grade-form">
                     <div class="form-group form-group-lg">
                         <label class="sr-only" for="exampleInputScore2">Score</label>
-                        <input type="text" value="<%= model.get('score') %>" class="form-control input-lg" id="exampleInputScore2" placeholder="Enter score" name="score">
+                        <input type="text" value="<%= model.get('score') %>" class="form-control" id="exampleInputScore2" placeholder="Enter score" name="score">
                     </div>
                     <input type="hidden" name="grade_id" value=<%= model.id %>>
                     <button type="button" class="btn btn-warning cancel">
