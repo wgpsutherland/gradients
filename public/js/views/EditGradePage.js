@@ -17,15 +17,21 @@ define([
                 user_id: $("user_id").getCookie()
             });
 
-            this.router.on('route:editGrade', function(id, ed) {
+            this.router.on('route:editGrade', function(id, ed, od) {
 
                 this.gradesCollection = options.gradesCollection;
+
+                this.gradesCollection.fetch({
+                    data: "" + od + "x" + id // the module code and the user id
+                });
 
                 this.gradeModel = this.gradesCollection.get(ed);  // grade id
 
                 this.editGradeView = new EditGradeView({
                     gradesCollection: this.gradesCollection,
-                    gradeModel: this.gradeModel
+                    gradeModel: this.gradeModel,
+                    grade_id: ed,
+                    router: this.router
                 });
 
                 this.render();
@@ -34,7 +40,7 @@ define([
         },
         render: function() {
 
-            this.$el.empty();
+            this.$el.children().detach();
 
             this.profileNavView.render();
             this.editGradeView.render();

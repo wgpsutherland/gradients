@@ -37,7 +37,7 @@ define([
             'exit': 'exit',
             'profile/:id/addGrade/:od': 'addGrade',
             'profile/:id/admin': 'admin',
-            'profile/:id/editGrade/:ed': 'editGrade'
+            'profile/:id/editGrade/:ed/:od': 'editGrade'
 		}
 	});
 

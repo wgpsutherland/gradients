@@ -40,3 +40,4 @@ app.get('/gradient/v1/courses', users.getCourses);
 app.get('/gradient/v1/assignments', users.getAssignments);
 app.delete('/gradient/v1/module/:id', users.deleteUserModule);
 app.get('/gradient/v1/gradeAverage/:id', users.getGradeAverage);
+app.put('/gradient/v1/grade/:id', users.updateGrade);

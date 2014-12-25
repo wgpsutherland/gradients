@@ -40,7 +40,7 @@ define([
             this.gradeAverageModel.fetch();
 
             this.gradesCollection.fetch({
-                data: ev.currentTarget.attributes[2].value
+                data: ev.currentTarget.attributes[2].value // the module code and the user id
             });
 
             this.gradesView = new GradesView({

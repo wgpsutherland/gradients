@@ -29,6 +29,7 @@ define([
             'click .cancel': 'cancel'
         },
         addGrade: function(ev) {
+
             ev.preventDefault();
 
             var formContents = $(ev.currentTarget).formToObject();
