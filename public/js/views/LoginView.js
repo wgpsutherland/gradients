@@ -22,6 +22,8 @@ define([
 
             ev.preventDefault();
 
+            $(".warning-div").empty();
+
             var formContents = $(ev.currentTarget).formToObject();
 
             var goodForm = _.every(formContents, function(field) { // checks that each field in the form has been filled
@@ -42,10 +44,22 @@ define([
 
                         document.cookie = "user_id=" + something.attributes.id + ";";
 
+                        $(".login-username-div").removeClass("has-error");
+                        $(".login-password-div").removeClass("has-error");
+                        $(".warning-div").empty();
+
                         this.router.navigate('#/profile/'+something.attributes.id, {trigger: true});
 
                     }, this),
                     error: _.bind(function() {
+
+                        var label = $("<label>")
+                            .text('Invalid username/ password.')
+                            .css("color", "#428bca")
+                            .addClass("invalid-input-label");
+
+                        $(".warning-div").append(label);
+
                         this.router.navigate('#', {trigger: true});
                     }, this)
                 }
@@ -53,8 +67,9 @@ define([
                 this.collection.create(formContents, options);
 
             } else {
-                // red warning thing
-                console.log("the form is not good");
+
+                $(".login-username-div").addClass("has-error");
+                $(".login-password-div").addClass("has-error");
             }
         }
     });

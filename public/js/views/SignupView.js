@@ -31,6 +31,8 @@ define([
 
             ev.preventDefault();
 
+            $(".warning-div").empty();
+
             var formContents = $(ev.currentTarget).formToObject();
 
             var goodForm = _.every(formContents, function(field) { // checks that each field in the form has been filled
@@ -43,22 +45,36 @@ define([
 
             if(goodForm) { // if the form is syntactically valid
 
-                console.log("the form is amazing");
+                var label = $("<label>")
+                    .text('Username already exists.')
+                    .css("color", "#428bca")
+                    .addClass("invalid-input-label");
 
                 var options = {
                     success: _.bind(function(something) {
+
+                        $(".signup-username-div").removeClass("has-error");
+                        $(".warning-div").empty();
                         this.router.navigate('#', {trigger: true});
+
                     }, this),
                     error: _.bind(function() {
-                        // tell them it's wrong
+
+                        $(".signup-username-div").addClass("has-error");
+                        $(".warning-div").append(label);
                     }, this)
                 }
 
                 this.userCollection.create(formContents, options);
 
             } else {
-                // red warning thing
-                console.log("the form is not good");
+
+                var label = $("<label>")
+                    .text('All fields must be filled out.')
+                    .css("color", "#428bca")
+                    .addClass("invalid-input-label");
+
+                $(".warning-div").prepend(label);
             }
         }
     });
