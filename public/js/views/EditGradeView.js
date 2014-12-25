@@ -25,7 +25,8 @@ define([
         },
         events: {
             'submit .edit-grade-form': 'editGrade',
-            'click .cancel': 'cancel'
+            'click .cancel': 'cancel',
+            'click .delete': 'delete'
         },
         editGrade: function(ev) {
 
@@ -55,6 +56,22 @@ define([
         cancel: function(ev) {
 
             this.router.navigate('#/profile/'+$("user_id").getCookie(), {trigger: true});
+        },
+        delete: function(ev) {
+
+            var gradeId = ev.currentTarget.attributes[2].value;
+
+            this.gradeModel.destroy({ // removes the model from the collection
+
+                data: { // sending along the id of the user
+                    grade_id: gradeId
+                },
+                processData: true,
+                success: _.bind(function() { // on removal success
+
+                    this.router.navigate('#/profile/'+$("user_id").getCookie(), {trigger: true});
+                }, this)
+            });
         }
     });
 

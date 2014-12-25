@@ -17,8 +17,11 @@
                         <input type="text" value="<%= model.get('score') %>" class="form-control input-lg" id="exampleInputScore2" placeholder="Enter score" name="score">
                     </div>
                     <input type="hidden" name="grade_id" value=<%= model.id %>>
-                    <button type="button" class="btn btn-danger cancel">
-                        <span class="fa fa-times"></span> Cancel
+                    <button type="button" class="btn btn-warning cancel">
+                        <span class="fa fa-undo"></span> Cancel
+                    </button>
+                    <button type="button" class="btn btn-danger delete" value="<%= model.get('id') %>">
+                        <span class="fa fa-times"></span> Delete
                     </button>
                     <button type="submit" class="btn btn-info">
                         <span class="fa fa-check"></span> Change
