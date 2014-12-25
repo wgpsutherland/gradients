@@ -27,6 +27,9 @@
                     <%= (grade.get('score')*100) / grade.get('max_mark') %>%
                     <small>(<%= grade.get('weight') %>)</small>
                 </h4>
+                <a href="#/profile/<%= user_id %>/editGrade/<%= grade.get('id') %>" class="btn btn-link edit-grades">
+                    <span class="fa fa-gear"></span>
+                </a>
             </div>
         </div>
 

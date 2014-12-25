@@ -20,11 +20,13 @@ define([
     'collections/GradesCollection',
     'views/AddGradePage',
     'collections/AssignmentsCollection',
-    'views/AdminPage'
+    'views/AdminPage',
+    'views/EditGradePage'
 ], function($, _, Backbone, bootstrap, HomePage, ProfilePage, UserCollection,
             SignupPage, LoginCollection, UserModel,
             AddModulePage, ModuleCollection, UserModulesCollection, getCookie, InstitutionsCollection,
-            CourseCollection, LoggedOutPage, GradesCollection, AddGradePage, AssignmentsCollection, AdminPage) {
+            CourseCollection, LoggedOutPage, GradesCollection, AddGradePage, AssignmentsCollection, AdminPage,
+            EditGradePage) {
 
 	var Router = Backbone.Router.extend({
 		routes: {
@@ -34,7 +36,8 @@ define([
             'profile/:id/addModule': 'addModule',
             'exit': 'exit',
             'profile/:id/addGrade/:od': 'addGrade',
-            'profile/:id/admin': 'admin'
+            'profile/:id/admin': 'admin',
+            'profile/:id/editGrade/:ed': 'editGrade'
 		}
 	});
 
@@ -89,6 +92,11 @@ define([
             courseCollection: courseCollection
         });
 
+        var editGradePage = new EditGradePage({
+            router: router,
+            gradesCollection: gradesCollection
+        });
+
 		var pages = {
 			home: homePage,
             profile: profilePage,
@@ -96,21 +104,24 @@ define([
             addModule: addModulePage,
             exit: loggedOutPage,
             addGrade: addGradePage,
-            admin: adminPage
+            admin: adminPage,
+            editGrade: editGradePage
 		};
 
 		router.on('route', function(pageName, stuff) {
 
-            if((pageName!="exit") && (pageName=="profile" || pageName=="addModule" || pageName=="addGrade" || pageName=="admin") && (stuff[0] != $("user_id").getCookie())) { // if the page requires login and the cookie user id is not correct then redirect back to the homepage
+            if((pageName!="exit") && (pageName=="profile" || pageName=="addModule" || pageName=="addGrade" || pageName=="admin" || pageName=="editGrade") && (stuff[0] != $("user_id").getCookie())) { // if the page requires login and the cookie user id is not correct then redirect back to the homepage
 
+                console.log("this is happening");
                 router.navigate('#', {trigger: true});
 
-            } else if ((pageName!="exit") && (pageName=="home" || pageName=="signup") && ($("user_id").getCookie() != "")){ // if the user if logged in redirect to the profile
+            } else if ((pageName!="exit") && (pageName=="home" || pageName=="signup") && ($("user_id").getCookie() != "")) { // if the user if logged in redirect to the profile
 
                 router.navigate('#/profile/'+$("user_id").getCookie(), {trigger: true});
 
             } else if(pageName=="admin" && $("user_id").getCookie()!=1) { // only certain ids can access the admin page
 
+                console.log("this is happening");
                 router.navigate('#', {trigger: true});
             } else {
 

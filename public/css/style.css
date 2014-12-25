@@ -173,6 +173,10 @@ h2, h3, h4 {
     color: #428bca;
 }
 
+.grade-tile:hover .edit-grades {
+    color: #6FC2FF;
+}
+
 .module-button {
     color: white;
     font-size: 6em;
@@ -197,4 +201,12 @@ h2, h3, h4 {
     top: 0px;
     right: 0px;
     color: transparent;
+}
+
+.edit-grades {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    color: transparent;
+    font-size: 2em;
 }

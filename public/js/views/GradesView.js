@@ -12,6 +12,8 @@ define([
 
             this.gradesCollection = options.gradesCollection;
             this.gradeAverageModel = options.gradeAverageModel;
+            this.user_id = options.user_id;
+
             this.listenTo(this.gradesCollection, 'add remove change', this.render);
             this.listenTo(this.gradeAverageModel, 'add remove change', this.render);
         },
@@ -23,7 +25,8 @@ define([
 
                 template = _.template(GradesTemplate, {
                     grades: this.gradesCollection,
-                    moduleAverage: this.gradeAverageModel
+                    moduleAverage: this.gradeAverageModel,
+                    user_id: this.user_id
                 });
 
             } else {

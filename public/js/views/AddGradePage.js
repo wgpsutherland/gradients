@@ -23,6 +23,7 @@ define([
                 });
 
                 this.navView = new ProfileNavView();
+
                 this.addGradeView = new AddGradeView({
                     assignmentsCollection: this.assignmentsCollection,
                     gradesCollection: this.gradesCollection,

@@ -45,7 +45,8 @@ define([
 
             this.gradesView = new GradesView({
                 gradesCollection: this.gradesCollection,
-                gradeAverageModel: this.gradeAverageModel
+                gradeAverageModel: this.gradeAverageModel,
+                user_id: this.userId
             });
 
             this.gradesView.render();
