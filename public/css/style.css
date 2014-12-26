@@ -129,6 +129,11 @@ h2, h3, h4 {
 
 .warning-div {
     color: transparent;
+    padding: 15px 0px;
+}
+
+.warning-div label {
+    margin: 0 0;
 }
 /* ======================================== PROFILE ======================================== */
 
