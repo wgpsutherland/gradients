@@ -50,7 +50,13 @@ define([
                 var options = {
                     success: _.bind(function(something) {
 
-                        $(".warning-div").empty().append("&nbsp");
+                        var label = $("<label>")
+                            .text('Successfully added module.')
+                            .css("color", "#428bca")
+                            .addClass("invalid-input-label");
+
+                        $(".warning-div").prepend(label);
+
                     }, this),
                     error: _.bind(function() {
 

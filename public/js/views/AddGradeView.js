@@ -36,6 +36,8 @@ define([
 
             var formContents = $(ev.currentTarget).formToObject();
 
+            console.log(formContents);
+
             var goodForm = _.every(formContents, function(field) { // checks that each field in the form has been filled
                 if(field.trim().length>0) {
                     return true;
@@ -49,7 +51,12 @@ define([
                 var options = {
                     success: _.bind(function(something) {
 
-                        $(".warning-div").empty().append("&nbsp");
+                        var label = $("<label>")
+                            .text('Successfully added grade.')
+                            .css("color", "#428bca")
+                            .addClass("invalid-input-label");
+
+                        $(".warning-div").prepend(label);
 
                     }, this),
                     error: _.bind(function() {
