@@ -6,8 +6,14 @@
     <% grades.each(function(grade) { %>
     <%  moduleCode = grade.get('module_code') %>
     <% }); %>
-    <h2><%= moduleCode %></h2>
-    <h3><%= moduleAverage.get('average') %>%</h3>
+
+    <h2>
+    <% if (moduleCode) { %>
+        <%= moduleCode %> - <%= moduleAverage.get('average') %>%
+    <% } else { %>
+        No grades stored.
+    <% }  %>
+    </h2>
 
     <hr>
 
@@ -19,6 +25,7 @@
         <% } %>
 
         <div class="col-md-3 tile-wrapper">
+            <a href="#/profile/<%= user_id %>/editGrade/<%= grade.get('id') %>/<%= grade.get('module_id') %>" class="no-underline">
             <div class="grade-tile">
                 <h3>
                     <%= grade.get('assignment_name') %>
@@ -27,10 +34,8 @@
                     <%= (grade.get('score')*100) / grade.get('max_mark') %>%
                     <small>(<%= grade.get('weight') %>)</small>
                 </h4>
-                <a href="#/profile/<%= user_id %>/editGrade/<%= grade.get('id') %>/<%= grade.get('module_id') %>" class="btn btn-link edit-grades">
-                    <span class="fa fa-gear"></span>
-                </a>
             </div>
+            </a>
         </div>
 
         <% if((count+1)%4==0) { %>
@@ -40,6 +45,20 @@
 
     <% count += 1 %>
     <% }); %>
+
+    <div class="col-md-3 tile-wrapper">
+
+        <% var moduleLink = "#/profile/" + user_id + "/addGrade/" + module_id %>
+        <a href=<%= moduleLink %>>
+            <div class="grade-tile">
+                <h1 class="text-center">
+                    <button type="button" class="btn btn-link add-grade">
+                        <span class="fa fa-plus grade-button"></span>
+                    </button>
+                </h1>
+            </div>
+        </a>
+    </div>
 </div>
 <br>
 <br>

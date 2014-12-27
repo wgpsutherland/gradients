@@ -13,6 +13,7 @@ define([
             this.gradesCollection = options.gradesCollection;
             this.gradeAverageModel = options.gradeAverageModel;
             this.user_id = options.user_id;
+            this.module_id = options.module_id;
 
             this.listenTo(this.gradesCollection, 'add remove change', this.render);
             this.listenTo(this.gradeAverageModel, 'add remove change', this.render);
@@ -21,17 +22,12 @@ define([
 
             var template;
 
-            if(this.gradesCollection.length > 0) {
-
-                template = _.template(GradesTemplate, {
-                    grades: this.gradesCollection,
-                    moduleAverage: this.gradeAverageModel,
-                    user_id: this.user_id
-                });
-
-            } else {
-                template = _.template(NoGradesTemplate);
-            }
+            template = _.template(GradesTemplate, {
+                grades: this.gradesCollection,
+                moduleAverage: this.gradeAverageModel,
+                user_id: this.user_id,
+                module_id: this.module_id
+            });
 
             this.$el.html(template);
         }

@@ -26,27 +26,30 @@ define([
             this.$el.html(template);
         },
         events: {
-            'click .show-grades': 'showGrades',
+            'click .module-tile': 'showGrades',
             'click .delete-user-module': 'deleteUserModule'
         },
         showGrades: function(ev) {
 
+            var value = ev.currentTarget.attributes["data-value"].value;
+
             this.render();
 
             this.gradeAverageModel = new GradeAverageModel({
-                id: ev.currentTarget.attributes[2].value
+                id: value
             });
 
             this.gradeAverageModel.fetch();
 
             this.gradesCollection.fetch({
-                data: ev.currentTarget.attributes[2].value // the module code and the user id
+                data: value // the module code and the user id
             });
 
             this.gradesView = new GradesView({
                 gradesCollection: this.gradesCollection,
                 gradeAverageModel: this.gradeAverageModel,
-                user_id: this.userId
+                user_id: this.userId,
+                module_id: value.split('x')[0] // the module code
             });
 
             this.gradesView.render();

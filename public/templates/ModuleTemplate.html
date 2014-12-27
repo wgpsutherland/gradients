@@ -9,7 +9,10 @@
         <% } %>
 
         <div class="col-md-3 tile-wrapper">
-            <div class="module-tile">
+
+            <% var value = "" +  module.get('id') + "x" + module.get('user_id') %>
+
+            <div class="module-tile" data-value=<%= value %>>
                 <h3>
                     <%= module.get('module_name') %>
                 </h3>
@@ -18,13 +21,6 @@
                     <small>(<%= module.get('credits')  %>)</small>
                 </h4>
 
-                <% var value = "" +  module.get('id') + "x" + module.get('user_id') %>
-                <button type="button" class="btn btn-link show-grades" value=<%= value %> >
-                    <span class="fa fa-list"></span>
-                </button>
-                <a href="#/profile/<%= module.get('user_id') %>/addGrade/<%= module.get('id') %>" class="btn btn-link add-grades">
-                    <span class="fa fa-plus"></span>
-                </a>
                 <button type="button" class="btn btn-link delete-user-module" value=<%= module.get('id') %> >
                     <span class="fa fa-remove"></span>
                 </button>
@@ -40,15 +36,17 @@
     <% }); %>
 
     <div class="col-md-3 tile-wrapper">
+
+        <% var moduleLink = "#/profile/" + user_id + "/addModule" %>
+        <a href=<%= moduleLink %>>
+
         <div class="module-tile">
             <h1 class="text-center">
-                <% var moduleLink = "#/profile/" + user_id + "/addModule" %>
-                <a href=<%= moduleLink %>>
                 <button type="button" class="btn btn-link add-module">
                     <span class="fa fa-plus module-button"></span>
                 </button>
-                </a>
             </h1>
         </div>
+        </a>
     </div>
 </div>

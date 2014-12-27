@@ -3,6 +3,7 @@
 /* darker */
 
 /*#628BFF*/
+/*#428BCA*/
 /*#5995E8*/
 /*#6FC2FF*/
 /*#77CAE8*/
@@ -127,6 +128,8 @@ h2, h3, h4 {
     padding-bottom: 20px;
 }
 
+/* ======================================== WARNINGS ======================================= */
+
 .warning-div {
     color: transparent;
     padding: 15px 0px;
@@ -153,11 +156,20 @@ h2, h3, h4 {
     height: 150px;
 }
 
+.module-tile:hover, .grade-tile:hover {
+    cursor: pointer;
+    background-color: #5995E8;
+}
+
 .grade-tile {
     color: white;
     padding: 8px;
     background-color: #428bca;
     height: 100px;
+}
+
+.grade-tile h1 {
+    margin: 10px 0;
 }
 
 .module-tile h3, .grade-tile h3 {
@@ -177,21 +189,14 @@ h2, h3, h4 {
     padding: 5px 5px;
 }
 
-.module-tile:hover .delete-user-module {
-    color: #428bca;
-}
-
-.grade-tile:hover .edit-grades {
-    color: #6FC2FF;
-}
-
 .module-button {
     color: white;
     font-size: 6em;
 }
 
-.module-button:hover {
-    color: #428bca;
+.grade-button {
+    color: white;
+    font-size: 4em;
 }
 
 .add-grades, .show-grades, .delete-user-module {
@@ -201,20 +206,15 @@ h2, h3, h4 {
     font-size: 2em;
 }
 
-.add-grades {
-    left: 60px;
-}
-
 .delete-user-module {
-    top: 0px;
     right: 0px;
-    color: transparent;
+    color: #6FC2FF;
 }
 
-.edit-grades {
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    color: transparent;
-    font-size: 2em;
+.delete-user-module:hover {
+    color: white;
+}
+
+.no-underline:hover {
+    text-decoration: none;
 }
