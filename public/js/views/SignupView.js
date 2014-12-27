@@ -43,7 +43,16 @@ define([
                 }
             });
 
-            if(goodForm) { // if the form is syntactically valid
+            if(formContents.password != formContents.repeatPassword) { // make sure the passwords are the same
+
+                var label = $("<label>")
+                    .text('Both passwords must match.')
+                    .css("color", "#428bca")
+                    .addClass("invalid-input-label");
+
+                $(".warning-div").prepend(label);
+
+            } else if(goodForm) { // if the form is syntactically valid
 
                 var options = {
                     success: _.bind(function(something) {
