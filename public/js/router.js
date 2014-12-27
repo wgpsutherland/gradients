@@ -29,6 +29,10 @@ define([
             EditGradePage) {
 
 	var Router = Backbone.Router.extend({
+        initialize: function() {
+            //track every route change as a page view in google analytics
+            this.bind('route', this.trackPageview);
+        },
 		routes: {
 			'': 'home',
             'profile/:id': 'profile',
@@ -38,7 +42,18 @@ define([
             'profile/:id/addGrade/:od': 'addGrade',
             'profile/:id/admin': 'admin',
             'profile/:id/editGrade/:ed/:od': 'editGrade'
-		}
+		},
+        trackPageview: function () {
+            var url = Backbone.history.getFragment();
+
+            //prepend slash
+            if (!/^\//.test(url) && url != "")
+            {
+                url = "/" + url;
+            }
+
+            ga('send', 'pageview', {page: "/" + url});
+        }
 	});
 
 	var initialize = function() {
