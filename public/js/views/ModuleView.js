@@ -32,8 +32,11 @@ define([
         showGrades: function(ev) {
 
             var value = ev.currentTarget.attributes["data-value"].value;
+            var moduleId = value.split('x')[0] // the module code
 
             this.render();
+
+            $("#" + moduleId).css("background-color","#5995E8");
 
             this.gradeAverageModel = new GradeAverageModel({
                 id: value
@@ -49,7 +52,7 @@ define([
                 gradesCollection: this.gradesCollection,
                 gradeAverageModel: this.gradeAverageModel,
                 user_id: this.userId,
-                module_id: value.split('x')[0] // the module code
+                module_id: moduleId
             });
 
             this.gradesView.render();

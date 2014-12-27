@@ -12,7 +12,7 @@
 
             <% var value = "" +  module.get('id') + "x" + module.get('user_id') %>
 
-            <div class="module-tile" data-value=<%= value %>>
+            <div id="<%= module.get('id') %>" class="module-tile" data-value=<%= value %>>
                 <h3>
                     <%= module.get('module_name') %>
                 </h3>
