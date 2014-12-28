@@ -44,7 +44,34 @@ define([
                 }
             });
 
-            if(goodForm) { // if the form is syntactically valid
+            if(isNaN(formContents.score)) { // make sure it's a number
+
+                var label = $("<label>")
+                    .text('Score must be a number.')
+                    .css("color", "#428bca")
+                    .addClass("invalid-input-label");
+
+                $(".warning-div").prepend(label);
+
+            } else if((formContents.score.split(".")[1])) { // makes sure it's not a decimal
+
+                var label = $("<label>")
+                    .text('Score must be a natural number.')
+                    .css("color", "#428bca")
+                    .addClass("invalid-input-label");
+
+                $(".warning-div").prepend(label);
+
+            } else if(formContents.score < 0) {
+
+                var label = $("<label>")
+                    .text('Score cannot be negative.')
+                    .css("color", "#428bca")
+                    .addClass("invalid-input-label");
+
+                $(".warning-div").prepend(label);
+
+            } else if(goodForm) { // if the form is syntactically valid
 
                 this.gradeModel.save(formContents);
                 $(".warning-div").empty().append("&nbsp");
