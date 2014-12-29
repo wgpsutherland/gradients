@@ -5,8 +5,9 @@ define([
     'backbone',
     'views/ProfileNavView',
     'views/AddUserModuleView',
-    'collections/UserModulesCollection'
-], function($, _, Backbone, ProfileNavView, AddUserModuleView, UserModulesCollection) {
+    'collections/UserModulesCollection',
+    'views/FooterView'
+], function($, _, Backbone, ProfileNavView, AddUserModuleView, UserModulesCollection, FooterView) {
 
     var AddModulePage = Backbone.View.extend({
 
@@ -30,7 +31,7 @@ define([
                     router: this.router
                 });
 
-                // maybe stick in a userModulesCollection fetch here
+                this.footerView = new FooterView();
 
             },this);
         },
@@ -40,9 +41,11 @@ define([
 
             this.navView.render();
             this.addUserModuleView.render();
+            this.footerView.render();
 
             this.$el.append(this.navView.$el);
             this.$el.append(this.addUserModuleView.$el);
+            this.$el.append(this.footerView.$el);
         }
     });
 

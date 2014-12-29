@@ -4,8 +4,9 @@ define([
     'underscore',
     'backbone',
     'views/ProfileNavView',
-    'views/EditGradeView'
-], function($, _, Backbone, ProfileNavView, EditGradeView) {
+    'views/EditGradeView',
+    'views/FooterView'
+], function($, _, Backbone, ProfileNavView, EditGradeView, FooterView) {
 
     var EditGradePage = Backbone.View.extend({
 
@@ -16,6 +17,8 @@ define([
             this.profileNavView = new ProfileNavView({
                 user_id: $("user_id").getCookie()
             });
+
+            this.footerView = new FooterView();
 
             this.router.on('route:editGrade', function(id, ed, od) {
 
@@ -44,9 +47,11 @@ define([
 
             this.profileNavView.render();
             this.editGradeView.render();
+            this.footerView.render();
 
             this.$el.append(this.profileNavView.$el);
             this.$el.append(this.editGradeView.$el);
+            this.$el.append(this.footerView.$el);
         }
     });
 

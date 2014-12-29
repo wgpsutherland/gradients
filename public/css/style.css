@@ -13,6 +13,7 @@
 
 /* ======================================== BODY ======================================== */
 
+
 body {
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
@@ -33,6 +34,17 @@ h2, h3, h4 {
 .blue {
     background-color: #6FC2FF;
     color: white;
+}
+
+/* ======================================== FOOTER ======================================== */
+
+.footer-container {
+    position: relative;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1em;
+    overflow-x: hidden;
 }
 
 /* ======================================== ICONS ======================================== */

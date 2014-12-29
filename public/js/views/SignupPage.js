@@ -4,8 +4,9 @@ define([
     'underscore',
     'backbone',
     'views/NavView',
-    'views/SignupView'
-], function($, _, Backbone, NavView, SignupView) {
+    'views/SignupView',
+    'views/FooterView'
+], function($, _, Backbone, NavView, SignupView, FooterView) {
 
     var SignupPage = Backbone.View.extend({
 
@@ -28,6 +29,9 @@ define([
                 institutionsCollection: this.institutionsCollection,
                 courseCollection: this.courseCollection
             });
+
+            this.footerView = new FooterView();
+
         },
         render: function() {
 
@@ -35,9 +39,11 @@ define([
 
             this.navView.render();
             this.signUpView.render();
+            this.footerView.render();
 
             this.$el.append(this.navView.$el);
             this.$el.append(this.signUpView.$el);
+            this.$el.append(this.footerView.$el);
         }
     });
 

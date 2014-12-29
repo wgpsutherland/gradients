@@ -11,9 +11,10 @@ define([
     'collections/GradesCollection',
     'views/GradesView',
     'libs/getCookie',
-    'models/GradeAverageModel'
+    'models/GradeAverageModel',
+    'views/FooterView'
 ], function($, _, Backbone, ProfileNavView, UserInfoView, UserModel, UserModulesCollection,
-            ModuleView, GradesCollection, GradesView, getCookie, GradeAverageModel) {
+            ModuleView, GradesCollection, GradesView, getCookie, GradeAverageModel, FooterView) {
 
     var ProfilePage = Backbone.View.extend({
 
@@ -30,6 +31,8 @@ define([
                 this.navView = new ProfileNavView({
                     user_id: id
                 });
+
+                this.footerView = new FooterView();
 
                 this.userModel = new UserModel({id: id});
 
@@ -59,10 +62,12 @@ define([
             this.$el.children().detach(); // removes the elements but not the event bindings
 
             this.navView.render();
+            this.footerView.render();
 
             this.$el.append(this.navView.$el);
             this.$el.append(this.userInfoView.$el);
             this.$el.append(this.moduleView.$el);
+            this.$el.append(this.footerView.$el);
         }
     });
 

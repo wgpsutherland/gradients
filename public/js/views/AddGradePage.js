@@ -4,14 +4,17 @@ define([
     'underscore',
     'backbone',
     'views/ProfileNavView',
-    'views/AddGradeView'
-], function($, _, Backbone, ProfileNavView, AddGradeView) {
+    'views/AddGradeView',
+    'views/FooterView'
+], function($, _, Backbone, ProfileNavView, AddGradeView, FooterView) {
 
     var AddGradePage = Backbone.View.extend({
 
         initialize: function(options) {
 
             this.router = options.router;
+
+            this.footerView = new FooterView();
 
             this.router.on('route:addGrade', function(id, od, ed) {
 
@@ -40,9 +43,11 @@ define([
 
             this.navView.render();
             this.addGradeView.render();
+            this.footerView.render();
 
             this.$el.append(this.navView.$el);
             this.$el.append(this.addGradeView.$el);
+            this.$el.append(this.footerView.$el);
         }
     });
 

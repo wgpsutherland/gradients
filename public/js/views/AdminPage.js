@@ -3,8 +3,9 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'views/ProfileNavView'
-], function($, _, Backbone, ProfileNavView) {
+    'views/ProfileNavView',
+    'views/FooterView'
+], function($, _, Backbone, ProfileNavView, FooterView) {
 
     var AdminPage = Backbone.View.extend({
 
@@ -15,6 +16,8 @@ define([
             this.profileNavView = new ProfileNavView({
                 user_id: $("user_id").getCookie()
             });
+
+            this.footerView = new FooterView();
 
             this.router.on('route:admin', function(id) {
 
@@ -32,8 +35,10 @@ define([
             this.$el.empty();
 
             this.profileNavView.render();
+            this.footerView.render();
 
             this.$el.append(this.profileNavView.$el);
+            this.$el.append(this.footerView.$el);
         }
     });
 
