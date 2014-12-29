@@ -43,17 +43,21 @@
                         <div class="form-group form-group-lg">
                             <select class="form-control" id="signup-form-yearchoice" name="year">
                                 <option value="" disabled selected>What year are you?</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
+
+                                <% for(var i=1; i<9; i++) { %>
+                                    <option> <%= i %></option>
+                                <% } %>
+
                             </select>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block login">Create</button>
+
+                        <p class="disclaimer">
+                            Gradients is a service designed to help users store their grades and see how well they are doing.
+                            It cannot be held accountable for any potential miscalculation in percentages that a user could then rely
+                            on to achieve a specific degree classification or module average.
+                        </p>
+
+                        <button type="submit" class="btn btn-primary btn-block login">Agree & Create</button>
                     </form>
                     <br>
             </div>
