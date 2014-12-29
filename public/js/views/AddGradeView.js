@@ -14,13 +14,15 @@ define([
             this.gradesCollection = options.gradesCollection;
             this.module_id = options.module_id;
             this.user_id = options.user_id;
+            this.year = options.year;
             this.listenTo(this.assignmentsCollection, 'add remove change', this.render);
         },
         render: function() {
             var template = _.template(AddGradeTemplate, {
                 assignments: this.assignmentsCollection,
                 module_id: this.module_id,
-                user_id: this.user_id
+                user_id: this.user_id,
+                year: this.year
             });
             this.$el.html(template);
         },

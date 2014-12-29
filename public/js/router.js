@@ -37,7 +37,7 @@ define([
             'profile/:id': 'profile',
             'signup': 'signup',
             'profile/:id/addModule': 'addModule',
-            'profile/:id/addGrade/:od': 'addGrade',
+            'profile/:id/addGrade/:od/:ed': 'addGrade',
             'profile/:id/admin': 'admin',
             'profile/:id/editGrade/:ed/:od': 'editGrade'
 		},

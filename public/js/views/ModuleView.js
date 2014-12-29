@@ -31,28 +31,32 @@ define([
         },
         showGrades: function(ev) {
 
-            var value = ev.currentTarget.attributes["data-value"].value;
-            var moduleId = value.split('x')[0] // the module code
+            var info = ev.currentTarget.attributes["data-value"].value.split('x');
+
+            var gradeInfo = info[0] + "x" + info[1];
+            var moduleId = info[0];
+            var year = info[2];
 
             this.render();
 
             $("#" + moduleId).css("background-color","#5995E8");
 
             this.gradeAverageModel = new GradeAverageModel({
-                id: value
+                id: gradeInfo
             });
 
             this.gradeAverageModel.fetch();
 
             this.gradesCollection.fetch({
-                data: value // the module code and the user id
+                data: gradeInfo // the module code and the user id
             });
 
             this.gradesView = new GradesView({
                 gradesCollection: this.gradesCollection,
                 gradeAverageModel: this.gradeAverageModel,
                 user_id: this.userId,
-                module_id: moduleId
+                module_id: moduleId,
+                year: year
             });
 
             this.gradesView.render();

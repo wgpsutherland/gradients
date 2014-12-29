@@ -13,13 +13,13 @@ define([
 
             this.router = options.router;
 
-            this.router.on('route:addGrade', function(id, od) {
+            this.router.on('route:addGrade', function(id, od, ed) {
 
                 this.gradesCollection = options.gradesCollection;
                 this.assignmentsCollection = options.assignmentsCollection;
 
                 this.assignmentsCollection.fetch({
-                    data: od
+                    data: od + "x" + ed
                 });
 
                 this.navView = new ProfileNavView();
@@ -29,6 +29,7 @@ define([
                     gradesCollection: this.gradesCollection,
                     module_id: od,
                     user_id: id,
+                    year: ed,
                     router: this.router
                 });
             }, this);
