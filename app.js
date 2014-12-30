@@ -31,6 +31,7 @@ app.post('/gradient/v1/users', users.createUser);
 app.post('/gradient/v1/userModules', users.addUserModule);
 app.post('/gradient/v1/modules', users.createModule);
 app.post('/gradient/v1/grade', users.addGrade);
+app.post('/gradient/v1/assignments', users.createAssignment);
 app.get('/gradient/v1/users', users.getUsers);
 app.get('/gradient/v1/users/:id', users.getUser);
 app.get('/gradient/v1/userModules/:id', users.getUserModules);

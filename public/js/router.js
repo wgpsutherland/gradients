@@ -20,12 +20,13 @@ define([
     'views/AddGradePage',
     'collections/AssignmentsCollection',
     'views/AdminPage',
-    'views/EditGradePage'
+    'views/EditGradePage',
+    'collections/AssignmentTypeCollection'
 ], function($, _, Backbone, bootstrap, HomePage, ProfilePage, UserCollection,
             SignupPage, LoginCollection, UserModel,
             AddModulePage, ModuleCollection, UserModulesCollection, getCookie, InstitutionsCollection,
             CourseCollection, GradesCollection, AddGradePage, AssignmentsCollection, AdminPage,
-            EditGradePage) {
+            EditGradePage, AssignmentTypeCollection) {
 
 	var Router = Backbone.Router.extend({
         initialize: function() {
@@ -65,6 +66,7 @@ define([
         var courseCollection = new CourseCollection();
         var gradesCollection = new GradesCollection();
         var assignmentsCollection = new AssignmentsCollection();
+        var assignmentTypeCollection = new AssignmentTypeCollection();
 
 		var homePage = new HomePage({
             router: router,
@@ -100,7 +102,8 @@ define([
             router: router,
             moduleCollection: moduleCollection,
             assignmentsCollection: assignmentsCollection,
-            courseCollection: courseCollection
+            courseCollection: courseCollection,
+            assignmentTypeCollection: assignmentTypeCollection
         });
 
         var editGradePage = new EditGradePage({

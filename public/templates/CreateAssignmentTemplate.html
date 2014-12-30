@@ -1,0 +1,73 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="container-fluid centre form-view">
+
+                <h1>Create an assignment:</h1>
+
+                <div class="warning-div">&nbsp</div>
+
+                <form role="form" class="create-assignment-form">
+                    <div class="form-group">
+                        <select class="form-control" id="add-user-module-form-moduleChoice" name="module">
+                            <option value="" disabled selected>Choose a module</option>
+                            <% modules.each(function(module) { %>
+                            <% var display = "" + module.get('module_code') + " - " + module.get('module_name') %>
+                            <option value=<%= module.get('id') %>><%= display %></option>
+                            <% }); %>
+                        </select>
+                    </div>
+                    <div class="form-group form-group-lg">
+                        <label class="sr-only" for="assignmentName">Name</label>
+                        <input type="text" class="form-control" id="assignmentName" placeholder="Enter assignment name" name="name">
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" id="assignmentType" name="type">
+                            <option value="" disabled selected>Choose an assignment type</option>
+                            <% assignmentTypes.each(function(type) { %>
+                                <option value=<%= type.get('id') %>><%= type.get('assignment_type') %></option>
+                            <% }); %>
+                        </select>
+                    </div>
+
+
+
+
+
+
+                    <div class="form-group form-group-lg">
+                        <label class="sr-only" for="maxMark">Max Mark</label>
+                        <input type="text" class="form-control" id="maxMark" placeholder="Enter maximum mark" name="max">
+                    </div>
+                    <div class="form-group form-group-lg">
+                        <select class="form-control" id="assignmentSemester" name="semester">
+                            <option value="" disabled selected>Choose semester</option>
+                            <option>1</option>
+                            <option>2</option>
+                        </select>
+                    </div>
+                    <div class="form-group form-group-lg">
+                        <label class="sr-only" for="assignmentWeight">Weight</label>
+                        <input type="text" class="form-control" id="assignmentWeight" placeholder="Enter weighting" name="weight">
+                    </div>
+                    <div class="form-group form-group-lg">
+                        <select class="form-control" id="exampleInputYear" name="year">
+                            <option value="" disabled selected>What year is the assignment for?</option>
+
+                            <% for(var i=2013; i<2015; i++) { %>
+
+                            <option value="<%= i %>"><%= i %> / <%= i+1 %></option>
+
+                            <% } %>
+
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-info">
+                        <span class="fa fa-check"></span> Create
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

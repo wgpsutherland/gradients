@@ -4,12 +4,15 @@ define([
     'underscore',
     'backbone',
     'text!templates/AdminChoiceTemplate.html',
-    'views/CreateModuleView'
-], function($, _, Backbone, AdminChoiceTemplate, CreateModuleView) {
+    'views/CreateModuleView',
+    'views/CreateAssignmentView'
+], function($, _, Backbone, AdminChoiceTemplate, CreateModuleView, CreateAssignmentView) {
 
     var AdminChoiceView = Backbone.View.extend({
         initialize: function(options) {
             this.moduleCollection = options.moduleCollection;
+            this.assignmentsCollection = options.assignmentsCollection;
+            this.assignmentTypeCollection = options.assignmentTypeCollection;
         },
         render: function() {
             var template = _.template(AdminChoiceTemplate);
@@ -23,8 +26,18 @@ define([
             'click .admin-form-button': 'showAdminForm'
         },
         showAssignmentForm: function(ev) {
-            console.log("assignments");
+
             this.render(); // clears the other forms from the view
+
+            this.createAssignmentView = new CreateAssignmentView({
+                assignmentsCollection: this.assignmentsCollection,
+                moduleCollection: this.moduleCollection,
+                assignmentTypeCollection: this.assignmentTypeCollection
+            })
+
+            this.createAssignmentView.render();
+
+            this.$el.append(this.createAssignmentView.$el);
         },
         showModuleForm: function(ev) {
 

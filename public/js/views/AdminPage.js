@@ -23,9 +23,13 @@ define([
             this.router.on('route:admin', function(id) {
 
                 this.moduleCollection = options.moduleCollection;
+                this.assignmentsCollection = options.assignmentsCollection;
+                this.assignmentTypeCollection = options.assignmentTypeCollection;
 
                 this.adminChoiceView = new AdminChoiceView({
-                    moduleCollection: this.moduleCollection
+                    moduleCollection: this.moduleCollection,
+                    assignmentsCollection: this.assignmentsCollection,
+                    assignmentTypeCollection: this.assignmentTypeCollection
                 });
 
 
@@ -33,6 +37,7 @@ define([
 
                 //this.courseCollection.fetch();
 
+                this.assignmentTypeCollection.fetch();
                 this.moduleCollection.fetch();
                 this.adminChoiceView.render();
 
