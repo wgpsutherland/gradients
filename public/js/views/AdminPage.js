@@ -5,8 +5,9 @@ define([
     'backbone',
     'views/ProfileNavView',
     'views/FooterView',
-    'views/AdminChoiceView'
-], function($, _, Backbone, ProfileNavView, FooterView, AdminChoiceView) {
+    'views/AdminChoiceView',
+    'models/UserModel'
+], function($, _, Backbone, ProfileNavView, FooterView, AdminChoiceView, UserModel) {
 
     var AdminPage = Backbone.View.extend({
 
@@ -14,13 +15,13 @@ define([
 
             this.router = options.router;
 
-            this.profileNavView = new ProfileNavView({
-                user_id: $("user_id").getCookie()
-            });
-
             this.footerView = new FooterView();
 
             this.router.on('route:admin', function(id) {
+
+                this.navView = new ProfileNavView({
+                    id: id
+                });
 
                 this.moduleCollection = options.moduleCollection;
                 this.assignmentsCollection = options.assignmentsCollection;
@@ -47,10 +48,10 @@ define([
 
             this.$el.children().detach();
 
-            this.profileNavView.render();
+            this.navView.render();
             this.footerView.render();
 
-            this.$el.append(this.profileNavView.$el);
+            this.$el.append(this.navView.$el);
             this.$el.append(this.adminChoiceView.$el);
             this.$el.append(this.footerView.$el);
         }

@@ -11,8 +11,8 @@
         </div>
         <div class="collapse navbar-collapse bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right nav-list">
-                <% if(user_id==1) { %>
-                <li class="admin"><a href="#/profile/<%= user_id %>/admin">ADMIN</a></li>
+                <% if(user.get('admin')) { %>
+                <li class="admin"><a href="#/profile/<%= user.get('id') %>/admin">ADMIN</a></li>
                 <% } %>
                 <li class="logout"><a href="#">LOGOUT</a></li>
             </ul>

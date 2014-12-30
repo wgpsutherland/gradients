@@ -5,8 +5,9 @@ define([
     'backbone',
     'views/ProfileNavView',
     'views/AddGradeView',
-    'views/FooterView'
-], function($, _, Backbone, ProfileNavView, AddGradeView, FooterView) {
+    'views/FooterView',
+    'models/UserModel'
+], function($, _, Backbone, ProfileNavView, AddGradeView, FooterView, UserModel) {
 
     var AddGradePage = Backbone.View.extend({
 
@@ -25,7 +26,9 @@ define([
                     data: od + "x" + ed
                 });
 
-                this.navView = new ProfileNavView();
+                this.navView = new ProfileNavView({
+                    id: id
+                });
 
                 this.addGradeView = new AddGradeView({
                     assignmentsCollection: this.assignmentsCollection,

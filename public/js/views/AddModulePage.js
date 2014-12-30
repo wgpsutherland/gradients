@@ -6,17 +6,21 @@ define([
     'views/ProfileNavView',
     'views/AddUserModuleView',
     'collections/UserModulesCollection',
-    'views/FooterView'
-], function($, _, Backbone, ProfileNavView, AddUserModuleView, UserModulesCollection, FooterView) {
+    'views/FooterView',
+    'models/UserModel'
+], function($, _, Backbone, ProfileNavView, AddUserModuleView, UserModulesCollection, FooterView, UserModel) {
 
     var AddModulePage = Backbone.View.extend({
 
         initialize: function(options) {
 
-            this.navView = new ProfileNavView();
             this.router = options.router;
 
             this.router.on('route:addModule', function(id) {
+
+                this.navView = new ProfileNavView({
+                    id: id
+                });
 
                 this.moduleCollection = options.moduleCollection;
 

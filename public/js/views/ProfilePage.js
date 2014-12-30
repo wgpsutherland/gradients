@@ -29,16 +29,16 @@ define([
                 this.gradesCollection = options.gradesCollection;
 
                 this.navView = new ProfileNavView({
-                    user_id: id
+                    id: id
                 });
+
+                this.userModel = new UserModel({id: id});
+                this.userModel.fetch();
 
                 this.footerView = new FooterView();
 
-                this.userModel = new UserModel({id: id});
-
                 this.userModulesCollection = options.userModulesCollection;
                 this.userModulesCollection.fetch();
-                this.userModel.fetch();
 
                 this.userInfoView = new UserInfoView({
                     userModel: this.userModel

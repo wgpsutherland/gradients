@@ -3,21 +3,21 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'text!templates/ProfileNavTemplate.html'
-], function($, _, Backbone, ProfileNavTemplate) {
+    'text!templates/ProfileNavTemplate.html',
+    'models/UserModel'
+], function($, _, Backbone, ProfileNavTemplate, UserModel) {
 
-    var NavView = Backbone.View.extend({
+    var ProfileNavView = Backbone.View.extend({
         initialize: function(options) {
 
-            if(options) {
-                this.user_id = options.user_id;
-            } else {
-                this.user_id = 0;
-            }
+            this.userModel = new UserModel({id: options.id});
+            this.userModel.fetch();
+
+            this.listenTo(this.userModel, 'add remove change', this.render);
         },
         render: function() {
             var template = _.template(ProfileNavTemplate, {
-                user_id: this.user_id
+                user: this.userModel
             });
             this.$el.html(template);
         },
@@ -29,5 +29,5 @@ define([
         }
     });
 
-    return NavView;
+    return ProfileNavView;
 });
