@@ -28,17 +28,18 @@ app.listen(port, function() {
 
 app.post('/gradient/v1/login', users.loginUser);
 app.post('/gradient/v1/users', users.createUser);
-app.post('/gradient/v1/module', users.addUserModule);
+app.post('/gradient/v1/userModules', users.addUserModule);
+app.post('/gradient/v1/modules', users.createModule);
 app.post('/gradient/v1/grade', users.addGrade);
 app.get('/gradient/v1/users', users.getUsers);
 app.get('/gradient/v1/users/:id', users.getUser);
-app.get('/gradient/v1/modules/:id', users.getUserModules);
+app.get('/gradient/v1/userModules/:id', users.getUserModules);
 app.get('/gradient/v1/grades/', users.getGradesForUserFromModule);
 app.get('/gradient/v1/modules', users.getModules);
 app.get('/gradient/v1/institutions', users.getInstitutions);
 app.get('/gradient/v1/courses', users.getCourses);
 app.get('/gradient/v1/assignments', users.getAssignments);
-app.delete('/gradient/v1/module/:id', users.deleteUserModule);
+app.delete('/gradient/v1/userModules/:id', users.deleteUserModule);
 app.get('/gradient/v1/gradeAverage/:id', users.getGradeAverage);
 app.put('/gradient/v1/grade/:id', users.updateGrade);
 app.delete('/gradient/v1/grade/:id', users.deleteGrade);

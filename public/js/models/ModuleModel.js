@@ -4,6 +4,6 @@ define([
 ], function(_, Backbone) {
 
     return Backbone.Model.extend({
-        urlRoot: '/gradient/v1/module'
+        urlRoot: '/gradient/v1/modules'
     });
 });
