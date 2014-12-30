@@ -127,49 +127,49 @@ define([
 
             if(userId) { // if logged in
 
-                this.userModel = new UserModel({
-                    id: userId
-                });
+                if ( // if the page requires login and the cookie user id is not correct then redirect back to the homepage
+                (  pageName=="profile"
+                || pageName=="addModule"
+                || pageName=="addGrade"
+                || pageName=="admin"
+                || pageName=="editGrade" )
+                && (stuff[0] != userId)
+                ) {
 
-                this.userModel.fetch({
+                    router.navigate('#', {trigger: true});
 
-                    success: _.bind(function() {
+                } else if ((pageName=="home" || pageName=="signup")) { // if the user is logged in redirect to the profile
 
-                        if ( // if the page requires login and the cookie user id is not correct then redirect back to the homepage
-                            (  pageName=="profile"
-                            || pageName=="addModule"
-                            || pageName=="addGrade"
-                            || pageName=="admin"
-                            || pageName=="editGrade" )
-                            && (stuff[0] != userId)
-                        ) {
+                    router.navigate('#/profile/' + userId, {trigger: true});
+
+                } else if(pageName=="admin") { // do an access check
+
+                    this.userModel = new UserModel({
+                        id: userId
+                    });
+
+                    this.userModel.fetch({
+
+                        success: _.bind(function() { // successfull connection to the db
+
+                            if(!(this.userModel.get('admin'))) {  // if they're not an admin redirect
+
+                                router.navigate('#', {trigger: true});
+
+                            } else { renderPage(pageName); }
+
+                        }, this),
+                        error: (function() { // if the model cannot be found on the server
 
                             router.navigate('#', {trigger: true});
+                        })
+                    });
 
-                        } else if ((pageName=="home" || pageName=="signup")) { // if the user is logged in redirect to the profile
-
-                            router.navigate('#/profile/' + userId, {trigger: true});
-
-                        } else if(pageName=="admin" && !(this.userModel.get('admin'))) { // only certain ids can access the admin page
-
-                            router.navigate('#', {trigger: true});
-                        } else {
-
-                            renderPage(pageName);
-                        }
-
-                    }, this),
-                    error: (function() { // if the model cannot be found on the server
-
-                        router.navigate('#', {trigger: true});
-                    })
-                });
+                } else { renderPage(pageName); }
 
             } else {
 
                 router.navigate('#', {trigger: true});
-
-                renderPage(pageName);
             }
 		});
 
