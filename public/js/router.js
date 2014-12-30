@@ -123,34 +123,72 @@ define([
 
 		router.on('route', function(pageName, stuff) {
 
-            if((pageName=="profile" || pageName=="addModule" || pageName=="addGrade" || pageName=="admin" || pageName=="editGrade") && (stuff[0] != $("user_id").getCookie())) { // if the page requires login and the cookie user id is not correct then redirect back to the homepage
+            var userId = $("user_id").getCookie();
 
-                router.navigate('#', {trigger: true});
+            if(userId) { // if logged in
 
-            } else if ((pageName=="home" || pageName=="signup") && ($("user_id").getCookie() != "")) { // if the user if logged in redirect to the profile
+                this.userModel = new UserModel({
+                    id: userId
+                });
 
-                router.navigate('#/profile/'+$("user_id").getCookie(), {trigger: true});
+                this.userModel.fetch({
 
-            } else if(pageName=="admin" && $("user_id").getCookie()!=1) { // only certain ids can access the admin page
+                    success: _.bind(function() {
 
-                router.navigate('#', {trigger: true});
+                        if ( // if the page requires login and the cookie user id is not correct then redirect back to the homepage
+                            (  pageName=="profile"
+                            || pageName=="addModule"
+                            || pageName=="addGrade"
+                            || pageName=="admin"
+                            || pageName=="editGrade" )
+                            && (stuff[0] != userId)
+                        ) {
+
+                            router.navigate('#', {trigger: true});
+
+                        } else if ((pageName=="home" || pageName=="signup")) { // if the user is logged in redirect to the profile
+
+                            router.navigate('#/profile/' + userId, {trigger: true});
+
+                        } else if(pageName=="admin" && !(this.userModel.get('admin'))) { // only certain ids can access the admin page
+
+                            router.navigate('#', {trigger: true});
+                        } else {
+
+                            renderPage(pageName);
+                        }
+
+                    }, this),
+                    error: (function() { // if the model cannot be found on the server
+
+                        router.navigate('#', {trigger: true});
+                    })
+                });
+
             } else {
 
-                if (!$('.page > [data-name="' + pageName + '"]').length) { // checks if the page has been rendered before
+                router.navigate('#', {trigger: true});
 
-                    pages[pageName].render();
-                    $('.page').append(pages[pageName].$el.attr('data-name', pageName));
-                }
-
-                _.each(pages, function(page, name) {
-                    page.$el.toggle(name===pageName);
-                });
+                renderPage(pageName);
             }
 		});
 
 		Backbone.history.start({
 			pushState: false
 		});
+
+        function renderPage(pageName) {
+
+            if (!$('.page > [data-name="' + pageName + '"]').length) { // checks if the page has been rendered before
+
+                pages[pageName].render();
+                $('.page').append(pages[pageName].$el.attr('data-name', pageName));
+            }
+
+            _.each(pages, function(page, name) {
+                page.$el.toggle(name===pageName);
+            });
+        }
 	}
 
 	return {

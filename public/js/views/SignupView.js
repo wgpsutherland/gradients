@@ -12,7 +12,7 @@ define([
             this.router = options.router;
             this.userCollection = options.userCollection;
             this.institutionsCollection = options.institutionsCollection;
-            this.courseCollection = options.courseCollection
+            this.courseCollection = options.courseCollection;
 
             this.listenTo(this.institutionsCollection, 'add remove change', this.render);
             this.listenTo(this.courseCollection, 'add remove change', this.render);

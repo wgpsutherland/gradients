@@ -38,8 +38,6 @@ define([
 
             var formContents = $(ev.currentTarget).formToObject();
 
-            console.log(formContents);
-
             var goodForm = _.every(formContents, function(field) { // checks that each field in the form has been filled
                 if(field.trim().length>0) {
                     return true;
