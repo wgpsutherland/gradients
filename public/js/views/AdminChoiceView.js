@@ -29,6 +29,8 @@ define([
 
             this.render(); // clears the other forms from the view
 
+            this.moduleCollection.fetch();
+
             this.createAssignmentView = new CreateAssignmentView({
                 assignmentsCollection: this.assignmentsCollection,
                 moduleCollection: this.moduleCollection,
@@ -42,8 +44,6 @@ define([
         showModuleForm: function(ev) {
 
             this.render(); // clears the other forms from the view
-
-            this.moduleCollection.fetch();
 
             this.createModuleView = new CreateModuleView({
                 collection: this.moduleCollection
