@@ -39,6 +39,7 @@ app.get('/gradient/v1/modules', users.getModules);
 app.get('/gradient/v1/institutions', users.getInstitutions);
 app.get('/gradient/v1/courses', users.getCourses);
 app.get('/gradient/v1/assignments', users.getAssignments);
+app.get('/gradient/v1/assignmentType', users.getAssignmentTypes);
 app.delete('/gradient/v1/userModules/:id', users.deleteUserModule);
 app.get('/gradient/v1/gradeAverage/:id', users.getGradeAverage);
 app.put('/gradient/v1/grade/:id', users.updateGrade);
