@@ -4,8 +4,9 @@ define([
     'underscore',
     'backbone',
     'views/ProfileNavView',
-    'views/FooterView'
-], function($, _, Backbone, ProfileNavView, FooterView) {
+    'views/FooterView',
+    'views/AdminChoiceView'
+], function($, _, Backbone, ProfileNavView, FooterView, AdminChoiceView) {
 
     var AdminPage = Backbone.View.extend({
 
@@ -22,22 +23,30 @@ define([
             this.router.on('route:admin', function(id) {
 
                 this.moduleCollection = options.moduleCollection;
-                this.assignmentsCollection = options.assignmentsCollection;
-                this.courseCollection = options.courseCollection;
+
+                this.adminChoiceView = new AdminChoiceView({
+                    moduleCollection: this.moduleCollection
+                });
+
+
+                //this.courseCollection = options.courseCollection;
+
+                //this.courseCollection.fetch();
 
                 this.moduleCollection.fetch();
-                this.courseCollection.fetch();
-                this.assignmentsCollection.fetch();
-            });
+                this.adminChoiceView.render();
+
+            }, this);
         },
         render: function() {
 
-            this.$el.empty();
+            this.$el.children().detach();
 
             this.profileNavView.render();
             this.footerView.render();
 
             this.$el.append(this.profileNavView.$el);
+            this.$el.append(this.adminChoiceView.$el);
             this.$el.append(this.footerView.$el);
         }
     });

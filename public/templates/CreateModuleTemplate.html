@@ -1,0 +1,34 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="container-fluid centre form-view">
+
+                <h1>Create a module:</h1>
+
+                <div class="warning-div">&nbsp</div>
+
+                <form role="form" class="create-module-form">
+                    <div class="form-group form-group-lg">
+                        <label class="sr-only" for="moduleName">Name</label>
+                        <input type="text" class="form-control" id="moduleName" placeholder="Enter module name" name="name">
+                    </div>
+                    <div class="form-group form-group-lg">
+                        <label class="sr-only" for="moduleCode">Code</label>
+                        <input type="text" class="form-control" id="moduleCode" placeholder="Enter module code" name="code">
+                    </div>
+                    <div class="form-group form-group-lg">
+                        <select class="form-control" id="moduleCredits" name="credits">
+                            <option value="" disabled selected>Choose number of credits</option>
+                            <option>10</option>
+                            <option>20</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-info">
+                        <span class="fa fa-check"></span> Create
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
