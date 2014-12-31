@@ -173,6 +173,7 @@ define([
             } else {
 
                 router.navigate('#', {trigger: true});
+                renderPage(pageName);
             }
 		});
 
