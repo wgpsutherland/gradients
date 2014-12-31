@@ -1,13 +1,23 @@
-<br>
 <div class="container">
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-12">
             <h1 class="profile-title">
                 <%= user.get('username') %>
             </h1>
             <h3>
                 <%= user.get('institution_name') %> - <%= user.get('course_name') %>
             </h3>
+
+            <hr>
+
+            <% averages.each(function(average) { %>
+
+                <h4>
+                    <%= average.get('year').slice(-2) %>/<%= ("" + (parseInt(average.get('year')) + 1)).slice(-2) %>: <%= average.get('average') %>%
+                </h4>
+
+            <% }); %>
+
         </div>
     </div>
 </div>

@@ -27,6 +27,11 @@ define([
                 this.user = id;
 
                 this.gradesCollection = options.gradesCollection;
+                this.yearAverageCollection = options.yearAverageCollection;
+
+                this.yearAverageCollection.fetch({
+                    data: id
+                });
 
                 this.navView = new ProfileNavView({
                     id: id
@@ -41,7 +46,8 @@ define([
                 this.userModulesCollection.fetch();
 
                 this.userInfoView = new UserInfoView({
-                    userModel: this.userModel
+                    userModel: this.userModel,
+                    yearAverageCollection: this.yearAverageCollection
                 });
 
                 this.listenTo(this.userModel, 'change', this.render);

@@ -10,13 +10,18 @@ define([
         initialize: function(options) {
 
             this.userModel = options.userModel;
+            this.yearAverageCollection = options.yearAverageCollection;
+
             this.listenTo(this.userModel, 'add remove change', this.render);
+            this.listenTo(this.yearAverageCollection, 'add remove change', this.render);
         },
         render: function() {
 
-            this.user = this.userModel;
+            var template = _.template(UserInfoTemplate, {
+                user: this.userModel,
+                averages: this.yearAverageCollection
+            });
 
-            var template = _.template(UserInfoTemplate, {user: this.user});
             this.$el.html(template);
         }
     });
