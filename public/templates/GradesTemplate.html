@@ -4,12 +4,15 @@
 
     <% var moduleCode;%>
     <% grades.each(function(grade) { %>
-    <%  moduleCode = grade.get('module_code') %>
+        <% moduleCode = grade.get('module_code') %>
     <% }); %>
 
     <h2>
     <% if (moduleCode) { %>
         <%= moduleCode %> - <%= moduleAverage.get('average') %>%
+        <small>
+            (<%= credits %> credits)
+        </small>
     <% } else { %>
         No grades stored.
     <% }  %>

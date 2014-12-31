@@ -10,7 +10,7 @@
 
         <div class="col-md-3 tile-wrapper">
 
-            <% var value = "" +  module.get('id') + "x" + module.get('user_id') + "x" + module.get('year') %>
+            <% var value = "" +  module.get('id') + "x" + module.get('user_id') + "x" + module.get('year') + "x" + module.get('credits') %>
 
             <div id="<%= module.get('id') %>" class="module-tile show-grade" data-value=<%= value %>>
                 <h3>
@@ -18,7 +18,11 @@
                 </h3>
                 <h4>
                     <%= module.get('module_code')%>
-                    <small>(<%= module.get('credits')  %>)</small>
+                    <small>
+                        <% var thisYear = "" + module.get('year') %>
+                        <% var nextYear = "" + (module.get('year') + 1) %>
+                        (<%= thisYear.slice(-2) %>/<%= nextYear.slice(-2) %>)
+                    </small>
                 </h4>
 
                 <button type="button" class="btn btn-link delete-user-module" value=<%= module.get('id') %> >
@@ -29,7 +33,6 @@
 
         <% if((count+1)%4==0) { %>
             </div>
-            <!--<br>-->
         <% } %>
 
     <% count += 1 %>

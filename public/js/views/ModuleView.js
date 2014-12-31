@@ -19,6 +19,7 @@ define([
             this.listenTo(this.userModulesCollection, 'add remove change', this.render);
         },
         render: function() {
+
             var template = _.template(ModuleTemplate, {
                 modules: this.userModulesCollection,
                 user_id: this.userId
@@ -36,6 +37,7 @@ define([
             var gradeInfo = info[0] + "x" + info[1];
             var moduleId = info[0];
             var year = info[2];
+            var credits = info[3];
 
             this.render();
 
@@ -56,7 +58,8 @@ define([
                 gradeAverageModel: this.gradeAverageModel,
                 user_id: this.userId,
                 module_id: moduleId,
-                year: year
+                year: year,
+                credits: credits
             });
 
             this.gradesView.render();
