@@ -31,7 +31,10 @@ define([
         },
         showGrades: function(ev) {
 
-            var info = ev.currentTarget.attributes["data-value"].value.split('x');
+            if(ev.currentTarget.attributes["data-value"]) {
+
+                var info = ev.currentTarget.attributes["data-value"].value.split('x');
+            }
 
             var gradeInfo = info[0] + "x" + info[1];
             var moduleId = info[0];

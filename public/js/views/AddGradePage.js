@@ -38,6 +38,7 @@ define([
                     year: ed,
                     router: this.router
                 });
+
             }, this);
         },
         render: function() {

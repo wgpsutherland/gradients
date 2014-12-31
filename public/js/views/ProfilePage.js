@@ -55,6 +55,7 @@ define([
 
                 this.userInfoView.render();
                 this.moduleView.render();
+
             }, this);
         },
         render: function() {
