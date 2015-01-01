@@ -2,7 +2,7 @@
 
 /* darker */
 
-/*#628BFF*/
+/*#036DCA*/
 /*#428BCA*/
 /*#5995E8*/
 /*#6FC2FF*/
@@ -181,8 +181,15 @@ h2, h3, h4 {
 .grade-tile {
     color: white;
     padding: 8px;
-    background-color: #428bca;
     height: 100px;
+}
+
+.semester-one {
+    background-color: #428bca;
+}
+
+.semester-two {
+    background-color: #036DCA;
 }
 
 .grade-tile h1 {

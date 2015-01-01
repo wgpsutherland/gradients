@@ -27,9 +27,16 @@
     <div class="row tile-row">
         <% } %>
 
+        <% var colour = "grade-tile"; %>
+        <% if(grade.get('semester') == 1) { %>
+            <% colour += " semester-one" %>
+        <% } else {%>
+            <% colour += " semester-two" %>
+        <% } %>
+
         <div class="col-md-3 tile-wrapper">
             <a href="#/profile/<%= user_id %>/editGrade/<%= grade.get('id') %>/<%= grade.get('module_id') %>" class="no-underline">
-            <div class="grade-tile">
+            <div class= "<%= colour %>" >
                 <h3>
                     <%= grade.get('assignment_name') %>
                 </h3>
@@ -43,7 +50,6 @@
 
         <% if((count+1)%4==0) { %>
     </div>
-    <!--<br>-->
     <% } %>
 
     <% count += 1 %>
@@ -53,7 +59,7 @@
 
         <% var moduleLink = "#/profile/" + user_id + "/addGrade/" + module_id + "/" + year %>
         <a href=<%= moduleLink %>>
-            <div class="grade-tile">
+            <div class="grade-tile semester-one">
                 <h1 class="text-center">
                     <button type="button" class="btn btn-link add-grade">
                         <span class="fa fa-plus grade-button"></span>
