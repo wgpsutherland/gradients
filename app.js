@@ -6,6 +6,7 @@ var express = require('express');
 var logfmt = require("logfmt");
 var bodyParser = require('body-parser');
 var nconf = require('./config');
+var compression = require('compression');
 
 //==================== Libs ====================//
 
@@ -18,6 +19,7 @@ app.use(logfmt.requestLogger());
 app.use(bodyParser());
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(compression());
 
 var port = Number(process.env.PORT || nconf.get('server:port')); // allows for use on the local server and with heroku without changing configs
 app.listen(port, function() {
