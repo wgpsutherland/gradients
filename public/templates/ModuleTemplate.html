@@ -1,55 +1,48 @@
 <div class="container">
     <hr>
 
-    <% var count = 0 %>
-    <% modules.each(function(module) { %>
+    <div class="row tile-row">
 
-        <% if(count%4==0) { %>
-            <div class="row tile-row">
-        <% } %>
+        <% modules.each(function(module) { %>
 
-        <div class="col-md-3 tile-wrapper">
+            <div class="col-xs-6 col-sm-4 col-md-3 tile-wrapper">
 
-            <% var value = "" +  module.get('id') + "x" + module.get('user_id') + "x" + module.get('year') + "x" + module.get('credits') %>
+                <% var value = "" +  module.get('id') + "x" + module.get('user_id') + "x" + module.get('year') + "x" + module.get('credits') %>
 
-            <div id="<%= module.get('id') %>" class="module-tile show-grade" data-value=<%= value %>>
-                <h3>
-                    <%= module.get('module_name') %>
-                </h3>
-                <h4>
-                    <%= module.get('module_code')%>
-                    <small>
-                        <% var thisYear = "" + module.get('year') %>
-                        <% var nextYear = "" + (module.get('year') + 1) %>
-                        (<%= thisYear.slice(-2) %>/<%= nextYear.slice(-2) %>)
-                    </small>
-                </h4>
+                <div id="<%= module.get('id') %>" class="module-tile show-grade" data-value=<%= value %>>
+                    <h3>
+                        <%= module.get('module_name') %>
+                    </h3>
+                    <h4>
+                        <%= module.get('module_code')%>
+                        <small>
+                            <% var thisYear = "" + module.get('year') %>
+                            <% var nextYear = "" + (module.get('year') + 1) %>
+                            (<%= thisYear.slice(-2) %>/<%= nextYear.slice(-2) %>)
+                        </small>
+                    </h4>
 
-                <button type="button" class="btn btn-link delete-user-module" value=<%= module.get('id') %> >
-                    <span class="fa fa-remove"></span>
-                </button>
+                    <button type="button" class="btn btn-link delete-user-module" value=<%= module.get('id') %> >
+                        <span class="fa fa-remove"></span>
+                    </button>
+                </div>
             </div>
-        </div>
 
-        <% if((count+1)%4==0) { %>
+        <% }); %>
+
+        <div class="col-xs-6 col-sm-4 col-md-3 tile-wrapper">
+
+            <% var moduleLink = "#/profile/" + user_id + "/addModule" %>
+            <a href=<%= moduleLink %>>
+
+            <div class="module-tile">
+                <h1 class="text-center">
+                    <button type="button" class="btn btn-link add-module">
+                        <span class="fa fa-plus module-button"></span>
+                    </button>
+                </h1>
             </div>
-        <% } %>
-
-    <% count += 1 %>
-    <% }); %>
-
-    <div class="col-md-3 tile-wrapper">
-
-        <% var moduleLink = "#/profile/" + user_id + "/addModule" %>
-        <a href=<%= moduleLink %>>
-
-        <div class="module-tile">
-            <h1 class="text-center">
-                <button type="button" class="btn btn-link add-module">
-                    <span class="fa fa-plus module-button"></span>
-                </button>
-            </h1>
+            </a>
         </div>
-        </a>
     </div>
 </div>
