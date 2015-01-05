@@ -133,7 +133,13 @@ h2, h3, h4 {
 /* ======================================== BODY ======================================== */
 
 .profile-title {
-    font-size: 70px;
+    font-size: 5em;
+}
+
+@media (max-width: 767px) {
+    .profile-title {
+        font-size: 2.6em;
+    }
 }
 
 .centre {
@@ -184,6 +190,12 @@ h2, h3, h4 {
     height: 100px;
 }
 
+@media (max-width: 767px) {
+    .grade-tile {
+        height: 150px;
+    }
+}
+
 .semester-one {
     background-color: #428bca;
 }
@@ -194,6 +206,12 @@ h2, h3, h4 {
 
 .grade-tile h1 {
     margin: 10px 0;
+}
+
+@media (max-width: 767px) {
+    .grade-tile h1{
+        margin: 30px 0;
+    }
 }
 
 .module-tile h3, .grade-tile h3 {
@@ -252,3 +270,5 @@ h2, h3, h4 {
 .form-button {
     cursor: pointer;
 }
+
+/* ======================================== TILES ========================================== */
