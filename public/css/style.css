@@ -133,12 +133,19 @@ h2, h3, h4 {
 /* ======================================== BODY ======================================== */
 
 .profile-title {
-    font-size: 5em;
+     font-size: 5em;
+ }
+
+.profile-subtitle {
+    font-size: 2em;
 }
 
 @media (max-width: 767px) {
     .profile-title {
         font-size: 2.6em;
+    }
+    .profile-subtitle {
+        font-size: 1.5em;
     }
 }
 
@@ -168,6 +175,7 @@ h2, h3, h4 {
     border-radius: 5px;
     text-align: center;
 }
+
 .letter-display h1 {
     font-size: 10em;
 }
