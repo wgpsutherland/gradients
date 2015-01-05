@@ -43,7 +43,16 @@ define([
                 }
             });
 
-            if(formContents.password != formContents.repeatPassword) { // make sure the passwords are the same
+            if(formContents.username.length > 15) {
+
+                var label = $("<label>")
+                    .text('Username must be 15 characters or less long.')
+                    .css("color", "#428bca")
+                    .addClass("invalid-input-label");
+
+                $(".warning-div").prepend(label);
+
+            } else if(formContents.password != formContents.repeatPassword) { // make sure the passwords are the same
 
                 var label = $("<label>")
                     .text('Both passwords must match.')
