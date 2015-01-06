@@ -8,6 +8,7 @@ define([
 
     var CreateAssignmentView = Backbone.View.extend({
         initialize: function(options) {
+
             this.assignmentsCollection = options.assignmentsCollection;
             this.assignmentTypeCollection = options.assignmentTypeCollection;
             this.moduleCollection = options.moduleCollection;
@@ -16,11 +17,17 @@ define([
             this.listenTo(this.moduleCollection, 'add remove change', this.render);
         },
         render: function() {
+
             var template = _.template(CreateAssignmentTemplate, {
                 modules: this.moduleCollection,
                 assignmentTypes: this.assignmentTypeCollection
             });
+
             this.$el.html(template);
+
+            this.$("#datepicker")
+                .datepicker({ dateFormat: 'dd M yy' }) // example: 06 Jan 2015
+                .datepicker("setDate", new Date());
         },
         events: {
             'submit .create-assignment-form': 'createAssignment'
@@ -40,7 +47,7 @@ define([
                     return false;
                 }
             });
-
+            
             if(goodForm) {
 
                 var options = {

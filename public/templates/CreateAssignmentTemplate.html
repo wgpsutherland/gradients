@@ -9,6 +9,7 @@
                 <div class="warning-div">&nbsp</div>
 
                 <form role="form" class="create-assignment-form">
+
                     <div class="form-group">
                         <select class="form-control" id="add-user-module-form-moduleChoice" name="module">
                             <option value="" disabled selected>Choose a module</option>
@@ -18,10 +19,12 @@
                             <% }); %>
                         </select>
                     </div>
+
                     <div class="form-group form-group-lg">
                         <label class="sr-only" for="assignmentName">Name</label>
                         <input type="text" class="form-control" id="assignmentName" placeholder="Enter assignment name" name="name">
                     </div>
+
                     <div class="form-group">
                         <select class="form-control" id="assignmentType" name="type">
                             <option value="" disabled selected>Choose an assignment type</option>
@@ -30,10 +33,12 @@
                             <% }); %>
                         </select>
                     </div>
+
                     <div class="form-group form-group-lg">
                         <label class="sr-only" for="maxMark">Max Mark</label>
                         <input type="text" class="form-control" id="maxMark" placeholder="Enter maximum mark" name="max">
                     </div>
+
                     <div class="form-group form-group-lg">
                         <select class="form-control" id="assignmentSemester" name="semester">
                             <option value="" disabled selected>Choose semester</option>
@@ -41,10 +46,12 @@
                             <option>2</option>
                         </select>
                     </div>
+
                     <div class="form-group form-group-lg">
                         <label class="sr-only" for="assignmentWeight">Weight</label>
                         <input type="text" class="form-control" id="assignmentWeight" placeholder="Enter weighting" name="weight">
                     </div>
+
                     <div class="form-group form-group-lg">
                         <select class="form-control" id="exampleInputYear" name="year">
                             <option value="" disabled selected>What year is the assignment for?</option>
@@ -57,6 +64,11 @@
 
                         </select>
                     </div>
+
+                    <div class="form-group form-group-lg">
+                        <p>Due Date: <input type="text" id="datepicker" name="due"></p>
+                    </div>
+
                     <button type="submit" class="btn btn-info">
                         <span class="fa fa-check"></span> Create
                     </button>

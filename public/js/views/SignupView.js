@@ -9,6 +9,7 @@ define([
 
     var LoginView = Backbone.View.extend({
         initialize: function(options) {
+
             this.router = options.router;
             this.userCollection = options.userCollection;
             this.institutionsCollection = options.institutionsCollection;
@@ -18,6 +19,7 @@ define([
             this.listenTo(this.courseCollection, 'add remove change', this.render);
         },
         render: function() {
+
             var template = _.template(SignupTemplate, {
                 institutions: this.institutionsCollection,
                 courses: this.courseCollection

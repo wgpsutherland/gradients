@@ -31,6 +31,7 @@ define([
 
 	var Router = Backbone.Router.extend({
         initialize: function() {
+
             //track every route change as a page view in google analytics
             this.bind('route', this.trackPageview);
         },
@@ -44,11 +45,11 @@ define([
             'profile/:id/editGrade/:ed/:od': 'editGrade'
 		},
         trackPageview: function () {
+
             var url = Backbone.history.getFragment();
 
             //prepend slash
-            if (!/^\//.test(url) && url != "")
-            {
+            if (!/^\//.test(url) && url != "") {
                 url = "/" + url;
             }
 
