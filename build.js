@@ -2,6 +2,7 @@
     baseUrl: "./public/js",
     paths: {
         jquery: "empty:",
+        jqueryUI: "empty:",
         underscore: "empty:",
         backbone: "empty:",
         bootstrap: "empty:"
