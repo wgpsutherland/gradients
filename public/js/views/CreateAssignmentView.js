@@ -3,8 +3,9 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'text!templates/CreateAssignmentTemplate.html'
-], function($, _, Backbone, CreateAssignmentTemplate) {
+    'text!templates/CreateAssignmentTemplate.html',
+    'libs/Labels'
+], function($, _, Backbone, CreateAssignmentTemplate, Labels) {
 
     var CreateAssignmentView = Backbone.View.extend({
         initialize: function(options) {
@@ -53,22 +54,12 @@ define([
                 var options = {
                     success: _.bind(function(something) {
 
-                        var label = $("<label>")
-                            .text('Successfully created the assignment.')
-                            .css("color", "#428bca")
-                            .addClass("invalid-input-label");
-
-                        $(".warning-div").prepend(label);
+                        $(".warning-div").prepend(Labels.assignmentSuccess);
 
                     }, this),
                     error: _.bind(function() {
 
-                        var label = $("<label>")
-                            .text('Assignment already exists.')
-                            .css("color", "#428bca")
-                            .addClass("invalid-input-label");
-
-                        $(".warning-div").prepend(label);
+                        $(".warning-div").prepend(Labels.assignmentExists);
 
                     }, this)
                 }
@@ -77,12 +68,7 @@ define([
 
             } else {
 
-                var label = $("<label>")
-                    .text('All fields must be filled out.')
-                    .css("color", "#428bca")
-                    .addClass("invalid-input-label");
-
-                $(".warning-div").prepend(label);
+                $(".warning-div").prepend(Labels.emptyFields);
             }
         }
     });

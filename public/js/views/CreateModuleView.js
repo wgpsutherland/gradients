@@ -3,8 +3,9 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'text!templates/CreateModuleTemplate.html'
-], function($, _, Backbone, CreateModuleTemplate) {
+    'text!templates/CreateModuleTemplate.html',
+    'libs/Labels'
+], function($, _, Backbone, CreateModuleTemplate, Labels) {
 
     var CreateModuleView = Backbone.View.extend({
         render: function() {
@@ -35,22 +36,12 @@ define([
                 var options = {
                     success: _.bind(function(something) {
 
-                        var label = $("<label>")
-                            .text('Successfully created the module.')
-                            .css("color", "#428bca")
-                            .addClass("invalid-input-label");
-
-                        $(".warning-div").prepend(label);
+                        $(".warning-div").prepend(Labels.moduleSuccess);
 
                     }, this),
                     error: _.bind(function() {
 
-                        var label = $("<label>")
-                            .text('Module already exists.')
-                            .css("color", "#428bca")
-                            .addClass("invalid-input-label");
-
-                        $(".warning-div").prepend(label);
+                        $(".warning-div").prepend(Labels.moduleExists);
 
                     }, this)
                 }
@@ -59,12 +50,7 @@ define([
 
             } else {
 
-                var label = $("<label>")
-                    .text('All fields must be filled out.')
-                    .css("color", "#428bca")
-                    .addClass("invalid-input-label");
-
-                $(".warning-div").prepend(label);
+                $(".warning-div").prepend(Labels.emptyFields);
             }
         }
     });

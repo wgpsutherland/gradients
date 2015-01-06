@@ -4,8 +4,9 @@ define([
     'underscore',
     'backbone',
     'text!templates/LoginTemplate.html',
-    'libs/formToObject'
-], function($, _, Backbone, LoginTemplate, formToObject) {
+    'libs/formToObject',
+    'libs/Labels'
+], function($, _, Backbone, LoginTemplate, formToObject, Labels) {
 
     var LoginView = Backbone.View.extend({
         initialize: function(options) {
@@ -52,14 +53,7 @@ define([
                     }, this),
                     error: _.bind(function() {
 
-                        var label = $("<label>")
-                            .text('Invalid username/ password.')
-                            .css("color", "#428bca")
-                            .addClass("invalid-input-label");
-
-                        $(".warning-div").append(label);
-
-                        this.router.navigate('#', {trigger: true});
+                        $(".warning-div").append(Labels.invalidUsernamePassword);
 
                     }, this)
                 }
@@ -68,12 +62,7 @@ define([
 
             } else {
 
-                var label = $("<label>")
-                    .text('All fields must be filled out.')
-                    .css("color", "#428bca")
-                    .addClass("invalid-input-label");
-
-                $(".warning-div").append(label);
+                $(".warning-div").append(Labels.emptyFields);
             }
         }
     });

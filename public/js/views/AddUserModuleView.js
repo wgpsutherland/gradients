@@ -4,8 +4,9 @@ define([
     'underscore',
     'backbone',
     'text!templates/AddUserModuleTemplate.html',
-    'libs/getCookie'
-], function($, _, Backbone, AddUserModuleTemplate, getCookie) {
+    'libs/getCookie',
+    'libs/Labels'
+], function($, _, Backbone, AddUserModuleTemplate, getCookie, Labels) {
 
     var AddUserModuleView = Backbone.View.extend({
         initialize: function(options) {
@@ -50,22 +51,12 @@ define([
                 var options = {
                     success: _.bind(function(something) {
 
-                        var label = $("<label>")
-                            .text('Successfully added module.')
-                            .css("color", "#428bca")
-                            .addClass("invalid-input-label");
-
-                        $(".warning-div").prepend(label);
+                        $(".warning-div").prepend(Labels.userModuleSuccess);
 
                     }, this),
                     error: _.bind(function() {
 
-                        var label = $("<label>")
-                            .text('User already has this module.')
-                            .css("color", "#428bca")
-                            .addClass("invalid-input-label");
-
-                        $(".warning-div").prepend(label);
+                        $(".warning-div").prepend(Labels.userModuleExists);
                     }, this)
                 }
 
@@ -73,12 +64,7 @@ define([
 
             } else {
 
-                var label = $("<label>")
-                    .text('All fields must be filled out.')
-                    .css("color", "#428bca")
-                    .addClass("invalid-input-label");
-
-                $(".warning-div").prepend(label);
+                $(".warning-div").prepend(Labels.emptyFields);
             }
         },
         cancel: function(ev) {

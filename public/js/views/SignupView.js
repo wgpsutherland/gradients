@@ -4,8 +4,9 @@ define([
     'underscore',
     'backbone',
     'text!templates/SignupTemplate.html',
-    'libs/formToObject'
-], function($, _, Backbone, SignupTemplate, formToObject) {
+    'libs/formToObject',
+    'libs/Labels'
+], function($, _, Backbone, SignupTemplate, formToObject, Labels) {
 
     var LoginView = Backbone.View.extend({
         initialize: function(options) {
@@ -47,21 +48,11 @@ define([
 
             if(formContents.username.length > 15) {
 
-                var label = $("<label>")
-                    .text('Username must be 15 characters or less long.')
-                    .css("color", "#428bca")
-                    .addClass("invalid-input-label");
-
-                $(".warning-div").prepend(label);
+                $(".warning-div").prepend(Labels.usernameTooShort);
 
             } else if(formContents.password != formContents.repeatPassword) { // make sure the passwords are the same
 
-                var label = $("<label>")
-                    .text('Both passwords must match.')
-                    .css("color", "#428bca")
-                    .addClass("invalid-input-label");
-
-                $(".warning-div").prepend(label);
+                $(".warning-div").prepend(Labels.passwordsNotMatching);
 
             } else if(goodForm) { // if the form is syntactically valid
 
@@ -74,12 +65,7 @@ define([
                     }, this),
                     error: _.bind(function() {
 
-                        var label = $("<label>")
-                            .text('Username already exists.')
-                            .css("color", "#428bca")
-                            .addClass("invalid-input-label");
-
-                        $(".warning-div").append(label);
+                        $(".warning-div").append(Labels.usernameExists);
 
                     }, this)
                 }
@@ -88,12 +74,7 @@ define([
 
             } else {
 
-                var label = $("<label>")
-                    .text('All fields must be filled out.')
-                    .css("color", "#428bca")
-                    .addClass("invalid-input-label");
-
-                $(".warning-div").prepend(label);
+                $(".warning-div").prepend(Labels.emptyFields);
             }
         }
     });

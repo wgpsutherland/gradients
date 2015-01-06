@@ -3,8 +3,9 @@ define([
     'jquery',
     'underscore',
     'backbone',
-    'text!templates/EditGradeTemplate.html'
-], function($, _, Backbone, EditGradeTemplate) {
+    'text!templates/EditGradeTemplate.html',
+    'libs/Labels'
+], function($, _, Backbone, EditGradeTemplate, Labels) {
 
     var EditGradeView = Backbone.View.extend({
         initialize: function(options) {
@@ -46,30 +47,15 @@ define([
 
             if(isNaN(formContents.score)) { // make sure it's a number
 
-                var label = $("<label>")
-                    .text('Score must be a number.')
-                    .css("color", "#428bca")
-                    .addClass("invalid-input-label");
-
-                $(".warning-div").prepend(label);
+                $(".warning-div").prepend(Labels.scoreNotNumber);
 
             } else if((formContents.score.split(".")[1])) { // makes sure it's not a decimal
 
-                var label = $("<label>")
-                    .text('Score must be a natural number.')
-                    .css("color", "#428bca")
-                    .addClass("invalid-input-label");
-
-                $(".warning-div").prepend(label);
+                $(".warning-div").prepend(Labels.scoreNotNatural);
 
             } else if(formContents.score < 0) {
 
-                var label = $("<label>")
-                    .text('Score cannot be negative.')
-                    .css("color", "#428bca")
-                    .addClass("invalid-input-label");
-
-                $(".warning-div").prepend(label);
+                $(".warning-div").prepend(Labels.scoreNotPositive);
 
             } else if(goodForm) { // if the form is syntactically valid
 
@@ -80,14 +66,10 @@ define([
                         this.router.navigate('#/profile/'+$("user_id").getCookie(), {trigger: true});
 
                     }, this),
-                    error: _.bind(function() {
+                    error: _.bind(function(er) {
 
-                        var label = $("<label>")
-                            .text('Save failed.')
-                            .css("color", "#428bca")
-                            .addClass("invalid-input-label");
-
-                        $(".warning-div").prepend(label);
+                        console.log(er);
+                        $(".warning-div").prepend(Labels.saveFailed);
 
                     }, this)
                 }
@@ -96,12 +78,7 @@ define([
 
             } else {
 
-                var label = $("<label>")
-                    .text('All fields must be filled out.')
-                    .css("color", "#428bca")
-                    .addClass("invalid-input-label");
-
-                $(".warning-div").prepend(label);
+                $(".warning-div").prepend(Labels.emptyFields);
             }
         },
         cancel: function(ev) {
