@@ -42,6 +42,7 @@ define([
                         // empties the form so on logout the values aren't still there
                         $(ev.currentTarget).trigger("reset");
 
+                        // sets the cookie which is integral to the login system working
                         document.cookie = "user_id=" + something.attributes.id + ";";
 
                         $(".warning-div").empty().append("&nbsp");
@@ -59,6 +60,7 @@ define([
                         $(".warning-div").append(label);
 
                         this.router.navigate('#', {trigger: true});
+
                     }, this)
                 }
 

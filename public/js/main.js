@@ -3,25 +3,25 @@ require.config({
 	paths: {
 		'jquery': [
 			"//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min",
-			"./libs/jquery-2.1.3.min"
+			"./assets/jquery-2.1.3.min"
 		],
 		'jqueryUI': [
 			"//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min",
-			"./libs/jquery-ui.min"
+			"./assets/jquery-ui.min"
 		],
         'underscore': [
 			"//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.2/underscore-min",
-			"./libs/underscore-min"
+			"./assets/underscore-min"
 		],
         'backbone': [
 			"//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min",
-			"./libs/backbone-min"
+			"./assets/backbone-min"
 		],
         'bootstrap': [
 			"//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min",
-			"./libs/bootstrap.min"
+			"./assets/bootstrap.min"
 		],
-        'text': "./libs/text",
+        'text': "./assets/text",
         'templates': "../templates"
 	},
 	shim: {
