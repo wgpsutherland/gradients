@@ -10,13 +10,24 @@
 
             <hr>
 
-            <% averages.each(function(average) { %>
+            <div class="row tile-row">
 
-                <h4>
-                    <%= average.get('year').slice(-2) %>/<%= ("" + (parseInt(average.get('year')) + 1)).slice(-2) %>: <%= average.get('average') %>%
-                </h4>
+                <% averages.each(function(average) { %>
 
-            <% }); %>
+                        <div class="col-xs-6 col-sm-4 col-md-3 tile-wrapper">
+                            <div class="year-average-tile">
+                                <h2>
+                                    <%= average.get('average') %>%
+                                </h2>
+                                <h4>
+                                    <%= average.get('year').slice(-2) %>/<%= ("" + (parseInt(average.get('year')) + 1)).slice(-2) %>
+                                </h4>
+                            </div>
+                        </div>
+
+                <% }); %>
+
+            </div>
 
         </div>
     </div>
