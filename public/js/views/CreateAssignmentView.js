@@ -47,7 +47,7 @@ define([
                     return false;
                 }
             });
-            
+
             if(goodForm) {
 
                 var options = {
