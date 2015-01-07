@@ -34,10 +34,32 @@ define([
             for(var i=0; i<ca.length; i++) {
                 var c = ca[i];
                 while (c.charAt(0)==' ') c = c.substring(1);
-                if (c.indexOf(name) != -1) return c.substring(name.length,c.length);
+                if (c.indexOf(name) != -1) return c.substring(name.length, c.length);
             }
 
             return "";
+        },
+
+        /**
+         * convert a form to an object containing key value pairs (name: "value") for each field in the form
+         * @param form - the form being parsed
+         * @returns {{}}
+         */
+        formToObject: function(form) {
+
+            var o = {};
+            var a = form.serializeArray();
+            $.each(a, function() {
+                if (o[this.name] !== undefined) {
+                    if (!o[this.name].push) {
+                        o[this.name] = [o[this.name]];
+                    }
+                    o[this.name].push(this.value || '');
+                } else {
+                    o[this.name] = this.value || '';
+                }
+            });
+            return o;
         }
     }
 });

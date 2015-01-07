@@ -4,10 +4,9 @@ define([
     'underscore',
     'backbone',
     'text!templates/LoginTemplate.html',
-    'libs/formToObject',
     'libs/Labels',
     'libs/Utils'
-], function($, _, Backbone, LoginTemplate, formToObject, Labels, Utils) {
+], function($, _, Backbone, LoginTemplate, Labels, Utils) {
 
     var LoginView = Backbone.View.extend({
 
@@ -15,6 +14,7 @@ define([
             this.router = options.router;
         },
         render: function() {
+
             var template = _.template(LoginTemplate);
             this.$el.html(template);
         },
@@ -27,7 +27,8 @@ define([
 
             $(".warning-div").empty().append("&nbsp");
 
-            var formContents = $(ev.currentTarget).formToObject();
+            var formContents = Utils.formToObject($(ev.currentTarget));
+            console.log(formContents);
 
             var goodForm = Utils.goodForm(formContents);
 

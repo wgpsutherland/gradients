@@ -4,10 +4,9 @@ define([
     'underscore',
     'backbone',
     'text!templates/SignupTemplate.html',
-    'libs/formToObject',
     'libs/Labels',
     'libs/Utils'
-], function($, _, Backbone, SignupTemplate, formToObject, Labels, Utils) {
+], function($, _, Backbone, SignupTemplate, Labels, Utils) {
 
     var LoginView = Backbone.View.extend({
 
@@ -39,7 +38,7 @@ define([
 
             $(".warning-div").empty().append("&nbsp");
 
-            var formContents = $(ev.currentTarget).formToObject();
+            var formContents = Utils.formToObject($(ev.currentTarget));
 
             var goodForm = Utils.goodForm(formContents);
 
