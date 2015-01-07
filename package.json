@@ -2,7 +2,7 @@
   "name": "grades",
   "version": "0.0.0",
   "description": "An app which allows you to track your grades over the year.",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
