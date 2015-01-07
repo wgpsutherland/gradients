@@ -4,12 +4,12 @@ define([
     'underscore',
     'backbone',
     'text!templates/AddUserModuleTemplate.html',
-    'libs/getCookie',
     'libs/Labels',
     'libs/Utils'
-], function($, _, Backbone, AddUserModuleTemplate, getCookie, Labels, Utils) {
+], function($, _, Backbone, AddUserModuleTemplate, Labels, Utils) {
 
     var AddUserModuleView = Backbone.View.extend({
+
         initialize: function(options) {
 
             this.user_id = options.user_id;
@@ -21,10 +21,12 @@ define([
             this.listenTo(this.moduleCollection, 'add remove change', this.render);
         },
         render: function() {
+
             var template = _.template(AddUserModuleTemplate, {
                 modules: this.moduleCollection,
                 user_id: this.user_id
             });
+
             this.$el.html(template);
         },
         events: {
@@ -52,6 +54,7 @@ define([
                     error: _.bind(function() {
 
                         $(".warning-div").prepend(Labels.userModuleExists);
+
                     }, this)
                 }
 
@@ -65,7 +68,11 @@ define([
         cancel: function(ev) {
 
             $(".warning-div").empty().append("&nbsp");
-            this.router.navigate('#/profile/'+$("user_id").getCookie(), {trigger: true});
+
+            var userId = Utils.getCookie("user_id");
+            var url = '#/profile/' + userId;
+
+            this.router.navigate(url, {trigger: true});
         }
     });
 

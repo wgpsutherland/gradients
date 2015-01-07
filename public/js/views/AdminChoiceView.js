@@ -9,12 +9,14 @@ define([
 ], function($, _, Backbone, AdminChoiceTemplate, CreateModuleView, CreateAssignmentView) {
 
     var AdminChoiceView = Backbone.View.extend({
+
         initialize: function(options) {
             this.moduleCollection = options.moduleCollection;
             this.assignmentsCollection = options.assignmentsCollection;
             this.assignmentTypeCollection = options.assignmentTypeCollection;
         },
         render: function() {
+
             var template = _.template(AdminChoiceTemplate);
             this.$el.html(template);
         },

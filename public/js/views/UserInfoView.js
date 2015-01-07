@@ -7,6 +7,7 @@ define([
 ], function($, _, Backbone, UserInfoTemplate) {
 
     var UserInfoView = Backbone.View.extend({
+
         initialize: function(options) {
 
             this.userModel = options.userModel;

@@ -10,11 +10,10 @@ define([
     'views/ModuleView',
     'collections/GradesCollection',
     'views/GradesView',
-    'libs/getCookie',
     'models/GradeAverageModel',
     'views/FooterView'
 ], function($, _, Backbone, ProfileNavView, UserInfoView, UserModel, UserModulesCollection,
-            ModuleView, GradesCollection, GradesView, getCookie, GradeAverageModel, FooterView) {
+            ModuleView, GradesCollection, GradesView, GradeAverageModel, FooterView) {
 
     var ProfilePage = Backbone.View.extend({
 

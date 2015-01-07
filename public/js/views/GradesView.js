@@ -8,6 +8,7 @@ define([
 ], function($, _, Backbone, GradesTemplate, NoGradesTemplate) {
 
     var GradesView = Backbone.View.extend({
+
         initialize: function(options) {
 
             this.gradesCollection = options.gradesCollection;

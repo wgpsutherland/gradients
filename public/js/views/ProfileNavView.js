@@ -8,6 +8,7 @@ define([
 ], function($, _, Backbone, ProfileNavTemplate, UserModel) {
 
     var ProfileNavView = Backbone.View.extend({
+
         initialize: function(options) {
 
             this.userModel = new UserModel({id: options.id});
@@ -16,9 +17,11 @@ define([
             this.listenTo(this.userModel, 'add remove change', this.render);
         },
         render: function() {
+
             var template = _.template(ProfileNavTemplate, {
                 user: this.userModel
             });
+
             this.$el.html(template);
         },
         events: {

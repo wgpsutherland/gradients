@@ -10,6 +10,7 @@ define([
 ], function($, _, Backbone, SignupTemplate, formToObject, Labels, Utils) {
 
     var LoginView = Backbone.View.extend({
+
         initialize: function(options) {
 
             this.router = options.router;
@@ -26,6 +27,7 @@ define([
                 institutions: this.institutionsCollection,
                 courses: this.courseCollection
             });
+
             this.$el.html(template);
         },
         events: {

@@ -10,6 +10,7 @@ define([
 ], function($, _, Backbone, LoginTemplate, formToObject, Labels, Utils) {
 
     var LoginView = Backbone.View.extend({
+
         initialize: function(options) {
             this.router = options.router;
         },

@@ -13,7 +13,6 @@ define([
     'views/AddModulePage',
     'collections/ModuleCollection',
     'collections/UserModulesCollection',
-    'libs/getCookie',
     'collections/InstitutionsCollection',
     'collections/CourseCollection',
     'collections/GradesCollection',
@@ -22,14 +21,16 @@ define([
     'views/AdminPage',
     'views/EditGradePage',
     'collections/AssignmentTypeCollection',
-    'collections/YearAverageCollection'
+    'collections/YearAverageCollection',
+    'libs/Utils'
 ], function($, _, Backbone, bootstrap, HomePage, ProfilePage, UserCollection,
             SignupPage, LoginCollection, UserModel,
-            AddModulePage, ModuleCollection, UserModulesCollection, getCookie, InstitutionsCollection,
+            AddModulePage, ModuleCollection, UserModulesCollection, InstitutionsCollection,
             CourseCollection, GradesCollection, AddGradePage, AssignmentsCollection, AdminPage,
-            EditGradePage, AssignmentTypeCollection, YearAverageCollection) {
+            EditGradePage, AssignmentTypeCollection, YearAverageCollection, Utils) {
 
 	var Router = Backbone.Router.extend({
+
         initialize: function() {
 
             //track every route change as a page view in google analytics
@@ -127,7 +128,7 @@ define([
 
 		router.on('route', function(pageName, stuff) {
 
-            var userId = $("user_id").getCookie();
+            var userId = Utils.getCookie("user_id");
 
             if(userId) { // if logged in
 
@@ -154,7 +155,7 @@ define([
 
                     this.userModel.fetch({
 
-                        success: _.bind(function() { // successfull connection to the db
+                        success: _.bind(function() { // successful connection to the db
 
                             if(!(this.userModel.get('admin'))) {  // if they're not an admin redirect
 

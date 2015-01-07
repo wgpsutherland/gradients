@@ -9,6 +9,7 @@ define([
 ], function($, _, Backbone, CreateAssignmentTemplate, Labels, Utils) {
 
     var CreateAssignmentView = Backbone.View.extend({
+        
         initialize: function(options) {
 
             this.assignmentsCollection = options.assignmentsCollection;

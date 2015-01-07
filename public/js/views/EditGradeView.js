@@ -9,6 +9,7 @@ define([
 ], function($, _, Backbone, EditGradeTemplate, Labels, Utils) {
 
     var EditGradeView = Backbone.View.extend({
+
         initialize: function(options) {
 
             this.router = options.router;
@@ -22,8 +23,8 @@ define([
             var template = _.template(EditGradeTemplate, {
                 model: this.gradeModel
             });
-            this.$el.html(template);
 
+            this.$el.html(template);
         },
         events: {
             'submit .edit-grade-form': 'editGrade',
@@ -58,12 +59,15 @@ define([
                     success: _.bind(function(something) {
 
                         $(".warning-div").empty().append("&nbsp");
-                        this.router.navigate('#/profile/'+$("user_id").getCookie(), {trigger: true});
+
+                        var userId = Utils.getCookie("user_id");
+                        var url = '#/profile/' + userId;
+
+                        this.router.navigate(url, {trigger: true});
 
                     }, this),
                     error: _.bind(function(er) {
 
-                        console.log(er);
                         $(".warning-div").prepend(Labels.saveFailed);
 
                     }, this)
@@ -79,7 +83,11 @@ define([
         cancel: function(ev) {
 
             $(".warning-div").empty().append("&nbsp");
-            this.router.navigate('#/profile/'+$("user_id").getCookie(), {trigger: true});
+
+            var userId = Utils.getCookie("user_id");
+            var url = '#/profile/' + userId;
+
+            this.router.navigate(url, {trigger: true});
         },
         delete: function(ev) {
 
@@ -94,7 +102,12 @@ define([
                 success: _.bind(function() { // on removal success
 
                     $(".warning-div").empty().append("&nbsp");
-                    this.router.navigate('#/profile/'+$("user_id").getCookie(), {trigger: true});
+
+                    var userId = Utils.getCookie("user_id");
+                    var url = '#/profile/' + userId;
+
+                    this.router.navigate(url, {trigger: true});
+
                 }, this)
             });
         }

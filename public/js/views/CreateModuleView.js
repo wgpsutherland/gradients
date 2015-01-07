@@ -9,7 +9,9 @@ define([
 ], function($, _, Backbone, CreateModuleTemplate, Labels, Utils) {
 
     var CreateModuleView = Backbone.View.extend({
+
         render: function() {
+
             var template = _.template(CreateModuleTemplate);
             this.$el.html(template);
         },

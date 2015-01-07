@@ -4,28 +4,33 @@ define([
     'underscore',
     'backbone',
     'text!templates/AddGradeTemplate.html',
-    'libs/getCookie',
     'libs/Labels',
     'libs/Utils'
-], function($, _, Backbone, AddGradeTemplate, getCookie, Labels, Utils) {
+], function($, _, Backbone, AddGradeTemplate, Labels, Utils) {
 
     var AddGradeView = Backbone.View.extend({
+
         initialize: function(options) {
+
             this.router = options.router;
             this.assignmentsCollection = options.assignmentsCollection;
             this.gradesCollection = options.gradesCollection;
+
             this.module_id = options.module_id;
             this.user_id = options.user_id;
             this.year = options.year;
+
             this.listenTo(this.assignmentsCollection, 'add remove change', this.render);
         },
         render: function() {
+
             var template = _.template(AddGradeTemplate, {
                 assignments: this.assignmentsCollection,
                 module_id: this.module_id,
                 user_id: this.user_id,
                 year: this.year
             });
+
             this.$el.html(template);
         },
         events: {
@@ -79,7 +84,11 @@ define([
         cancel: function(ev) {
 
             $(".warning-div").empty().append("&nbsp");
-            this.router.navigate('#/profile/'+$("user_id").getCookie(), {trigger: true});
+
+            var userId = Utils.getCookie("user_id");
+            var url = '#/profile/' + userId;
+
+            this.router.navigate(url, {trigger: true});
         }
     });
 

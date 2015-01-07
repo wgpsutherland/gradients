@@ -9,6 +9,7 @@ define([
 ], function($, _, Backbone, ModuleTemplate, GradeAverageModel, GradesView) {
 
     var ModuleView = Backbone.View.extend({
+
         initialize: function(options) {
 
             this.userModulesCollection = options.userModulesCollection;
@@ -24,6 +25,7 @@ define([
                 modules: this.userModulesCollection,
                 user_id: this.userId
             });
+
             this.$el.html(template);
         },
         events: {
