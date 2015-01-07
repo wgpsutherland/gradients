@@ -28,7 +28,6 @@ define([
             $(".warning-div").empty().append("&nbsp");
 
             var formContents = Utils.formToObject($(ev.currentTarget));
-            console.log(formContents);
 
             var goodForm = Utils.goodForm(formContents);
 
