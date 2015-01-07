@@ -5,8 +5,9 @@ define([
     'backbone',
     'text!templates/SignupTemplate.html',
     'libs/formToObject',
-    'libs/Labels'
-], function($, _, Backbone, SignupTemplate, formToObject, Labels) {
+    'libs/Labels',
+    'libs/Utils'
+], function($, _, Backbone, SignupTemplate, formToObject, Labels, Utils) {
 
     var LoginView = Backbone.View.extend({
         initialize: function(options) {
@@ -38,13 +39,7 @@ define([
 
             var formContents = $(ev.currentTarget).formToObject();
 
-            var goodForm = _.every(formContents, function(field) { // checks that each field in the form has been filled
-                if(field.trim().length>0) {
-                    return true;
-                } else {
-                    return false;
-                }
-            });
+            var goodForm = Utils.goodForm(formContents);
 
             if(formContents.username.length > 15) {
 

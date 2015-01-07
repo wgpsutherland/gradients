@@ -4,8 +4,9 @@ define([
     'underscore',
     'backbone',
     'text!templates/EditGradeTemplate.html',
-    'libs/Labels'
-], function($, _, Backbone, EditGradeTemplate, Labels) {
+    'libs/Labels',
+    'libs/Utils'
+], function($, _, Backbone, EditGradeTemplate, Labels, Utils) {
 
     var EditGradeView = Backbone.View.extend({
         initialize: function(options) {
@@ -37,13 +38,7 @@ define([
 
             var formContents = $(ev.currentTarget).formToObject();
 
-            var goodForm = _.every(formContents, function(field) { // checks that each field in the form has been filled
-                if(field.trim().length>0) {
-                    return true;
-                } else {
-                    return false;
-                }
-            });
+            var goodForm = Utils.goodForm(formContents);
 
             if(isNaN(formContents.score)) { // make sure it's a number
 

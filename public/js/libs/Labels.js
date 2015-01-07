@@ -11,7 +11,7 @@ define([
         invalidUsernamePassword:
             label.clone().text('Invalid username/password.'),
         usernameTooShort:
-            label.clone().text('Username must be 15 characters or less long.'),
+            label.clone().text('Username must be 15 characters or less.'),
         passwordsNotMatching:
             label.clone().text('Both passwords must match.'),
         usernameExists:

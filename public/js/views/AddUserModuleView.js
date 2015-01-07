@@ -5,8 +5,9 @@ define([
     'backbone',
     'text!templates/AddUserModuleTemplate.html',
     'libs/getCookie',
-    'libs/Labels'
-], function($, _, Backbone, AddUserModuleTemplate, getCookie, Labels) {
+    'libs/Labels',
+    'libs/Utils'
+], function($, _, Backbone, AddUserModuleTemplate, getCookie, Labels, Utils) {
 
     var AddUserModuleView = Backbone.View.extend({
         initialize: function(options) {
@@ -38,13 +39,7 @@ define([
 
             var formContents = $(ev.currentTarget).formToObject();
 
-            var goodForm = _.every(formContents, function(field) { // checks that each field in the form has been filled
-                if(field.trim().length>0) {
-                    return true;
-                } else {
-                    return false;
-                }
-            });
+            var goodForm = Utils.goodForm(formContents);
 
             if(goodForm) { // if the form is syntactically valid
 

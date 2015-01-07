@@ -4,8 +4,9 @@ define([
     'underscore',
     'backbone',
     'text!templates/CreateAssignmentTemplate.html',
-    'libs/Labels'
-], function($, _, Backbone, CreateAssignmentTemplate, Labels) {
+    'libs/Labels',
+    'libs/Utils'
+], function($, _, Backbone, CreateAssignmentTemplate, Labels, Utils) {
 
     var CreateAssignmentView = Backbone.View.extend({
         initialize: function(options) {
@@ -41,13 +42,7 @@ define([
 
             var formContents = $(ev.currentTarget).formToObject();
 
-            var goodForm = _.every(formContents, function(field) { // checks that each field in the form has been filled
-                if(field.trim().length>0) {
-                    return true;
-                } else {
-                    return false;
-                }
-            });
+            var goodForm = Utils.goodForm(formContents);
 
             if(goodForm) {
 
