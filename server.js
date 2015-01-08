@@ -33,7 +33,11 @@ app.listen(port, function() {
 // doesn't validate as it is the thing doing the validation
 app.post('/gradient/v1/login', queries.loginUser);
 
-app.post('/gradient/v1/users',              validation.validate, queries.createUser);
+// don't require validation as they're used to create a user
+app.get('/gradient/v1/institutions',        queries.getInstitutions);
+app.get('/gradient/v1/courses',             queries.getCourses);
+app.post('/gradient/v1/users',              queries.createUser);
+
 app.post('/gradient/v1/userModules',        validation.validate, queries.addUserModule);
 app.post('/gradient/v1/modules',            validation.validate, queries.createModule);
 app.post('/gradient/v1/grade',              validation.validate, queries.addGrade);
@@ -43,8 +47,6 @@ app.get('/gradient/v1/users/:id',           validation.validate, queries.getUser
 app.get('/gradient/v1/userModules/:id',     validation.validate, queries.getUserModules);
 app.get('/gradient/v1/grades/',             validation.validate, queries.getGradesForUserFromModule);
 app.get('/gradient/v1/modules',             validation.validate, queries.getModules);
-app.get('/gradient/v1/institutions',        validation.validate, queries.getInstitutions);
-app.get('/gradient/v1/courses',             validation.validate, queries.getCourses);
 app.get('/gradient/v1/assignments',         validation.validate, queries.getAssignments);
 app.get('/gradient/v1/assignmentType',      validation.validate, queries.getAssignmentTypes);
 app.get('/gradient/v1/gradeAverage/:id',    validation.validate, queries.getGradeAverage);
