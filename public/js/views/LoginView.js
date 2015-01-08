@@ -34,20 +34,22 @@ define([
             if(goodForm) { // if the form is syntactically valid
 
                 var options = {
-                    success: _.bind(function(something) {
+                    success: _.bind(function(res) {
 
                         // empties the form so on logout the values aren't still there
                         $(ev.currentTarget).trigger("reset");
 
+                        var userId = res.attributes.id;
+
                         // sets the cookie which is integral to the login system working
-                        document.cookie = "user_id=" + something.attributes.id + ";";
+                        document.cookie = "user_id=" + userId + ";";
 
                         $(".warning-div").empty().append("&nbsp");
 
-                        this.router.navigate('#/profile/'+something.attributes.id, {trigger: true});
+                        this.router.navigate('#/profile/' + userId, {trigger: true});
 
                     }, this),
-                    error: _.bind(function() {
+                    error: _.bind(function(er) {
 
                         $(".warning-div").append(Labels.invalidUsernamePassword);
 
