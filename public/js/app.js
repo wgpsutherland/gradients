@@ -16,7 +16,9 @@ define([
             // add the authentication token to the header every time an ajax request is made
             $.ajaxSetup({
                 headers: {
-                    "user_id" : Utils.getCookie("user_id")
+                    "user_id": Utils.getCookie("user_id"),
+                    "auth_token": Utils.getCookie("auth_token"),
+                    "username": Utils.getCookie("username")
                 }
             });
 
