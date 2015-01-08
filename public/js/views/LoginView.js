@@ -43,7 +43,7 @@ define([
                         var authToken = res.attributes.auth.token;
                         var username = res.attributes.auth.user.username;
 
-                        // sets the cookie which is integral to the login system working
+                        // sets the cookies which are integral to the login system
                         document.cookie = "user_id=" + userId + ";";
                         document.cookie = "auth_token=" + authToken + ";";
                         document.cookie = "username=" + username + ";";
