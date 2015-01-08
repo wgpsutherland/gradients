@@ -39,10 +39,14 @@ define([
                         // empties the form so on logout the values aren't still there
                         $(ev.currentTarget).trigger("reset");
 
-                        var userId = res.attributes.id;
+                        var userId = res.attributes.auth.user.id;
+                        var authToken = res.attributes.auth.token;
+                        var username = res.attributes.auth.user.username;
 
-                        // sets the cookie which is integral to the login system working
+                        // sets the cookies which are integral to the login system
                         document.cookie = "user_id=" + userId + ";";
+                        document.cookie = "auth_token=" + authToken + ";";
+                        document.cookie = "username=" + username + ";";
 
                         $(".warning-div").empty().append("&nbsp");
 
