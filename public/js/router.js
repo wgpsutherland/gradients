@@ -23,11 +23,14 @@ define([
     'collections/AssignmentTypeCollection',
     'collections/YearAverageCollection',
     'libs/Utils'
-], function($, _, Backbone, bootstrap, HomePage, ProfilePage, UserCollection,
-            SignupPage, LoginCollection, UserModel,
-            AddModulePage, ModuleCollection, UserModulesCollection, InstitutionsCollection,
-            CourseCollection, GradesCollection, AddGradePage, AssignmentsCollection, AdminPage,
-            EditGradePage, AssignmentTypeCollection, YearAverageCollection, Utils) {
+], function($, _, Backbone,
+    bootstrap, HomePage, ProfilePage,
+    UserCollection, SignupPage, LoginCollection,
+    UserModel, AddModulePage, ModuleCollection,
+    UserModulesCollection, InstitutionsCollection, CourseCollection,
+    GradesCollection, AddGradePage, AssignmentsCollection,
+    AdminPage, EditGradePage, AssignmentTypeCollection,
+    YearAverageCollection, Utils) {
 
 	var Router = Backbone.Router.extend({
 
