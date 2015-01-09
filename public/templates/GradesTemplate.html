@@ -32,7 +32,7 @@
             <% } %>
 
             <div class="col-xs-6 col-sm-4 col-md-3 tile-wrapper">
-                <a href="#/profile/<%= user_id %>/editGrade/<%= grade.get('id') %>/<%= grade.get('module_id') %>" class="no-underline">
+                <a href="#/<%= user_id %>/editGrade/<%= grade.get('id') %>/<%= grade.get('module_id') %>" class="no-underline">
                 <div class= "<%= colour %>" >
                     <h3>
                         <%= grade.get('assignment_name') %>
@@ -49,7 +49,7 @@
 
         <div class="col-xs-6 col-sm-4 col-md-3 tile-wrapper">
 
-            <% var moduleLink = "#/profile/" + user_id + "/addGrade/" + module_id + "/" + year %>
+            <% var moduleLink = "#/" + user_id + "/addGrade/" + module_id + "/" + year %>
             <a href=<%= moduleLink %>>
                 <div class="grade-tile semester-one">
                     <h1 class="text-center">

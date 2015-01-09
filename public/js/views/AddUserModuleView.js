@@ -70,7 +70,7 @@ define([
             $(".warning-div").empty().append("&nbsp");
 
             var userId = Utils.getCookie("user_id");
-            var url = '#/profile/' + userId;
+            var url = '#/' + userId;
 
             this.router.navigate(url, {trigger: true});
         }

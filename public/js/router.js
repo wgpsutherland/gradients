@@ -41,12 +41,12 @@ define([
         },
 		routes: {
 			'': 'home',
-            'profile/:id': 'profile',
+            ':id': 'profile',
             'signup': 'signup',
-            'profile/:id/addModule': 'addModule',
-            'profile/:id/addGrade/:od/:ed': 'addGrade',
-            'profile/:id/admin': 'admin',
-            'profile/:id/editGrade/:ed/:od': 'editGrade'
+            ':id/addModule': 'addModule',
+            ':id/addGrade/:od/:ed': 'addGrade',
+            ':id/admin': 'admin',
+            ':id/editGrade/:ed/:od': 'editGrade'
 		},
         trackPageview: function () {
 
@@ -129,7 +129,7 @@ define([
             editGrade: editGradePage
 		};
 
-		router.on('route', function(pageName, stuff) {
+		router.on('route', function(pageName, id) {
 
             var userId = Utils.getCookie("user_id");
 
@@ -141,16 +141,16 @@ define([
                 || pageName=="addGrade"
                 || pageName=="admin"
                 || pageName=="editGrade" )
-                && (stuff[0] != userId)
+                && (id[0] != userId)
                 ) {
 
-                    router.navigate('#', {trigger: true});
+                    router.navigate('#/' + userId, {trigger: true});
 
                 } else if ((pageName=="home" || pageName=="signup")) { // if the user is logged in redirect to the profile
 
-                    router.navigate('#/profile/' + userId, {trigger: true});
+                    router.navigate('#/' + userId, {trigger: true});
 
-                } else if(pageName=="admin") { // do an access check
+               } else if(pageName=="admin") { // do an access check
 
                     this.userModel = new UserModel({
                         id: userId
@@ -162,18 +162,18 @@ define([
 
                             if(!(this.userModel.get('admin'))) {  // if they're not an admin redirect
 
-                                router.navigate('#', {trigger: true});
+                                router.navigate('#/', {trigger: true});
 
                             } else { renderPage(pageName); }
 
                         }, this),
                         error: (function() { // if the model cannot be found on the server
 
-                            router.navigate('#', {trigger: true});
+                            router.navigate('#/', {trigger: true});
                         })
                     });
 
-                } else { renderPage(pageName); }
+               } else { renderPage(pageName); }
 
             } else {
 

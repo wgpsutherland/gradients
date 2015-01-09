@@ -11,7 +11,7 @@ define([
 
         initialize: function(options) {
 
-            this.userId = options.id;
+            this.userId = Utils.getCookie("user_id");
             this.admin = JSON.parse(Utils.getCookie("admin"));
         },
         render: function() {

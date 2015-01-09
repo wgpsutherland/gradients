@@ -39,8 +39,8 @@ define([
                         // empties the form so on logout the values aren't still there
                         $(ev.currentTarget).trigger("reset");
 
-                        var userId = res.attributes.auth.user.id;
                         var authToken = res.attributes.auth.token;
+                        var userId = res.attributes.auth.user.id;
                         var username = res.attributes.auth.user.username;
                         var admin = res.attributes.auth.user.admin;
 
@@ -52,7 +52,7 @@ define([
 
                         $(".warning-div").empty().append("&nbsp");
 
-                        this.router.navigate('#/profile/' + userId, {trigger: true});
+                        this.router.navigate('#/' + userId, {trigger: true});
 
                     }, this),
                     error: _.bind(function(er) {
