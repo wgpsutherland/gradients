@@ -38,10 +38,9 @@ app.get('/gradient/v1/institutions',        queries.getInstitutions);
 app.get('/gradient/v1/courses',             queries.getCourses);
 app.post('/gradient/v1/users',              queries.createUser);
 
+// require user validation
 app.post('/gradient/v1/userModules',        validation.validate, queries.addUserModule);
-app.post('/gradient/v1/modules',            validation.validate, queries.createModule);
 app.post('/gradient/v1/grade',              validation.validate, queries.addGrade);
-app.post('/gradient/v1/assignments',        validation.validate, queries.createAssignment);
 app.get('/gradient/v1/users',               validation.validate, queries.getUsers);
 app.get('/gradient/v1/users/:id',           validation.validate, queries.getUser);
 app.get('/gradient/v1/userModules/:id',     validation.validate, queries.getUserModules);
@@ -54,3 +53,7 @@ app.get('/gradient/v1/yearAverages',        validation.validate, queries.getYear
 app.delete('/gradient/v1/userModules/:id',  validation.validate, queries.deleteUserModule);
 app.delete('/gradient/v1/grade/:id',        validation.validate, queries.deleteGrade);
 app.put('/gradient/v1/grade/:id',           validation.validate, queries.updateGrade);
+
+// these require admin validation also
+app.post('/gradient/v1/modules',            validation.validate, validation.admin, queries.createModule);
+app.post('/gradient/v1/assignments',        validation.validate, validation.admin, queries.createAssignment);

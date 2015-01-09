@@ -30,7 +30,7 @@ define([
         logout: function(ev) {
             document.cookie = "user_id=";
             document.cookie = "auth_token=";
-            document.cookie = "username="
+            document.cookie = "username=";
         }
     });
 
