@@ -4,22 +4,21 @@ define([
     'underscore',
     'backbone',
     'text!templates/ProfileNavTemplate.html',
-    'models/UserModel'
-], function($, _, Backbone, ProfileNavTemplate, UserModel) {
+    'libs/Utils'
+], function($, _, Backbone, ProfileNavTemplate, Utils) {
 
     var ProfileNavView = Backbone.View.extend({
 
         initialize: function(options) {
 
-            this.userModel = new UserModel({id: options.id});
-            this.userModel.fetch();
-
-            this.listenTo(this.userModel, 'add remove change', this.render);
+            this.userId = options.id;
+            this.admin = JSON.parse(Utils.getCookie("admin"));
         },
         render: function() {
 
             var template = _.template(ProfileNavTemplate, {
-                user: this.userModel
+                userId: this.userId,
+                admin: this.admin
             });
 
             this.$el.html(template);
@@ -31,6 +30,7 @@ define([
             document.cookie = "user_id=";
             document.cookie = "auth_token=";
             document.cookie = "username=";
+            document.cookie = "admin=";
         }
     });
 

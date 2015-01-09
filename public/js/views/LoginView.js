@@ -42,11 +42,13 @@ define([
                         var userId = res.attributes.auth.user.id;
                         var authToken = res.attributes.auth.token;
                         var username = res.attributes.auth.user.username;
+                        var admin = res.attributes.auth.user.admin;
 
                         // sets the cookies which are integral to the login system
                         document.cookie = "user_id=" + userId + ";";
                         document.cookie = "auth_token=" + authToken + ";";
                         document.cookie = "username=" + username + ";";
+                        document.cookie = "admin=" + admin + ";";
 
                         $(".warning-div").empty().append("&nbsp");
 
