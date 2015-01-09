@@ -7,8 +7,9 @@ define([
     'views/AddUserModuleView',
     'collections/UserModulesCollection',
     'views/FooterView',
-    'models/UserModel'
-], function($, _, Backbone, ProfileNavView, AddUserModuleView, UserModulesCollection, FooterView, UserModel) {
+    'models/UserModel',
+    'libs/Utils'
+], function($, _, Backbone, ProfileNavView, AddUserModuleView, UserModulesCollection, FooterView, UserModel, Utils) {
 
     var AddModulePage = Backbone.View.extend({
 
@@ -18,9 +19,9 @@ define([
 
             this.router.on('route:addModule', function(id) {
 
-                this.navView = new ProfileNavView({
-                    id: id
-                });
+                var userId = Utils.getCookie("user_id");
+
+                this.navView = new ProfileNavView();
 
                 this.moduleCollection = options.moduleCollection;
 
@@ -29,7 +30,7 @@ define([
                 this.userModulesCollection = options.userModulesCollection;
 
                 this.addUserModuleView = new AddUserModuleView({
-                    user_id: id,
+                    user_id: userId,
                     moduleCollection: this.moduleCollection,
                     userModulesCollection: this.userModulesCollection,
                     router: this.router

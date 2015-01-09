@@ -11,9 +11,10 @@ define([
     'collections/GradesCollection',
     'views/GradesView',
     'models/GradeAverageModel',
-    'views/FooterView'
+    'views/FooterView',
+    'libs/Utils'
 ], function($, _, Backbone, ProfileNavView, UserInfoView, UserModel, UserModulesCollection,
-            ModuleView, GradesCollection, GradesView, GradeAverageModel, FooterView) {
+            ModuleView, GradesCollection, GradesView, GradeAverageModel, FooterView, Utils) {
 
     var ProfilePage = Backbone.View.extend({
 
@@ -21,22 +22,20 @@ define([
 
             this.router = options.router;
 
-            this.router.on('route:profile', function(id) {
+            this.router.on('route:profile', function() {
 
-                this.user = id;
+                var userId = Utils.getCookie("user_id");
 
                 this.gradesCollection = options.gradesCollection;
                 this.yearAverageCollection = options.yearAverageCollection;
 
                 this.yearAverageCollection.fetch({
-                    data: id
+                    data: userId
                 });
 
-                this.navView = new ProfileNavView({
-                    id: id
-                });
+                this.navView = new ProfileNavView();
 
-                this.userModel = new UserModel({id: id});
+                this.userModel = new UserModel({id: userId});
                 this.userModel.fetch();
 
                 this.footerView = new FooterView();
@@ -55,7 +54,7 @@ define([
                     userModulesCollection: this.userModulesCollection,
                     gradesCollection: this.gradesCollection,
                     router: this.router,
-                    userId: id
+                    userId: userId
                 });
 
                 this.userInfoView.render();

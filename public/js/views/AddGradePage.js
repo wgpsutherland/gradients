@@ -6,8 +6,9 @@ define([
     'views/ProfileNavView',
     'views/AddGradeView',
     'views/FooterView',
-    'models/UserModel'
-], function($, _, Backbone, ProfileNavView, AddGradeView, FooterView, UserModel) {
+    'models/UserModel',
+    'libs/Utils'
+], function($, _, Backbone, ProfileNavView, AddGradeView, FooterView, UserModel, Utils) {
 
     var AddGradePage = Backbone.View.extend({
 
@@ -19,6 +20,8 @@ define([
 
             this.router.on('route:addGrade', function(id, od, ed) {
 
+                var userId = Utils.getCookie("user_id");
+
                 this.gradesCollection = options.gradesCollection;
                 this.assignmentsCollection = options.assignmentsCollection;
 
@@ -26,15 +29,13 @@ define([
                     data: od + "x" + ed
                 });
 
-                this.navView = new ProfileNavView({
-                    id: id
-                });
+                this.navView = new ProfileNavView();
 
                 this.addGradeView = new AddGradeView({
                     assignmentsCollection: this.assignmentsCollection,
                     gradesCollection: this.gradesCollection,
                     module_id: od,
-                    user_id: id,
+                    user_id: userId,
                     year: ed,
                     router: this.router
                 });

@@ -6,8 +6,9 @@ define([
     'views/ProfileNavView',
     'views/EditGradeView',
     'views/FooterView',
-    'models/UserModel'
-], function($, _, Backbone, ProfileNavView, EditGradeView, FooterView, UserModel) {
+    'models/UserModel',
+    'libs/Utils'
+], function($, _, Backbone, ProfileNavView, EditGradeView, FooterView, UserModel, Utils) {
 
     var EditGradePage = Backbone.View.extend({
 
@@ -19,14 +20,14 @@ define([
 
             this.router.on('route:editGrade', function(id, ed, od) {
 
-                this.navView = new ProfileNavView({
-                    id: id
-                });
+                var userId = Utils.getCookie("user_id");
+
+                this.navView = new ProfileNavView();
 
                 this.gradesCollection = options.gradesCollection;
 
                 this.gradesCollection.fetch({
-                    data: "" + od + "x" + id // the module code and the user id
+                    data: "" + od + "x" + userId // the module code and the user id
                 });
 
                 this.gradeModel = this.gradesCollection.get(ed);  // grade id

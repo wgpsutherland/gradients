@@ -19,9 +19,7 @@ define([
 
             this.router.on('route:admin', function(id) {
 
-                this.navView = new ProfileNavView({
-                    id: id
-                });
+                this.navView = new ProfileNavView();
 
                 this.moduleCollection = options.moduleCollection;
                 this.assignmentsCollection = options.assignmentsCollection;
