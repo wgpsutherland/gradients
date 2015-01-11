@@ -55,7 +55,8 @@ define([
                     userModulesCollection: this.userModulesCollection,
                     gradesCollection: this.gradesCollection,
                     router: this.router,
-                    username: username
+                    username: username,
+                    userId: userId
                 });
 
                 this.userInfoView.render();

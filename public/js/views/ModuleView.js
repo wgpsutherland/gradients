@@ -16,6 +16,7 @@ define([
             this.gradesCollection = options.gradesCollection;
             this.router = options.router;
             this.username = options.username;
+            this.userId = options.userId;
 
             this.listenTo(this.userModulesCollection, 'add remove change', this.render);
         },

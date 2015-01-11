@@ -56,6 +56,10 @@ define([
             } else if(goodForm) { // if the form is syntactically valid
 
                 var options = {
+                    data: {
+                        user_id: Utils.getCookie("user_id")
+                    },
+                    processData: true,
                     success: _.bind(function(something) {
 
                         $(".warning-div").empty().append("&nbsp");
@@ -96,7 +100,8 @@ define([
             this.gradeModel.destroy({ // removes the model from the collection
 
                 data: { // sending along the id of the user
-                    grade_id: gradeId
+                    grade_id: gradeId,
+                    user_id: Utils.getCookie("user_id")
                 },
                 processData: true,
                 success: _.bind(function() { // on removal success
