@@ -25,6 +25,7 @@ define([
             this.router.on('route:profile', function() {
 
                 var userId = Utils.getCookie("user_id");
+                var username = Utils.getCookie("username");
 
                 this.gradesCollection = options.gradesCollection;
                 this.yearAverageCollection = options.yearAverageCollection;
@@ -54,7 +55,7 @@ define([
                     userModulesCollection: this.userModulesCollection,
                     gradesCollection: this.gradesCollection,
                     router: this.router,
-                    userId: userId
+                    username: username
                 });
 
                 this.userInfoView.render();

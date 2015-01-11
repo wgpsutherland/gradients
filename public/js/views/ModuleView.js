@@ -15,7 +15,7 @@ define([
             this.userModulesCollection = options.userModulesCollection;
             this.gradesCollection = options.gradesCollection;
             this.router = options.router;
-            this.userId = options.userId;
+            this.username = options.username;
 
             this.listenTo(this.userModulesCollection, 'add remove change', this.render);
         },
@@ -23,7 +23,7 @@ define([
 
             var template = _.template(ModuleTemplate, {
                 modules: this.userModulesCollection,
-                user_id: this.userId
+                username: this.username
             });
 
             this.$el.html(template);
@@ -58,7 +58,7 @@ define([
             this.gradesView = new GradesView({
                 gradesCollection: this.gradesCollection,
                 gradeAverageModel: this.gradeAverageModel,
-                user_id: this.userId,
+                username: this.username,
                 module_id: moduleId,
                 year: year,
                 credits: credits

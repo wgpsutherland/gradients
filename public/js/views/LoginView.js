@@ -52,7 +52,7 @@ define([
 
                         $(".warning-div").empty().append("&nbsp");
 
-                        this.router.navigate('#/' + userId, {trigger: true});
+                        this.router.navigate('#/' + username, {trigger: true});
 
                     }, this),
                     error: _.bind(function(er) {

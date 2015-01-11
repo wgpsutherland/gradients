@@ -131,6 +131,7 @@ define([
 
 		router.on('route', function(pageName, id) {
 
+            var username = Utils.getCookie("username");
             var userId = Utils.getCookie("user_id");
 
             if(userId) { // if logged in
@@ -141,14 +142,14 @@ define([
                 || pageName=="addGrade"
                 || pageName=="admin"
                 || pageName=="editGrade" )
-                && (id[0] != userId)
+                && (id[0] != username)
                 ) {
 
-                    router.navigate('#/' + userId, {trigger: true});
+                    router.navigate('#/' + username, {trigger: true});
 
                 } else if ((pageName=="home" || pageName=="signup")) { // if the user is logged in redirect to the profile
 
-                    router.navigate('#/' + userId, {trigger: true});
+                    router.navigate('#/' + username, {trigger: true});
 
                } else if(pageName=="admin") { // do an access check
 

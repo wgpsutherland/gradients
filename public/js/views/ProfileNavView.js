@@ -11,13 +11,13 @@ define([
 
         initialize: function(options) {
 
-            this.userId = Utils.getCookie("user_id");
+            this.username = Utils.getCookie("username");
             this.admin = JSON.parse(Utils.getCookie("admin"));
         },
         render: function() {
 
             var template = _.template(ProfileNavTemplate, {
-                userId: this.userId,
+                username: this.username,
                 admin: this.admin
             });
 
