@@ -42,7 +42,6 @@ app.post('/gradient/v1/users', queries.createUser);
 // require user validation
 app.post('/gradient/v1/userModules', validation.validate, queries.addUserModule);
 app.post('/gradient/v1/grade', validation.validate, queries.addGrade);
-app.get('/gradient/v1/users', validation.validate, queries.getUsers);
 app.get('/gradient/v1/users/:id', validation.validate, queries.getUser);
 app.get('/gradient/v1/userModules/:id', validation.validate, queries.getUserModules);
 app.get('/gradient/v1/grades/', validation.validate, queries.getGradesForUserFromModule);
