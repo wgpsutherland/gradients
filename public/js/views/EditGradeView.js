@@ -55,9 +55,11 @@ define([
 
             } else if(goodForm) { // if the form is syntactically valid
 
+
                 var options = {
                     data: {
-                        user_id: Utils.getCookie("user_id")
+                        user_id: Utils.getCookie("user_id"),
+                        score: formContents.score
                     },
                     processData: true,
                     success: _.bind(function(something) {
