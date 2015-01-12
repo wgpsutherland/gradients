@@ -26,7 +26,7 @@ define([
                 this.assignmentsCollection = options.assignmentsCollection;
 
                 this.assignmentsCollection.fetch({
-                    data: id + "x" + od + "x" + ed
+                    data: od + "x" + userId + "x" + ed
                 });
 
                 this.navView = new ProfileNavView();
