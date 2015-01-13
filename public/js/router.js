@@ -41,8 +41,8 @@ define([
         },
 		routes: {
 			'': 'home',
+            'signup': 'signup', // must be located before profile otherwise mistaken for an id
             ':id': 'profile',
-            'signup': 'signup',
             ':id/addModule': 'addModule',
             ':id/addGrade/:od/:ed': 'addGrade',
             ':id/admin': 'admin',
