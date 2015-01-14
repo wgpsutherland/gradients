@@ -245,16 +245,16 @@ h2, h3, h4 {
 .delete-user-module {
     position: absolute;
     top: 100px;
-    color: white;
     font-size: 2em;
-}
-
-.delete-user-module {
     right: 0px;
-    color: #6FC2FF;
+    color: white;
+    display: none;
 }
 
 .delete-user-module:hover {
+    -ms-transform: rotate(7deg); /* IE 9 */
+    -webkit-transform: rotate(7deg); /* Chrome, Safari, Opera */
+    transform: rotate(7deg);
     color: white;
 }
 

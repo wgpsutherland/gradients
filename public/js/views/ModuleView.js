@@ -45,6 +45,7 @@ define([
             this.render();
 
             $("#" + moduleId).css("background-color","#5995E8");
+            $("#" + moduleId + " .delete-user-module").css("display", "block"); // makes the delete button appear
 
             this.gradeAverageModel = new GradeAverageModel({
                 id: gradeInfo
