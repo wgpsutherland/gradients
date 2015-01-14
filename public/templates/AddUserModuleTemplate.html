@@ -12,7 +12,7 @@
                 <form role="form" class="add-user-module-form">
                     <div class="form-group">
                         <select class="form-control" id="add-user-module-form-moduleChoice" name="module_choice">
-                            <option value="" disabled selected>Choose a module</option>
+                            <option value="" selected>Choose a module</option>
                             <% modules.each(function(module) { %>
                             <% var display = "" + module.get('module_code') + " - " + module.get('module_name') %>
                             <option value=<%= module.get('id') %>><%= display %></option>
@@ -21,7 +21,7 @@
                     </div>
                     <div class="form-group form-group-lg">
                         <select class="form-control" id="exampleInputYear" name="year">
-                            <option value="" disabled selected>When did you do the module?</option>
+                            <option value="" selected>When did you do the module?</option>
 
                             <% for(var i=2013; i<2015; i++) { %>
 

@@ -12,7 +12,7 @@
 
                     <div class="form-group">
                         <select class="form-control" id="add-user-module-form-moduleChoice" name="module">
-                            <option value="" disabled selected>Choose a module</option>
+                            <option value="" selected>Choose a module</option>
                             <% modules.each(function(module) { %>
                             <% var display = "" + module.get('module_code') + " - " + module.get('module_name') %>
                             <option value=<%= module.get('id') %>><%= display %></option>
@@ -27,7 +27,7 @@
 
                     <div class="form-group">
                         <select class="form-control" id="assignmentType" name="type">
-                            <option value="" disabled selected>Choose an assignment type</option>
+                            <option value="" selected>Choose an assignment type</option>
                             <% assignmentTypes.each(function(type) { %>
                                 <option value=<%= type.get('id') %>><%= type.get('assignment_type') %></option>
                             <% }); %>
@@ -41,7 +41,7 @@
 
                     <div class="form-group form-group-lg">
                         <select class="form-control" id="assignmentSemester" name="semester">
-                            <option value="" disabled selected>Choose semester</option>
+                            <option value="" selected>Choose semester</option>
                             <option>1</option>
                             <option>2</option>
                         </select>
@@ -54,7 +54,7 @@
 
                     <div class="form-group form-group-lg">
                         <select class="form-control" id="exampleInputYear" name="year">
-                            <option value="" disabled selected>What year is the assignment for?</option>
+                            <option value="" selected>What year is the assignment for?</option>
 
                             <% for(var i=2013; i<2015; i++) { %>
 

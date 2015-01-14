@@ -12,7 +12,7 @@
                 <form role="form" class="add-grade-form">
                     <div class="form-group">
                         <select class="form-control" id="add-grade-form-assignment-choice" name="assignment_choice">
-                            <option value="" disabled selected>Choose an assignment</option>
+                            <option value="" selected>Choose an assignment</option>
                             <% assignments.each(function(assignment) { %>
                             <% var display = "" + assignment.get('assignment_name') + " (" + assignment.get('max_mark') + ")" %>
                             <option value=<%= assignment.get('id') %>><%= display %></option>
