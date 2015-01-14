@@ -174,7 +174,10 @@ define([
                         })
                     });
 
-               } else { renderPage(pageName); }
+               } else {
+
+                    renderPage(pageName);
+                }
 
             } else {
 
