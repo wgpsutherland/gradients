@@ -9,7 +9,7 @@ define([
 
     var ProfileNavView = Backbone.View.extend({
 
-        initialize: function(options) {
+        initialize: function() {
 
             this.username = Utils.getCookie("username");
             this.admin = JSON.parse(Utils.getCookie("admin"));

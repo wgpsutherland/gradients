@@ -67,7 +67,6 @@ define([
             });
 
             this.gradesView.render();
-
             this.$el.append(this.gradesView.$el);
         },
         deleteUserModule: function(ev) {
