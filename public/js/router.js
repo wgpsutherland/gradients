@@ -129,6 +129,14 @@ define([
             editGrade: editGradePage
 		};
 
+        var loggedInPages = [
+            "profile",
+            "addModule",
+            "addGrade",
+            "admin",
+            "editGrade"
+        ];
+
 		router.on('route', function(pageName, id) {
 
             var username = Utils.getCookie("username");
@@ -136,14 +144,8 @@ define([
 
             if(userId) { // if logged in
 
-                if ( // if the page requires login and the cookie user id is not correct then redirect back to the homepage
-                (  pageName=="profile"
-                || pageName=="addModule"
-                || pageName=="addGrade"
-                || pageName=="admin"
-                || pageName=="editGrade" )
-                && (id[0] != username)
-                ) {
+                // if the page requires login and the cookie user id is not correct then redirect back to the homepage
+                if (_.contains(loggedInPages, pageName) && (id[0] != username)){
 
                     router.navigate('#/' + username, {trigger: true});
 
@@ -181,14 +183,10 @@ define([
 
             } else {
 
-                if ( // if the page requires login and there is no user id
-                (  pageName=="profile"
-                || pageName=="addModule"
-                || pageName=="addGrade"
-                || pageName=="admin"
-                || pageName=="editGrade" )
-                ) {
-                    router.navigate('#', {trigger: true});
+                if (_.contains(loggedInPages, pageName)) { // if the page requires login and there is no user id
+
+                    router.navigate('#/', {trigger: true});
+
                 } else {
 
                     renderPage(pageName);
