@@ -35,8 +35,8 @@ define([
                 });
 
                 this.navView = new ProfileNavView();
-
                 this.userModel = new UserModel({id: userId});
+
                 this.userModel.fetch();
 
                 this.footerView = new FooterView();

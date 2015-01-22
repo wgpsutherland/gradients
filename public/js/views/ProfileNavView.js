@@ -12,7 +12,10 @@ define([
         initialize: function() {
 
             this.username = Utils.getCookie("username");
-            this.admin = JSON.parse(Utils.getCookie("admin"));
+
+            if(Utils.getCookie("admin")) {
+                this.admin = JSON.parse(Utils.getCookie("admin"));
+            }
         },
         render: function() {
 

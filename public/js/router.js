@@ -181,7 +181,18 @@ define([
 
             } else {
 
-                renderPage(pageName);
+                if ( // if the page requires login and there is no user id
+                (  pageName=="profile"
+                || pageName=="addModule"
+                || pageName=="addGrade"
+                || pageName=="admin"
+                || pageName=="editGrade" )
+                ) {
+                    router.navigate('#', {trigger: true});
+                } else {
+
+                    renderPage(pageName);
+                }
             }
 		});
 
