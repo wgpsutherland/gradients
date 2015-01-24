@@ -6,3 +6,7 @@ config/development-config.json
 *.dump
 
 .idea/
+
+
+node_modules/
+

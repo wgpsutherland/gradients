@@ -32,6 +32,7 @@
     "logfmt": "^1.1.2",
     "nconf": "^0.6.9",
     "password-hash": "^1.2.2",
+    "path": "^0.11.14",
     "pg": "^2.11.1",
     "requirejs": "^2.1.15",
     "underscore": "1.6.*"
