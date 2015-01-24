@@ -7,7 +7,7 @@ define([
 	'views/HomePage',
 	'views/ProfilePage',
     'collections/UserCollection',
-    'views/SignupPage',
+    'views/SignUpPage',
     'collections/LoginCollection',
     'models/UserModel',
     'views/AddModulePage',
@@ -25,7 +25,7 @@ define([
     'libs/Utils'
 ], function($, _, Backbone,
     bootstrap, HomePage, ProfilePage,
-    UserCollection, SignupPage, LoginCollection,
+    UserCollection, SignUpPage, LoginCollection,
     UserModel, AddModulePage, ModuleCollection,
     UserModulesCollection, InstitutionsCollection, CourseCollection,
     GradesCollection, AddGradePage, AssignmentsCollection,
@@ -36,19 +36,18 @@ define([
 
         initialize: function() {
 
-            //track every route change as a page view in google analytics
-            this.bind('route', this.trackPageview);
+            this.bind('route', this.trackPageView); //track every route change as a page view in google analytics
         },
 		routes: {
 			'': 'home',
-            'signup': 'signup', // must be located before profile otherwise mistaken for an id
+            'signUp': 'signUp', // must be located before profile otherwise mistaken for an id
             ':id': 'profile',
             ':id/addModule': 'addModule',
             ':id/addGrade/:od/:ed': 'addGrade',
             ':id/admin': 'admin',
             ':id/editGrade/:ed/:od': 'editGrade'
 		},
-        trackPageview: function () {
+        trackPageView: function () {
 
             var url = Backbone.history.getFragment();
 
@@ -87,7 +86,7 @@ define([
             yearAverageCollection: yearAverageCollection
         });
 
-        var signupPage = new SignupPage({
+        var signUpPage = new SignUpPage({
             router: router,
             userCollection: userCollection,
             institutionsCollection: institutionsCollection,
@@ -122,7 +121,7 @@ define([
 		var pages = {
 			home: homePage,
             profile: profilePage,
-            signup: signupPage,
+            signUp: signUpPage,
             addModule: addModulePage,
             addGrade: addGradePage,
             admin: adminPage,
@@ -149,7 +148,7 @@ define([
 
                     router.navigate('#/' + username, {trigger: true});
 
-                } else if ((pageName=="home" || pageName=="signup")) { // if the user is logged in redirect to the profile
+                } else if ((pageName=="home" || pageName=="signUp")) { // if the user is logged in redirect to the profile
 
                     router.navigate('#/' + username, {trigger: true});
 
@@ -209,8 +208,8 @@ define([
             _.each(pages, function(page, name) {
                 page.$el.toggle(name===pageName);
             });
-        }
-	}
+        };
+	};
 
 	return {
 		initialize: initialize

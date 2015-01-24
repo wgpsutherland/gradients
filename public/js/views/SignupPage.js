@@ -1,14 +1,14 @@
-// SignupPage.js
+// SignUpPage.js
 define([
     'jquery',
     'underscore',
     'backbone',
     'views/NavView',
-    'views/SignupView',
+    'views/SignUpView',
     'views/FooterView'
-], function($, _, Backbone, NavView, SignupView, FooterView) {
+], function($, _, Backbone, NavView, SignUpView, FooterView) {
 
-    var SignupPage = Backbone.View.extend({
+    var SignUpPage = Backbone.View.extend({
 
         initialize: function(options) {
 
@@ -23,7 +23,7 @@ define([
 
             this.navView = new NavView();
 
-            this.signUpView = new SignupView({
+            this.signUpView = new SignUpView({
                 router: this.router,
                 userCollection: this.userCollection,
                 institutionsCollection: this.institutionsCollection,
@@ -47,5 +47,5 @@ define([
         }
     });
 
-    return SignupPage;
+    return SignUpPage;
 });
