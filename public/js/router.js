@@ -141,55 +141,47 @@ define([
             var username = Utils.getCookie("username");
             var userId = Utils.getCookie("user_id");
 
-            if(userId) { // if logged in
+            if(userId && _.contains(loggedInPages, pageName) && (id[0] != username)) {
 
-                // if the page requires login and the cookie user id is not correct then redirect back to the homepage
-                if (_.contains(loggedInPages, pageName) && (id[0] != username)){
+                router.navigate('#/' + username, {trigger: true});
 
-                    router.navigate('#/' + username, {trigger: true});
+            } else if (userId && (pageName=="home" || pageName=="signUp")) {
 
-                } else if ((pageName=="home" || pageName=="signUp")) { // if the user is logged in redirect to the profile
+                router.navigate('#/' + username, {trigger: true});
 
-                    router.navigate('#/' + username, {trigger: true});
+            } else if(userId && pageName=="admin") { // access check
 
-               } else if(pageName=="admin") { // do an access check
+                this.userModel = new UserModel({
+                    id: userId
+                });
 
-                    this.userModel = new UserModel({
-                        id: userId
-                    });
+                this.userModel.fetch({
 
-                    this.userModel.fetch({
+                    success: _.bind(function() { // successful connection to the db
 
-                        success: _.bind(function() { // successful connection to the db
-
-                            if(!(this.userModel.get('admin'))) {  // if they're not an admin redirect
-
-                                router.navigate('#/', {trigger: true});
-
-                            } else { renderPage(pageName); }
-
-                        }, this),
-                        error: (function() { // if the model cannot be found on the server
+                        if(!(this.userModel.get('admin'))) {  // if they're not an admin redirect
 
                             router.navigate('#/', {trigger: true});
-                        })
-                    });
 
-               } else {
+                        } else {
 
-                    renderPage(pageName);
-                }
+                            renderPage(pageName);
+                        }
+
+                    }, this),
+                    error: (function() { // if the model cannot be found on the server
+
+                        router.navigate('#/', {trigger: true});
+                    })
+                });
+
+            } else if (!userId && _.contains(loggedInPages, pageName)) {
+
+                router.navigate('#/', {trigger: true});
 
             } else {
 
-                if (_.contains(loggedInPages, pageName)) { // if the page requires login and there is no user id
-
-                    router.navigate('#/', {trigger: true});
-
-                } else {
-
-                    renderPage(pageName);
-                }
+                renderPage(pageName);
             }
 		});
 
