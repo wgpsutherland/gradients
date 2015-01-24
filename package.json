@@ -21,7 +21,7 @@
   "homepage": "https://github.com/wgpsutherland/gradients",
   "engines": {
     "node": "0.10.30",
-    "npm": "1.4.21"
+    "npm": "2.3.0"
   },
   "dependencies": {
     "body-parser": "1.5.2",
