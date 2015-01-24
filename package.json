@@ -1,5 +1,5 @@
 {
-  "name": "grades",
+  "name": "gradients",
   "version": "0.0.0",
   "description": "An app which allows you to track your grades over the year.",
   "main": "server.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/wgpsutherland/grades.git"
+    "url": "https://github.com/wgpsutherland/gradients.git"
   },
   "keywords": [
     "grades"
@@ -16,9 +16,13 @@
   "author": "Will Sutherland",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/wgpsutherland/grades/issues"
+    "url": "https://github.com/wgpsutherland/gradients/issues"
   },
-  "homepage": "https://github.com/wgpsutherland/grades",
+  "homepage": "https://github.com/wgpsutherland/gradients",
+  "engines": {
+    "node": "0.10.30",
+    "npm": "1.4.21"
+  },
   "dependencies": {
     "body-parser": "1.5.2",
     "compression": "^1.3.0",
