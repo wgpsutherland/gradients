@@ -97,7 +97,7 @@ define([
         },
         delete: function(ev) {
 
-            var gradeId = ev.currentTarget.attributes[2].value;
+            var gradeId = ev.currentTarget.attributes.value.value;
 
             this.gradeModel.destroy({ // removes the model from the collection
 

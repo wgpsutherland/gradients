@@ -71,7 +71,7 @@ define([
         },
         deleteUserModule: function(ev) {
 
-            var id = ev.currentTarget.attributes[2].value; // extracts the model id from the delete button
+            var id = ev.currentTarget.attributes.value.value; // extracts the model id from the delete button
 
             this.model = this.userModulesCollection.get(id); // fetches the model from the collection
 
