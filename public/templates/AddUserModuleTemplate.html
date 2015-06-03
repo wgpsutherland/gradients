@@ -4,7 +4,12 @@
         <div class="col-md-6">
             <div class="container-fluid centre form-view">
 
-                <h1 class="page-title">What module do you do?</h1>
+                <h1 class="page-title">
+                    <button type="button" class="btn btn-default cancel">
+                        <span class="fa fa-arrow-left"></span>
+                    </button>
+                    What module do you do?
+                </h1>
 
                 <div class="warning-div">&nbsp</div>
 
@@ -36,11 +41,8 @@
                         </label>
                     </div>
                     <input type="hidden" name="user_id" value=<%= user_id %>>
-                    <button type="submit" class="btn btn-warning">
-                        <span class="fa fa-list"></span> Add
-                    </button>
-                    <button type="button" class="btn btn-info cancel">
-                        <span class="fa fa-check"></span> Done
+                    <button type="submit" class="btn btn-info btn-block">
+                        <span class="fa fa-check"></span> Add
                     </button>
                 </form>
 

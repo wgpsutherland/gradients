@@ -292,3 +292,10 @@ h2, h3, h4 {
     margin-top: 40px;
 }
 
+.checkbox {
+    text-align: left;
+}
+
+.delete {
+    margin-top: 10px;
+}

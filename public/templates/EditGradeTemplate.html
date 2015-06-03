@@ -4,7 +4,12 @@
         <div class="col-md-6">
             <div class="container-fluid centre form-view">
 
-                <h1 class="page-title">Edit your grade:</h1>
+                <h1 class="page-title">
+                    <button type="button" class="btn btn-default cancel">
+                        <span class="fa fa-arrow-left"></span>
+                    </button>
+                    Edit your grade:
+                </h1>
 
                 <h2>
                     <%= model.get('module_code') %> - <%= model.get('assignment_name') %>
@@ -21,15 +26,13 @@
                         <input type="text" value="<%= model.get('score') %>" class="form-control" id="exampleInputScore2" placeholder="Enter score" name="score">
                     </div>
                     <input type="hidden" name="grade_id" value=<%= model.id %>>
-                    <button type="button" class="btn btn-warning cancel">
-                        <span class="fa fa-undo"></span> Cancel
-                    </button>
-                    <button type="button" class="btn btn-danger delete" value="<%= model.get('id') %>">
-                        <span class="fa fa-times"></span> Delete
-                    </button>
-                    <button type="submit" class="btn btn-info">
+                    <button type="submit" class="btn btn-info btn-wide">
                         <span class="fa fa-check"></span> Change
                     </button>
+                    <button type="button" class="btn btn-danger btn-wide delete" value="<%= model.get('id') %>">
+                        <span class="fa fa-times"></span> Delete
+                    </button>
+                    <br>
                 </form>
 
             </div>
