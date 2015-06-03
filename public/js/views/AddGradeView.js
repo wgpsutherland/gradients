@@ -21,6 +21,7 @@ define([
             this.year = options.year;
 
             this.listenTo(this.assignmentsCollection, 'add remove change', this.render);
+            this.listenTo(this.gradesCollection, 'add remove change', this.render);
         },
         render: function() {
 
@@ -72,7 +73,7 @@ define([
                         $(".warning-div").prepend(Labels.gradeExists);
 
                     }, this)
-                }
+                };
 
                 this.gradesCollection.create(formContents, options);
 

@@ -56,7 +56,7 @@ define([
                         $(".warning-div").prepend(Labels.userModuleExists);
 
                     }, this)
-                }
+                };
 
                 this.userModulesCollection.create(formContents, options);
 

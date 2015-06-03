@@ -18,6 +18,7 @@ define([
 
             this.listenTo(this.assignmentTypeCollection, 'add remove change', this.render);
             this.listenTo(this.moduleCollection, 'add remove change', this.render);
+            this.listenTo(this.assignmentsCollection, 'add remove change', this.render);
         },
         render: function() {
 
@@ -58,7 +59,7 @@ define([
                         $(".warning-div").prepend(Labels.assignmentExists);
 
                     }, this)
-                }
+                };
 
                 this.assignmentsCollection.create(formContents, options);
 

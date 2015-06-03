@@ -10,6 +10,9 @@ define([
 
     var CreateModuleView = Backbone.View.extend({
 
+        initialize: function() {
+            this.listenTo(this.collection, 'add remove change', this.render);
+        },
         render: function() {
 
             var template = _.template(CreateModuleTemplate);
