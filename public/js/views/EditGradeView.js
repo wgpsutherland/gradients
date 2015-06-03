@@ -45,10 +45,6 @@ define([
 
                 $(".warning-div").prepend(Labels.scoreNotNumber);
 
-            } else if((formContents.score.split(".")[1])) { // makes sure it's not a decimal
-
-                $(".warning-div").prepend(Labels.scoreNotNatural);
-
             } else if(formContents.score < 0) {
 
                 $(".warning-div").prepend(Labels.scoreNotPositive);
