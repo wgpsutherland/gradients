@@ -21,7 +21,7 @@ require.config({
 			"//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.1/js/bootstrap.min",
 			"./assets/bootstrap.min"
 		],
-        'text': "./assets/text",
+			'text': "./assets/text",
         'templates': "../templates"
 	},
 	shim: {

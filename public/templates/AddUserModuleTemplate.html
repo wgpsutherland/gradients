@@ -27,7 +27,7 @@
                         <select class="form-control" id="exampleInputYear" name="year">
                             <option value="" selected>When did you do the module?</option>
 
-                            <% for(var i=2013; i<2015; i++) { %>
+                            <% for(var i=2013; i <= new Date().getFullYear(); i++) { %>
 
                                 <option value="<%= i %>"><%= i %> / <%= i+1 %></option>
 
